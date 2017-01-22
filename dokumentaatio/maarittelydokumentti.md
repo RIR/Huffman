@@ -1,6 +1,7 @@
 # Määrittelydokumentti
 **Raine Rantanen**
 
+
 ## Aineopintojen harjoitustyö: Tietorakenteet ja algoritmit
 
 Aiheena tiedon tiivistys käyttäen [Huffmanin koodausta](https://fi.wikipedia.org/wiki/Huffmanin_koodaus).
@@ -13,7 +14,7 @@ Työn aiheena on tiedon tiivistäminen. Käytettävä algoritmi on Huffmanin koo
 
 Algoritmien ja ohjelmoinnin näkökulmasta aihe on itselleni ennestään täysin tuntematon, mutta vaikutti kiinnostavalta joten päädyin siihen. Tietojenkäsittelyn alueella aihe on luonnollisesti hyvin keskeinen, datan määrän kasvaessa jatkuvasti.
 
-Huffmanin algoritmiin päädyin, koska se on mainittuna kurssin aihelistalla tiedon tiivistämisen alakohtana ja pikaisen perehtymisen perusteella se vaikuttaa toteutettavalta aiheelta.
+Huffmanin algoritmiin päädyin, koska se on mainittuna kurssin aihelistalla tiedon tiivistämisen yhteydessä ja pikaisen perehtymisen perusteella se vaikuttaa toteutettavalta aiheelta.
 
 Huffmanin algoritmi tiivistää tietoa koodaamalla käsiteltävät merkit bittijonoksi, niin että mitä useammin tietty merkki esiintyy, sitä lyhyempi bittijono sitä kuvaa.
 
@@ -32,7 +33,7 @@ Ohjelma pakkaa ja purkaa tiedostoja. Pakattava tiedosto luetaan tavuina (byte).
 
 ### Aika- ja tilavaativuudet
 
-Tavoiteikavaativuus Huffman-algoritmille on *O(n log n)*, jossa n on erilaisten merkkien määrä. Tilavaativuus tulisi olla lineaarinen eli *O(n)* sillä algoritmin muodostamassa puussa voi olla korkeintaan 2n-1 solmua.
+Tavoiteaikavaativuus algoritmille on *O(n log n)*, jossa n on erilaisten merkkien määrä. Tilavaativuus tulisi olla lineaarinen eli *O(n)* sillä algoritmin muodostamassa puussa voi olla korkeintaan 2n-1 solmua.
 
 ### Lähteet
 
@@ -43,3 +44,5 @@ Tavoiteikavaativuus Huffman-algoritmille on *O(n log n)*, jossa n on erilaisten 
 *https://www.cs.helsinki.fi/u/thusu/opinnot/tiralab/documents/2009-05-21_husu_maarittely.tex*
 
 *http://planetmath.org/huffmansalgorithm*
+
+*https://www.youtube.com/watch?v=dM6us854Jk0*
