@@ -29,7 +29,7 @@ Koodauksen purkaminen tapahtuu muuntamalla bitit takaisin merkeiksi vastaavasti 
 
 ### Ohjelman käsittelemä syöte
 
-Ohjelma pakkaa ja purkaa tiedostoja. Pakattava tiedosto luetaan tavu (byte) kerrallaan ja tavut koodataan bittijonoiksi. En ole vielä täysin varma miten pakatun tiedoston tallentaminen toimii, koska käsittääkseni bitit pitää tallentaa tavu-pituudessa ja mahdollisia täytebittejä tarvitaan. Tämän vaikutus pakkauksen purkamiseen on siis myös epäselvää. 
+Ohjelma pakkaa ja purkaa tiedostoja. Pakattava tiedosto luetaan tavu (byte) kerrallaan ja tavut koodataan bittijonoiksi. En ole vielä täysin varma miten pakatun tiedoston tallentaminen toimii, koska käsittääkseni bitit pitää tallentaa tavu-pituudessa ja mahdollisia täytebittejä tarvitaan. Tämän vaikutus pakkauksen purkamiseen on siis myös vielä epäselvää. 
 
 ### Aika- ja tilavaativuudet
 
