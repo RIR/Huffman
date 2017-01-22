@@ -1,6 +1,6 @@
 ## Viikkoraportti 1
 
-### 18-22.1.2017 ###
+### 16-22.1.2017 ###
 
 Aloitusluennolla keskiviikkona 18.1 käytiin läpi pikaisesti kurssin aihe ja aikataulu. Lopuksi oli mahdollista keskustella ohjaajan kanssa mieltä askarruttavista asioista.
 
