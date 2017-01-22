@@ -32,7 +32,7 @@ Ohjelma pakkaa ja purkaa tiedostoja. Pakattava tiedosto luetaan tavuina (byte).
 
 ### Aika- ja tilavaativuudet
 
-Aikavaativuus Huffman-algoritmille on *O(n log n)*, jossa n on erilaisten merkkien määrä. Tilavaativuus on taas lineaarinen eli *O(n)* sillä algoritmin muodostamassa puussa voi olla korkeintaan 2n-1 solmua.
+Tavoiteikavaativuus Huffman-algoritmille on *O(n log n)*, jossa n on erilaisten merkkien määrä. Tilavaativuus tulisi olla lineaarinen eli *O(n)* sillä algoritmin muodostamassa puussa voi olla korkeintaan 2n-1 solmua.
 
 ### Lähteet
 
