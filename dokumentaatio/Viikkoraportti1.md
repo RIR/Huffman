@@ -10,4 +10,4 @@ Kuitenkin suurin osa ajasta tämän viikon osalta kului itse aiheeseen tutustumi
 
 Opin siis paljon tällä viikolla pakkausalgoritmeista ja varsinkin tietysti Huffmanin koodauksesta. Epäselvää on ainakin jossain määrin vielä tavujen käsittely tiedostojen lukemisen ja kirjoittamisen yhteydessä, sekä bittioperaatiot.  Näihin aionkin perehtyä pian lisää.  Koko ohjelman tila- ja aikavaativuus saattavat myös vaatia vielä tarkennusta. Tarkoitukseni on aloittaa pian myös itse ohjelmointi.
 
-Tällä viikolla käytin aikaa työskentelyyn n. 12 h < , josta suurin osa kului siis aiheeseen perehtymiseen. 
+Tällä viikolla käytin aikaa työskentelyyn n. 10 h < , josta suurin osa kului siis aiheeseen perehtymiseen. 
