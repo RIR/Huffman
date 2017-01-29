@@ -26,13 +26,15 @@ public class Input {
     private int bitsRemaining;
 
     /**
-     * Luokan konstruktori, joka alustaa bittivirran lukemista varten tarvittavat tavu- ja bittiseuraajan.
+     * Luokan konstruktori, joka alustaa bittivirran lukemista varten
+     * tarvittavat tavu- ja bittiseuraajan.
+     *
      * @param inputFile Luettava tiedosto
      */
     public Input(File inputFile) {
         this.currentByte = 0;
         this.bitsRemaining = 0;
-         try {
+        try {
             in = new BufferedInputStream(new FileInputStream(inputFile));
         } catch (FileNotFoundException ex) {
             System.out.println("File not found!");
@@ -57,21 +59,16 @@ public class Input {
             System.out.println("Ongelmia tiedoston lukemisessa");
         }
 
-        try {
-            in.close();
-        } catch (IOException ex) {
-            System.out.println("Ongelmia lukuvirran sulkemisessa");
-        }
+        close();
         return sb.toString();
     }
 
     /**
      * Metodi joka lukee bitin tavuvirrasta.
+     *
      * @return palauttaa bitin (1/0) tai -1 jos ei enää luettavaa.
      */
     public int readBit() {
-        int read;
-
         if (currentByte == -1) {
             return -1;
         }
@@ -91,19 +88,22 @@ public class Input {
 
         int result = (currentByte >>> bitsRemaining) & 1;
 
-        try {
-            in.close();
-        } catch (IOException ex) {
-            System.out.println("Virhe tavuvirran sulkemisessa");
-        }
-        currentByte = -1;
-        bitsRemaining = 0;
-
         if (result != -1) {
             return result;
         }
 
         return -1;
+    }
+
+    public void close() {
+        currentByte = -1;
+        bitsRemaining = 0;
+
+        try {
+            in.close();
+        } catch (IOException ex) {
+            System.out.println("Virhe tavuvirran sulkemisessa");
+        }
     }
 
 }

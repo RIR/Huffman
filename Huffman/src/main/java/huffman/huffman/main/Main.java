@@ -1,6 +1,8 @@
 package huffman.huffman.main;
 
+import huffman.huffman.io.Input;
 import huffman.huffman.logic.Huffman;
+import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
@@ -15,8 +17,10 @@ import java.io.FileNotFoundException;
 public class Main {
 
     public static void main(String[] args) throws FileNotFoundException {
-        
+
         // testidataa ohjelman toimintojen testaamiseen
+        Input input = new Input(new File("Testi.txt"));
+       
         String[] testitaulukko = new String[3];
         testitaulukko[0] = "compress";
         testitaulukko[1] = "Testi.txt";
