@@ -10,7 +10,7 @@ import java.io.FileNotFoundException;
  * Ohjelman pääluokka, josta ohjelma ajetaan. Tarkoitus toteuttaa niin, että
  * ohjelma toimii käyttäjän syötteellä: java komento (compress/decompress)
  * pakattava tiedosto pakattu tiedosto eli esim. java compress pakattava.txt
- * pakattu.txt
+ * pakattu.txt .
  */
 public class Main {
 

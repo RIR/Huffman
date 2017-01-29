@@ -30,7 +30,7 @@ public class Compress {
         input=new Input();
         
         try {
-          String inputString=input.read(inputFile);
+          String inputString=input.readBytes(inputFile);
                      
           
           //tiivistys tähän 
