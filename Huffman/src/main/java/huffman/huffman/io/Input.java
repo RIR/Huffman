@@ -42,25 +42,30 @@ public class Input {
     }
 
     /**
-     * Metodi joka lukee tiedoston tavuina ja kirjoittaa ne Stringiin
+     * Metodi joka lukee tiedoston tavuina ja palauttaa merkkitaulukon
      *
-     * @return Merkkijono luetuista tavuista
+     * @return Merkkitaulukko
      */
-    public String readBytes() {
+    public char[] readBytes() {
         int read;
-
+        
+        // Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
         StringBuilder sb = new StringBuilder();
 
         try {
             while ((read = in.read()) != -1) {
-                sb.append(read);
+                sb.append((char)read);
             }
         } catch (IOException ex) {
             System.out.println("Ongelmia tiedoston lukemisessa");
         }
 
         close();
-        return sb.toString();
+
+        // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
+        char[] input = sb.toString().toCharArray();
+
+        return input;
     }
 
     /**
@@ -95,6 +100,9 @@ public class Input {
         return -1;
     }
 
+    /**
+     * Metodi sulkee tavuvirran.
+     */
     public void close() {
         currentByte = -1;
         bitsRemaining = 0;

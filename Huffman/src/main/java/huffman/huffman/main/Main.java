@@ -20,6 +20,11 @@ public class Main {
 
         // testidataa ohjelman toimintojen testaamiseen
         Input input = new Input(new File("Testi.txt"));
+        
+        char[] array=input.readBytes();
+        for (int i = 0; i < array.length; i++) {
+            System.out.println(array[i]);           
+        }
        
         String[] testitaulukko = new String[3];
         testitaulukko[0] = "compress";

@@ -1,5 +1,6 @@
 package huffman.huffman.logic;
 
+import huffman.huffman.domain.FrequencyCounter;
 import huffman.huffman.io.Input;
 import huffman.huffman.io.Output;
 import java.io.BufferedInputStream;
@@ -28,18 +29,14 @@ public class Compress {
      */
     public Compress(File inputFile, File outputFile) throws FileNotFoundException {
         input=new Input(inputFile);
+        FrequencyCounter frequencyCounter=new FrequencyCounter();
+       
+        /*luetaan merkit ja palautetaan niistä taulukko joka annetaan 
+       toistumisluokan käyttöön, joka taas palauttaa merkkien toistumiset taulukossa.
+        */      
+        int[] frequencies=frequencyCounter.getFrequencies(input.readBytes());
         
-        try {
-          String inputString=input.readBytes();
-                     
-          
-          //tiivistys tähän 
-          
-          output.write(inputString, outputFile);
-            
-        } catch (Exception e) {
-
-        }
+        
 
     }
 }
