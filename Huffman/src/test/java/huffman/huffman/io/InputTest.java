@@ -10,6 +10,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
+import org.junit.Assert;
 import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
@@ -45,9 +46,16 @@ public class InputTest {
     }
 
     @Test
-    public void readBytesReadsAllBytes() throws FileNotFoundException, IOException {
+    public void readBytesReadsBytesAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
+    char[] inputArray=input.readBytes();
+    char[] testArray={'T','o','i','m','i','i','\n'};
+        Assert.assertArrayEquals(inputArray, testArray);
+    }
     
-        
-        assertEquals("", "");
+    @Test
+    public void readBitReadsBits(){
+    
+             
+        assertEquals("","");
     }
 }

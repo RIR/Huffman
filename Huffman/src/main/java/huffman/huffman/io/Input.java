@@ -48,13 +48,13 @@ public class Input {
      */
     public char[] readBytes() {
         int read;
-        
+               
         // Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
         StringBuilder sb = new StringBuilder();
 
         try {
             while ((read = in.read()) != -1) {
-                sb.append((char)read);
+                sb.append((char)read);               
             }
         } catch (IOException ex) {
             System.out.println("I/O exception when reading inputstream. Problem in readBytes()");
@@ -64,7 +64,7 @@ public class Input {
 
         // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
         char[] input = sb.toString().toCharArray();
-
+       
         return input;
     }
 

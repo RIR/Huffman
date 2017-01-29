@@ -17,6 +17,7 @@ import static org.junit.Assert.*;
  * @author Raine Rantanen
  */
 public class FrequencyCounterTest {
+    FrequencyCounter frequencyCounter;
     
     public FrequencyCounterTest() {
     }
@@ -31,6 +32,7 @@ public class FrequencyCounterTest {
     
     @Before
     public void setUp() {
+        frequencyCounter=new FrequencyCounter();
     }
     
     @After
@@ -42,14 +44,12 @@ public class FrequencyCounterTest {
      */
     @Test
     public void testGetFrequencies() {
-        System.out.println("getFrequencies");
-        char[] chars = null;
-        FrequencyCounter instance = new FrequencyCounter();
-        int[] expResult = null;
-        int[] result = instance.getFrequencies(chars);
-        assertArrayEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+       char[] array= {'s','a','t','a','a'};
+       int[] freqs=frequencyCounter.getFrequencies(array);
+       
+        assertEquals(freqs[(int)'s'], 1);
+        assertEquals(freqs[(int)'t'], 1);
+        assertEquals(freqs[(int)'a'], 3);     
     }
     
 }
