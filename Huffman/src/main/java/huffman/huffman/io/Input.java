@@ -14,10 +14,9 @@ import java.util.logging.Logger;
  * @author Raine Rantanen
  */
 /**
- * Luokka tiedoston lukemiseen
+ * Luokka tiedostojen lukemiseen
  *
  */
-//Reilusti vaiheessa eikä siis myöskään oikein dokumentoitu.
 public class Input {
 
     private InputStream in;
@@ -26,25 +25,27 @@ public class Input {
 
     private int bitsRemaining;
 
-    public Input() {
+    /**
+     * Luokan konstruktori, joka alustaa bittivirran lukemista varten tarvittavat tavu- ja bittiseuraajan.
+     * @param inputFile Luettava tiedosto
+     */
+    public Input(File inputFile) {
         this.currentByte = 0;
         this.bitsRemaining = 0;
+         try {
+            in = new BufferedInputStream(new FileInputStream(inputFile));
+        } catch (FileNotFoundException ex) {
+            System.out.println("File not found!");
+        }
     }
 
     /**
      * Metodi joka lukee tiedoston tavuina ja kirjoittaa ne Stringiin
      *
-     * @param inputFile Luettava tiedosto
      * @return Merkkijono luetuista tavuista
      */
-    public String readBytes(File inputFile) {
+    public String readBytes() {
         int read;
-
-        try {
-            in = new BufferedInputStream(new FileInputStream(inputFile));
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found!");
-        }
 
         StringBuilder sb = new StringBuilder();
 
@@ -64,14 +65,12 @@ public class Input {
         return sb.toString();
     }
 
-    public int readBit(File inputFile) {
+    /**
+     * Metodi joka lukee bitin tavuvirrasta.
+     * @return palauttaa bitin (1/0) tai -1 jos ei enää luettavaa.
+     */
+    public int readBit() {
         int read;
-
-        try {
-            in = new BufferedInputStream(new FileInputStream(inputFile));
-        } catch (FileNotFoundException ex) {
-            System.out.println("Luettavaa tiedostoa ei löydy");
-        }
 
         if (currentByte == -1) {
             return -1;

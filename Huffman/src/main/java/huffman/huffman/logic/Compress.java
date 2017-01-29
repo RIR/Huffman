@@ -27,10 +27,10 @@ public class Compress {
      * @throws FileNotFoundException Palauttaa virheen jos pakattavaa tiedostoa ei löydy.
      */
     public Compress(File inputFile, File outputFile) throws FileNotFoundException {
-        input=new Input();
+        input=new Input(inputFile);
         
         try {
-          String inputString=input.readBytes(inputFile);
+          String inputString=input.readBytes();
                      
           
           //tiivistys tähän 
