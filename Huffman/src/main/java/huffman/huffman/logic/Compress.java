@@ -36,7 +36,9 @@ public class Compress {
         */      
         int[] frequencies=frequencyCounter.getFrequencies(input.readBytes());
         
+        // tähän tiivistys eli varsinainen Huffmanin koodaus käyttäen puurakennetta.
         
+        // jonka jälkeen kirjoitetaan tieto pakattavaan tiedostoon.
 
     }
 }

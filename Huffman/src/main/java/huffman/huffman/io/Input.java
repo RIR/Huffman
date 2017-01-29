@@ -37,7 +37,7 @@ public class Input {
         try {
             in = new BufferedInputStream(new FileInputStream(inputFile));
         } catch (FileNotFoundException ex) {
-            System.out.println("File not found!");
+            System.out.println("File not found! Problem in Input()");
         }
     }
 
@@ -57,7 +57,7 @@ public class Input {
                 sb.append((char)read);
             }
         } catch (IOException ex) {
-            System.out.println("Ongelmia tiedoston lukemisessa");
+            System.out.println("I/O exception when reading inputstream. Problem in readBytes()");
         }
 
         close();
@@ -81,7 +81,7 @@ public class Input {
             try {
                 currentByte = in.read();
             } catch (IOException ex) {
-                System.out.println("Ongelmia tavuvirran lukemisessa");
+                System.out.println("I/O exception when reading inputstream. Problem in readBit()");
             }
             if (currentByte == -1) {
                 return -1;
@@ -110,7 +110,7 @@ public class Input {
         try {
             in.close();
         } catch (IOException ex) {
-            System.out.println("Virhe tavuvirran sulkemisessa");
+            System.out.println("I/O exception when closing inputstream. Problem in close()");
         }
     }
 
