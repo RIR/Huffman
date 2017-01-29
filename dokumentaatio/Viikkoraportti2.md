@@ -6,6 +6,6 @@ Jatkoin alkuviikosta vielä tarkempaa perehtymistä aiheeseen ja tuntuikin silt�
 
 Aloitinkin uudestaan muokkaamalla datankäsittelyluokkia ja nyt saan ainakin luettua dataa suunnilleen siinä muodossa missä haluan. Poikkeustenkäsittelyä joutuu varmastikin viilaamaan aika paljon jatkossa, mutta en ole vielä siihen pureutunut niin paljon. Datan kirjoitustakin olen aloitellut, mutta sitä hion tarkemmin kun saan itse Huffmanin koodausta toteutettua ja näen missä muodossa tietoa liikkuu.
 
-Testaus on vielä hivenen jäljessä, koska itselleni on tuottanut jonkin verran vaikeuksia hahmottaa miten bittien ja tavujen jne. käsittelyä saa fiksusti testattua.
+Testaus on vielä hivenen jäljessä, koska itselläni on ollut jonkin verran vaikeuksia hahmottaa miten bittien ja tavujen jne. käsittelyä saa fiksusti testattua.
 
 Tällä viikolla käytin aikaa työskentelyyn n. 17-20 h
