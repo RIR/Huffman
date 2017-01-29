@@ -6,12 +6,11 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
  * @author Raine Rantanen
+ * Luokka tiedostoon kirjoittamiseen
  */
 public class Output {
 
@@ -21,6 +20,10 @@ public class Output {
 
     private int bits;
 
+    /**
+     * Luokan konstruktori. 
+     * @param outputFile Kirjoitettava tiedosto.
+     */
     public Output(File outputFile) {
         this.currentByte = 0;
         this.bits = 0;
