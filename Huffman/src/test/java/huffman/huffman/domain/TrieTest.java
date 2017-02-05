@@ -1,6 +1,5 @@
-package huffman.huffman.logic;
+package huffman.huffman.domain;
 
-import java.io.FileNotFoundException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -12,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author Raine Rantanen
  */
-public class HuffmanTest {
+public class TrieTest {
     
-    public HuffmanTest() {
+    public TrieTest() {
     }
     
     @BeforeClass
@@ -26,9 +25,7 @@ public class HuffmanTest {
     }
     
     @Before
-    public void setUp() throws FileNotFoundException {
-        String[] testArray=new String[3];
-        Huffman huffman=new Huffman(testArray);
+    public void setUp() {
     }
     
     @After

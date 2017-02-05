@@ -35,16 +35,18 @@ public class FrequencyCounterTest {
     }
 
     /**
-     * Test of getFrequencies method, of class FrequencyCounter.
+     * Testaa merkkien toistumistaulukkoa.
      */
     @Test
     public void testGetFrequencies() {
-       char[] array= {'s','a','t','a','a'};
+       char[] array= {'s','a','t','a','a','1','1','!'};
        int[] freqs=frequencyCounter.getFrequencies(array);
        
         assertEquals(freqs[(int)'s'], 1);
         assertEquals(freqs[(int)'t'], 1);
-        assertEquals(freqs[(int)'a'], 3);     
+        assertEquals(freqs[(int)'a'], 3);   
+        assertEquals(freqs[(int)'1'], 2);  
+        assertEquals(freqs[(int)'!'], 1);  
     }
     
 }
