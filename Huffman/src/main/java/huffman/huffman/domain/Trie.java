@@ -17,5 +17,12 @@ public class Trie {
         this.frequencies = frequencies;
     }
     
+    /* Tänne seuraavaksi puun rakennus käyttäen PriorityQueuea yhdistellen solmuja niin
+    kauan että saadaan muodostettua yksi puu. Apuna käytetään FrequencyCounter
+    luokkaa. 
+    */
+    
+    
+    
     
 }

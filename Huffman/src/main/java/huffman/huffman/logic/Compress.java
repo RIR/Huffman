@@ -38,9 +38,12 @@ public class Compress {
         
         // tähän tiivistys eli varsinainen Huffmanin koodaus käyttäen puurakennetta.
         
-        
-        
+            
         // jonka jälkeen kirjoitetaan tieto pakattavaan tiedostoon.
+        
+        /* Bittilaskuri myös joko erillisenä luokkana tai metodina, jotta
+        voi laskea pakkauksen tehon
+        */
 
     }
 }
