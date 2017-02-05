@@ -2,7 +2,7 @@
 
 ### 30.1-05.2.2017 ###
 
-Tätä kirjoittaessa pientä epätoivoa, koska viikko mennyt käytännössä kokonaan hukkaan itseni ja perheeni sairastelun takia. Tein juuri ekan commitin ja nyt on sunnuntai. Teen kuitenkin vielä kaiken voitavan ennen deadlinea ja kirin kiinni ensi viikolla. Työtä sivuten, tuli sairaana katseltua sentään Pluralsightin Java-oppaita, jotka koin hyödyllisiksi.
+Tätä kirjoittaessa on ilmassa pientä epätoivoa, koska viikko on mennyt käytännössä kokonaan hukkaan itseni ja perheeni sairastelun takia. Tein juuri ekan commitin ja nyt on sunnuntai. Teen kuitenkin vielä kaiken voitavan ennen deadlinea ja kirin kiinni ensi viikolla. Työtä sivuten, tuli sairaana katseltua sentään Pluralsightin Java-oppaita, jotka koin hyödyllisiksi.
 
 Aloitin siistimällä taas koodia ja sain tehtyä testejä lisää. (Näitä ei ole vieläkään liikaa, mutta kattavat suunnilleen olennaisilta osin tähän asti toteutetut toiminnot).
 
