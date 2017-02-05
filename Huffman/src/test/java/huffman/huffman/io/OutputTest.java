@@ -6,15 +6,13 @@
 package huffman.huffman.io;
 
 import java.io.File;
-import java.nio.file.Files;
-import java.nio.file.Path;
+import java.io.FileNotFoundException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
@@ -37,7 +35,7 @@ public class OutputTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
         input = new Input(new File("Testi.txt"));
         output = new Output(new File("outputTesti.txt"));
 
@@ -49,7 +47,7 @@ public class OutputTest {
 
     // Testaa että bitit kirjoitetaan tiedostoon
     @Test
-    public void writeBitWritesBitsCorrectly() {
+    public void writeBitWritesBitsCorrectly() throws FileNotFoundException {
         int i = 0;
         int bitti = input.readBit();
 

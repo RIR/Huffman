@@ -10,6 +10,7 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
+import static org.junit.Assert.assertEquals;
 
 /**
  *
@@ -32,7 +33,7 @@ public class InputTest {
     }
 
     @Before
-    public void setUp() {
+    public void setUp() throws FileNotFoundException {
         input = new Input(new File("Testi.txt"));
         
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
@@ -43,9 +44,16 @@ public class InputTest {
     public void tearDown() {
     }
 
-    // Testaa tavujen lukua ja merkkijonon muodostusta
+     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
+    @Test (expected = FileNotFoundException.class)
+    public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException{
+       input = new Input(new File("eiOle.txt"));
+       
+    }
+    
+    // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test
-    public void readBytesReadsBytesAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
+    public void readCharsReadsCharsAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
         char[] inputArray = input.readChars();
         Assert.assertArrayEquals(inputArray, testArray);
     }

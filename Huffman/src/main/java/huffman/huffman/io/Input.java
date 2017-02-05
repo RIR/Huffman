@@ -31,43 +31,41 @@ public class Input {
      * tarvittavat tavu- ja bittiseuraajan.
      *
      * @param inputFile Luettava tiedosto
+     * @throws java.io.FileNotFoundException
      */
-    public Input(File inputFile) {
+    public Input(File inputFile) throws FileNotFoundException {
         this.currentByte = 0;
         this.bitsRemaining = 0;
-        try {
-            in = new BufferedInputStream(new FileInputStream(inputFile));
-        } catch (FileNotFoundException ex) {
-            System.out.println("File not found! Problem in Input()");
-        }
+        in = new BufferedInputStream(new FileInputStream(inputFile));
     }
 
     /**
-     * Metodi joka lukee tiedoston tavuina (merkki kerrallaan) ja palauttaa merkkitaulukon
+     * Metodi joka lukee tiedoston tavuina (merkki kerrallaan) ja palauttaa
+     * merkkitaulukon
      *
      * @return Merkkitaulukko
      */
     public char[] readChars() {
         int read;
-               
+
         // Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
         StringBuilder sb = new StringBuilder();
 
-        try {           
+        try {
             while ((read = in.read()) != -1) {
-                
+
                 // Muunnetaan luettu tavu merkiksi
-                sb.append((char)read);               
+                sb.append((char) read);
             }
         } catch (IOException ex) {
-            System.out.println("I/O exception when reading inputstream. Problem in readBytes()");
+            System.out.println("I/O exception when reading inputstream. Problem in readChars()");
         }
 
         close();
 
         // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
         char[] input = sb.toString().toCharArray();
-       
+
         //palautetaan merkkitaulukko
         return input;
     }
@@ -83,7 +81,7 @@ public class Input {
         }
         /* Luetaan uusi tavu jos aiemmin luetussa luettavia bittejä ei enää
         jäljellä
-        */       
+         */
         if (bitsRemaining == 0) {
             try {
                 currentByte = in.read();
