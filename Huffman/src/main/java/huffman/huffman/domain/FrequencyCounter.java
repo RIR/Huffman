@@ -11,7 +11,8 @@ public class FrequencyCounter {
     private final int[] frequencies;
 
     /**
-     * Luokan konstruktori, joka alustaa toistumiskertataulukon.
+     * Luokan konstruktori, joka alustaa toistumiskertataulukon,
+     * taulukon kokona laajennetun ASCII-merkistön koko eli 256 merkkiä.
      */
     public FrequencyCounter() {
         frequencies = new int[256];

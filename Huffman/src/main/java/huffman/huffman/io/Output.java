@@ -14,14 +14,20 @@ import java.io.OutputStream;
  */
 public class Output {
 
+    // tavuvirta johon kirjoitetaan
     private OutputStream out;
 
+    // Apumuuttuja bittien kirjoitusta varten. Kuvaa käsittelyssä olevaa tavua.
     private int currentByte;
 
+    /*Apumuuuttuja joka pitää lukua parametrina saatavista biteistä
+    Kun writebitiia kutsuttu 8 kertaa (eli saatu 8 bittiä) kirjoitetaan tavu
+    ulos.
+    */
     private int bits;
 
     /**
-     * Luokan konstruktori. 
+     * Luokan konstruktori
      * @param outputFile Kirjoitettava tiedosto.
      */
     public Output(File outputFile) {
@@ -36,7 +42,7 @@ public class Output {
     }
 
     /**
-     * Metodi bittien kirjoittamista varten. Bitit kirjoitetaan aina tavu
+     * Metodi bittien kirjoittamista varten. Bitit kirjoitetaan ulos aina tavu
      * kerrallaan.
      *
      * @param bit Parametrina annettu kirjoitettava bitti. Oltava 1 tai 0.

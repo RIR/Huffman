@@ -2,9 +2,12 @@ package huffman.huffman.main;
 
 import huffman.huffman.domain.FrequencyCounter;
 import huffman.huffman.io.Input;
+import huffman.huffman.io.Output;
 import huffman.huffman.logic.Huffman;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.BitSet;
 
 /**
  *
@@ -20,27 +23,40 @@ public class Main {
     public static void main(String[] args) throws FileNotFoundException {
 
         // testidataa ohjelman toimintojen testaamiseen
-        char[] array2 = {'s','a','t','a','a'};
-        FrequencyCounter frequencyCounter = new FrequencyCounter();
-        int[] freqs=frequencyCounter.getFrequencies(array2);
-        
-        for (int i = 0; i < freqs.length; i++) {
-            System.out.print(freqs[i] + " ");          
-        }
-        
-        System.out.println("");
-        
+        // Testataan tiedoston lukemista
         Input input = new Input(new File("Testi.txt"));
-        
-        char[] array=input.readBytes();
-        System.out.println(array.length);
-        
+        Output output = new Output(new File("outputTesti.txt"));
+
         System.out.println("");
-        
-        for (int i = 0; i < array.length; i++) {
-            System.out.println(array[i]);           
+
+        char[] testArray = {'T', 'o', 'i', 'm', 'i', 'i', '\n'};
+
+        System.out.println("");
+
+        char[] array = input.readChars();
+        // Huom! newline tuo merkin lisää pituuteen
+        System.out.println(array.length);
+
+        System.out.println("");
+
+        for (int j = 0; j < array.length; j++) {
+            System.out.print(array[j]);
         }
-       
+
+        // Testataan toistumistaulukon toimintaa                  
+        char[] array2 = {'s', 'a', 't', 'a', 'a'};
+        FrequencyCounter frequencyCounter = new FrequencyCounter();
+        int[] freqs = frequencyCounter.getFrequencies(array2);
+
+        //taulukko kooltaan varmasti 256 OK!
+        System.out.println(freqs.length);
+
+        for (int k = 0; k < freqs.length; k++) {
+            System.out.print(freqs[k] + " ");
+        }
+
+        System.out.println("");
+
         String[] testitaulukko = new String[3];
         testitaulukko[0] = "compress";
         testitaulukko[1] = "Testi.txt";

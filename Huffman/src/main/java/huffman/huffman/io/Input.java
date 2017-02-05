@@ -17,10 +17,13 @@ import java.io.InputStream;
  */
 public class Input {
 
+    // Luettava tavuvirta
     private InputStream in;
 
+    //Apumuuttuja bittien lukemista varten
     private int currentByte;
 
+    // Muuttuja pitää lukua luetun tavun luetuista biteistä
     private int bitsRemaining;
 
     /**
@@ -40,18 +43,20 @@ public class Input {
     }
 
     /**
-     * Metodi joka lukee tiedoston tavuina ja palauttaa merkkitaulukon
+     * Metodi joka lukee tiedoston tavuina (merkki kerrallaan) ja palauttaa merkkitaulukon
      *
      * @return Merkkitaulukko
      */
-    public char[] readBytes() {
+    public char[] readChars() {
         int read;
                
         // Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
         StringBuilder sb = new StringBuilder();
 
-        try {
+        try {           
             while ((read = in.read()) != -1) {
+                
+                // Muunnetaan luettu tavu merkiksi
                 sb.append((char)read);               
             }
         } catch (IOException ex) {
@@ -63,6 +68,7 @@ public class Input {
         // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
         char[] input = sb.toString().toCharArray();
        
+        //palautetaan merkkitaulukko
         return input;
     }
 
@@ -75,18 +81,24 @@ public class Input {
         if (currentByte == -1) {
             return -1;
         }
+        /* Luetaan uusi tavu jos aiemmin luetussa luettavia bittejä ei enää
+        jäljellä
+        */       
         if (bitsRemaining == 0) {
             try {
                 currentByte = in.read();
             } catch (IOException ex) {
                 System.out.println("I/O exception when reading inputstream. Problem in readBit()");
             }
+            // Jos luettava tavu on tiedoston loppu
             if (currentByte == -1) {
                 return -1;
             }
+            // Bittien määrä tavussa
             bitsRemaining = 8;
         }
 
+        // Luettaessa bittejä laskuria vähennetään
         bitsRemaining--;
 
         int result = (currentByte >>> bitsRemaining) & 1;
