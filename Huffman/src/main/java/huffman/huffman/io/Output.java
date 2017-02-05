@@ -9,8 +9,7 @@ import java.io.OutputStream;
 
 /**
  *
- * @author Raine Rantanen
- * Luokka tiedostoon kirjoittamiseen
+ * @author Raine Rantanen Luokka tiedostoon kirjoittamiseen
  */
 public class Output {
 
@@ -23,11 +22,12 @@ public class Output {
     /*Apumuuuttuja joka pitää lukua parametrina saatavista biteistä
     Kun writebitiia kutsuttu 8 kertaa (eli saatu 8 bittiä) kirjoitetaan tavu
     ulos.
-    */
+     */
     private int bits;
 
     /**
      * Luokan konstruktori
+     *
      * @param outputFile Kirjoitettava tiedosto.
      */
     public Output(File outputFile) {
@@ -56,21 +56,40 @@ public class Output {
             bits++;
 
             if (bits == 8) {
-                try {
-                    out.write(currentByte);
-                } catch (IOException ex) {
-                    System.out.println("I/O exception when writing to outputstream. Problem in writeBit()");
-                }
-                currentByte = 0;
-                bits = 0;
+                writeByte();
+            }
+        }
+    }
+
+    // Apumetodi joka kirjoittaa tavullisen (8 bittiä) kerrallaan kohteeseen
+    private void writeByte() {
+
+        try {
+            out.write(currentByte);
+        } catch (IOException ex) {
+            System.out.println("I/O exception when writing to outputstream. Problem in writeBit()");
+        }
+        currentByte = 0;
+        bits = 0;
+    }
+
+    // Apumetodi joka täyttää tavun nollilla jos siihen ei muuten riitä bittejä
+    private void fillByte() {
+        if (bits > 0) {
+            while (bits <= 8) {
+                writeBit(0);
             }
         }
     }
 
     /**
-     * Metodi sulkee tavuvirran.
+     * Metodi sulkee tavuvirran. Jos kohteeseen kirjoittamattomia bittejä jää
+     * jäljelle, kirjoitetaan loppu täyteen nollia, niin että tavu tulee
+     * täyteen.
      */
     public void close() {
+        fillByte();
+
         try {
             out.close();
         } catch (IOException ex) {

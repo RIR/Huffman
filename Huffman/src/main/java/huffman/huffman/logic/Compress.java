@@ -23,7 +23,7 @@ public class Compress {
     private FrequencyCounter frequencyCounter=new FrequencyCounter();
 
     /**
-     * Luokan konstruktori joka saa syötteenä halutut tiedoston nimet pakattavalle ja pakatulle tiedostolle.
+     * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle ja pakatulle tiedostolle.
      * @param inputFile Pakattava tiedoston nimi
      * @param outputFile Pakatun tiedosto nimi
      * @throws FileNotFoundException Palauttaa virheen jos pakattavaa tiedostoa ei löydy.
