@@ -42,16 +42,14 @@ public class Compress {
         // Lasketaan eri merkkien toistumiset
         this.frequencies=frequencyCounter.getFrequencies(chars); 
         
-        // Lasketaan luettujen bittien määrä
-        this.readBits=chars.length*8;
+        // Merkataan luettujen bittien määrä
+        this.readBits=input.getReadBitsTotal();
         
         // Luodaan Huffmanin puu
         HuffmanTree huffmanTree=new HuffmanTree(frequencies);
+                     
         
-        Node root = huffmanTree.create();
         
-        
-        // jonka jälkeen kirjoitetaan tieto pakattavaan tiedostoon.
         
     }
 

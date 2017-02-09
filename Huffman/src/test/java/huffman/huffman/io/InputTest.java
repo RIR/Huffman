@@ -35,7 +35,7 @@ public class InputTest {
     @Before
     public void setUp() throws FileNotFoundException {
         input = new Input(new File("Testi.txt"));
-        
+
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
     }
@@ -44,13 +44,13 @@ public class InputTest {
     public void tearDown() {
     }
 
-     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
-    @Test (expected = FileNotFoundException.class)
-    public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException{
-       input = new Input(new File("eiOle.txt"));
-       
+    // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
+    @Test(expected = FileNotFoundException.class)
+    public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException {
+        Input input2 = new Input(new File("eiOle.txt"));
+
     }
-    
+
     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test
     public void readCharsReadsCharsAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
@@ -85,5 +85,24 @@ public class InputTest {
 
         }
         assertEquals(bits1.toString(), bits2);
+    }
+
+    // Testaa luettujen bittien laskuria lukemalla tavuja
+    @Test
+    public void getReadBitsTotalReturnsCorrectWhenReadChars() {
+        input.readChars();
+        Assert.assertEquals(56, input.getReadBitsTotal());
+    }
+
+    // Testaa luettujen bittien laskuria lukemalla yksittäisiä bittejä
+    @Test
+    public void getReadBitsTotalReturnsCorrectWhenReadBits() {
+        input.readBit();
+        Assert.assertEquals(1, input.getReadBitsTotal());
+
+        for (int i = 1; i < 56; i++) {
+            input.readBit();
+            Assert.assertEquals(1 + i, input.getReadBitsTotal());
+        }
     }
 }

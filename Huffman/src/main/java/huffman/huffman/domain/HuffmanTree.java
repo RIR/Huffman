@@ -9,12 +9,12 @@ import java.util.PriorityQueue;
 public class HuffmanTree {
 
     private int[] frequencies;
-    
+
     // Jono jota käytetään puun muodostukseen
     private PriorityQueue<Node> queue;
-         
+
     // Taulukko kunkin merkin binäärimuodon tallentamiseen
-    private String [] codes;
+    private String[] codes;
 
     /**
      * Luokan konstruktori joka saa parametrina luettavien merkkien
@@ -23,14 +23,17 @@ public class HuffmanTree {
      * @param frequencies Parametrina annettava merkkien toistumistaulukko
      */
     public HuffmanTree(int[] frequencies) {
-        this.frequencies = frequencies;             
+        this.frequencies = frequencies;
         this.queue = new PriorityQueue();
         this.codes = new String[frequencies.length];
         
+        Node root=create();
+        listBinaryCodes(codes, root, "");
     }
 
     /**
-     *Metodi luo Huffmanin puurakenteen.
+     * Metodi luo Huffmanin puurakenteen.
+     * @return Luodun Huffmanin puun juurisolmu
      */
     public Node create() {
         /* Alustetaan puu yksittäisillä solmuilla (eli jonossa käytännössä nyt
@@ -49,19 +52,28 @@ public class HuffmanTree {
          */
         while (queue.size() > 1) {
             Node left = queue.remove();
-            Node right = queue.remove();          
-            Node parent = new Node('\0', left.getFrequency()+right.getFrequency(), left, right);
-            
+            Node right = queue.remove();
+            Node parent = new Node('\0', left.getFrequency() + right.getFrequency(), left, right);
+
             queue.add(parent);
-        }   
+        }
         return queue.remove();
     }
-    
+
     /**
-     * Metodi luo listan 
+     * Metodi läpikäy Huffmanin puun ja kirjoittaa merkkejä vastaavat binäärit
+     * talteen taulukkoon.
+     * @param codes Merkkijonotaulukko binäärilukujen tallentamiseen
+     * @param node Huffmanin puu joka annetaan juurisolmun muodossa parametrina
+     * @param s Merkkijono josta rakennetaan tallennettava binääriluku
      */
-    public void codes () {
-    
+    public void listBinaryCodes(String[] codes, Node node, String s) {
+        if (!node.isLeaf()) {
+            listBinaryCodes(codes, node.getLeft(), s + '0');
+            listBinaryCodes(codes, node.getRight(), s + '1');
+        } else {
+            codes[node.getCharacter()] = s;
+        }
     }
 
 }

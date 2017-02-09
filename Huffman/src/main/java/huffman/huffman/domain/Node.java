@@ -45,6 +45,33 @@ public class Node {
     public boolean isLeaf() {
         return this.left == null && this.right == null;
     }
+
+    /**
+    Metodi palautta vasemman alisolmun.
+     * @return Vasen alisolmu
+    */
+    public Node getLeft() {
+        return left;
+    }
+
+    /**
+     * Metodi palauttaa oikean alisolmun
+     * @return Oikea alisolmu
+     */
+    public Node getRight() {
+        return right;
+    }
+
+    /**
+     * Metodi palauttaa solmun sisältämän merkin
+     * @return Solmun sisältämä merkki 
+     */
+    public char getCharacter() {
+        return c;
+    }
+    
+    
+    
     
     /**
      * Metodi solmujen keskinäistä vertailua varten, 

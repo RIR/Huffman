@@ -25,6 +25,9 @@ public class Input {
 
     // Muuttuja pitää lukua luetun tavun luetuista biteistä
     private int bitsRemaining;
+    
+    // Laskurimuuttuja yhteensä luetuille biteille 
+    private int readBitsTotal;
 
     /**
      * Luokan konstruktori, joka alustaa bittivirran lukemista varten
@@ -36,7 +39,8 @@ public class Input {
     public Input(File inputFile) throws FileNotFoundException {
         this.currentByte = 0;
         this.bitsRemaining = 0;
-        this.in = new BufferedInputStream(new FileInputStream(inputFile));       
+        this.in = new BufferedInputStream(new FileInputStream(inputFile));   
+        this.readBitsTotal=0;
     }
 
     /**
@@ -63,6 +67,9 @@ public class Input {
 
         close();
 
+        // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
+        readBitsTotal +=sb.length()*8;
+        
         // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
         char[] input = sb.toString().toCharArray();
 
@@ -98,6 +105,9 @@ public class Input {
 
         // Luettaessa bittejä laskuria vähennetään
         bitsRemaining--;
+        
+        // Kasvatetaan yhteensä luettujen bittien määrää
+        readBitsTotal++;
 
         int result = (currentByte >>> bitsRemaining) & 1;
 
@@ -107,6 +117,16 @@ public class Input {
 
         return -1;
     }
+
+    /**
+     * Metodi palauttaa yhteensä luetut bitit
+     * @return Yhteensä luetut bitit
+     */
+    public int getReadBitsTotal() {
+        return readBitsTotal;
+    }
+    
+    
 
     /**
      * Metodi sulkee tavuvirran.
