@@ -1,6 +1,7 @@
 package huffman.huffman.logic;
 
 import huffman.huffman.domain.FrequencyCounter;
+import huffman.huffman.domain.HuffmanTree;
 import huffman.huffman.io.Input;
 import huffman.huffman.io.Output;
 import java.io.BufferedInputStream;
@@ -37,7 +38,7 @@ public class Compress {
         int[] frequencies=frequencyCounter.getFrequencies(input.readChars());      
         
         // tähän tiivistys eli varsinainen Huffmanin koodaus käyttäen puurakennetta.
-        
+        HuffmanTree huffmanTree=new HuffmanTree(frequencies);
             
         // jonka jälkeen kirjoitetaan tieto pakattavaan tiedostoon.
         

@@ -28,6 +28,16 @@ public class Node {
     }
 
     /**
+     * Palauttaa solmun sisältämän merkin toistumiskerrat
+     * @return Merkin toistumiskerrat
+     */
+    public int getFrequency() {
+        return frequency;
+    }
+    
+    
+
+    /**
      * Boolean-metodi joka tarkistaa onko solmu puun lehti, eli solmu jolla 
      * ei ole lapsisolmuja.
      * @return {@code true} jos kyseessä on lehti, muuten {@code false}

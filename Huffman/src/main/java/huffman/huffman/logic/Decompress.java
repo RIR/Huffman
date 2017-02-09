@@ -20,7 +20,7 @@ public class Decompress {
      * @param outputFile Purettu tiedosto
      * @throws FileNotFoundException Palauttaa poikkeuksen jos purettavaksi haluttua tiedosto ei löydy
      */
-    Decompress(File inputFile, File outputFile) throws FileNotFoundException {
+    public Decompress(File inputFile, File outputFile) throws FileNotFoundException {
         input=new Input(inputFile);
     }
 
