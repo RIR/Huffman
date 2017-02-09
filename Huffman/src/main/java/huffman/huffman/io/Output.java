@@ -73,6 +73,15 @@ public class Output {
         bits = 0;
     }
 
+    /**
+     * Metodi kirjoittaa merkin binäärinä eli tavullisen bittejä.
+     */
+    public void writeChar(char c) {
+        for (int i = 0; i < 8; i++) {
+        
+        }
+    }
+
     // Apumetodi joka täyttää tavun nollilla jos siihen ei muuten riitä bittejä
     private void fillByte() {
         while (bits > 0 && bits <= 8) {

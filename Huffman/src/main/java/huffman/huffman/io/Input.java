@@ -52,7 +52,10 @@ public class Input {
     public char[] readChars() {
         int read;
 
-        // Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
+        /* Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
+        Tässä voisi käyttää Stringiä, mutta käsittääkseni suorituskyky parempi kun
+        konkatenoidaan loopissa.
+        */
         StringBuilder sb = new StringBuilder();
 
         try {
@@ -77,6 +80,17 @@ public class Input {
         return input;
     }
 
+    /**
+     * 
+     * Metodi lukee yhden merkin verran bittejä (8) ja palauttaa binäärilukua
+     * vastaavan merkin.
+     * VAIHEESSA!
+     * @return Merkki
+     */
+    public char readChar() {
+    
+    }
+    
     /**
      * Metodi joka lukee bitin tavuvirrasta.
      *
