@@ -22,6 +22,8 @@ public class Compress {
     private Input input;
     private Output output;
     private FrequencyCounter frequencyCounter=new FrequencyCounter();
+    private int readBits;
+    private int writtenBits;
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle ja pakatulle tiedostolle.
@@ -29,22 +31,49 @@ public class Compress {
      * @param outputFile Pakatun tiedosto nimi
      * @throws FileNotFoundException Palauttaa virheen jos pakattavaa tiedostoa ei löydy.
      */
-    public Compress(File inputFile, File outputFile) throws FileNotFoundException {
+    public Compress(File inputFile, File outputFile) throws FileNotFoundException {      
         input=new Input(inputFile);
           
         /*luetaan merkit ja palautetaan niistä taulukko joka annetaan 
        toistumisluokan käyttöön, joka taas palauttaa merkkien toistumiset taulukossa.
         */      
-        int[] frequencies=frequencyCounter.getFrequencies(input.readChars());      
+        
+        char[] chars=input.readChars();
+        
+        int[] frequencies=frequencyCounter.getFrequencies(chars); 
+        
+        this.readBits=chars.length*8;
         
         // tähän tiivistys eli varsinainen Huffmanin koodaus käyttäen puurakennetta.
         HuffmanTree huffmanTree=new HuffmanTree(frequencies);
+        
+        
             
         // jonka jälkeen kirjoitetaan tieto pakattavaan tiedostoon.
         
-        /* Bittilaskuri myös joko erillisenä luokkana tai metodina, jotta
-        voi laskea pakkauksen tehon
-        */
-
     }
+
+    
+    /**
+     * Metodi palauttaa luettujen bittien määrän
+     * @return Luetut bitit 
+     */
+    public int getReadBits() {
+        return readBits;
+    }
+
+    
+    /**
+     * Metodi palauttaa kirjoitettujen bittien määrän 
+     * @return Kirjoitetut bitit
+     */
+    public int getWrittenBits() {
+        return writtenBits;
+    }
+
+    
+    
+    
+    
+    
 }

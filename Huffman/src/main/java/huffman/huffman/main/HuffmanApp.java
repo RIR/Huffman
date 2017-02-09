@@ -29,6 +29,9 @@ public class HuffmanApp {
                 nimen
                      */
                     Compress compress = new Compress(new File(args[1]), new File(args[2]));
+                    System.out.println("Antamasi tiedosto" + args[1] +" pakattu " + "Tiedosto löytyy antamallasi nimellä " + args[2]);
+                    System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä. "
+                            + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä");
                 } catch (FileNotFoundException ex) {
                     System.out.println("File not found! Please type correct file name for the file that "
                             + "you want to compress.");
@@ -54,7 +57,8 @@ public class HuffmanApp {
             break;
 
                case "-help": {
-                   System.out.println("Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>"
+                   System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta"
+                           + "Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>"
                            + "Toiminnot: "
                            + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä."
                            + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä."

@@ -36,7 +36,7 @@ public class Input {
     public Input(File inputFile) throws FileNotFoundException {
         this.currentByte = 0;
         this.bitsRemaining = 0;
-        in = new BufferedInputStream(new FileInputStream(inputFile));
+        this.in = new BufferedInputStream(new FileInputStream(inputFile));       
     }
 
     /**
