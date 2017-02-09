@@ -14,7 +14,7 @@ public class HuffmanTree {
     private PriorityQueue<Node> queue;
 
     // Taulukko kunkin merkin binäärimuodon tallentamiseen
-    private String[] codes;
+    private String[] binaryCodes;
 
     /**
      * Luokan konstruktori joka saa parametrina luettavien merkkien
@@ -25,10 +25,10 @@ public class HuffmanTree {
     public HuffmanTree(int[] frequencies) {
         this.frequencies = frequencies;
         this.queue = new PriorityQueue();
-        this.codes = new String[frequencies.length];
+        this.binaryCodes = new String[frequencies.length];
         
         Node root=create();
-        listBinaryCodes(codes, root, "");
+        listBinaryCodes(binaryCodes, root, "");
     }
 
     /**
