@@ -2,6 +2,7 @@ package huffman.huffman.logic;
 
 import huffman.huffman.domain.FrequencyCounter;
 import huffman.huffman.domain.HuffmanTree;
+import huffman.huffman.domain.Node;
 import huffman.huffman.io.Input;
 import huffman.huffman.io.Output;
 import java.io.BufferedInputStream;
@@ -24,6 +25,7 @@ public class Compress {
     private FrequencyCounter frequencyCounter=new FrequencyCounter();
     private int readBits;
     private int writtenBits;
+    private int[] frequencies;
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle ja pakatulle tiedostolle.
@@ -34,21 +36,21 @@ public class Compress {
     public Compress(File inputFile, File outputFile) throws FileNotFoundException {      
         input=new Input(inputFile);
           
-        /*luetaan merkit ja palautetaan niistä taulukko joka annetaan 
-       toistumisluokan käyttöön, joka taas palauttaa merkkien toistumiset taulukossa.
-        */      
-        
+        //  Luetaan merkit taulukkoon         
         char[] chars=input.readChars();
         
-        int[] frequencies=frequencyCounter.getFrequencies(chars); 
+        // Lasketaan eri merkkien toistumiset
+        this.frequencies=frequencyCounter.getFrequencies(chars); 
         
+        // Lasketaan luettujen bittien määrä
         this.readBits=chars.length*8;
         
-        // tähän tiivistys eli varsinainen Huffmanin koodaus käyttäen puurakennetta.
+        // Luodaan Huffmanin puu
         HuffmanTree huffmanTree=new HuffmanTree(frequencies);
         
+        Node root = huffmanTree.create();
         
-            
+        
         // jonka jälkeen kirjoitetaan tieto pakattavaan tiedostoon.
         
     }

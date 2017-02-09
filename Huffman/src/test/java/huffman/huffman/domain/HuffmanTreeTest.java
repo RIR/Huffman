@@ -9,9 +9,9 @@ import org.junit.BeforeClass;
  *
  * @author Raine Rantanen
  */
-public class TrieTest {
+public class HuffmanTreeTest {
 
-    public TrieTest() {
+    public HuffmanTreeTest() {
     }
 
     @BeforeClass

@@ -25,9 +25,9 @@ public class HuffmanAppTest {
     }
 
     @Before
-    public void setUp() throws FileNotFoundException {
+    public void setUp() {
         String[] testArray = new String[3];
-        HuffmanApp huffman = new HuffmanApp(testArray);
+        HuffmanApp huffman = new HuffmanApp();
     }
 
     @After

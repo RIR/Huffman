@@ -9,18 +9,22 @@ import java.io.FileNotFoundException;
  *
  * @author Raine Rantanen
  *
- * Luokka josta ohjelma ajetaan. Ohjelma suorittaa syötteen perusteella ohjelman toiminnot tai palauttaa
- * virheviestin jos käyttäjän syöte ei ohjelman vaatimusten mukainen.
+ * Luokka josta ohjelma ajetaan. Ohjelma suorittaa syötteen perusteella ohjelman
+ * toiminnot tai palauttaa virheviestin jos käyttäjän syöte ei ohjelman
+ * vaatimusten mukainen.
  */
 public class HuffmanApp {
 
     /**
-     * Main metodi joka saa argumentteina käyttäjän komennot. 
+     * Main metodi joka saa argumentteina käyttäjän komennot.
      *
-     * @param args Käyttäjän komennot. 
+     * @param args Käyttäjän komennot.
      */
     public static void main(String[] args) {
-        
+            
+        // Tulostetaan alkuun ohjeistus
+            help();
+
         // Jos ensimmäinen argumentti on compress, niin suoritetaan tiedoston pakkaus
         switch (args[0]) {
             case "-compress": {
@@ -29,7 +33,7 @@ public class HuffmanApp {
                 nimen
                      */
                     Compress compress = new Compress(new File(args[1]), new File(args[2]));
-                    System.out.println("Antamasi tiedosto" + args[1] +" pakattu " + "Tiedosto löytyy antamallasi nimellä " + args[2]);
+                    System.out.println("Antamasi tiedosto" + args[1] + " pakattu " + "Tiedosto löytyy antamallasi nimellä " + args[2]);
                     System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä. "
                             + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä");
                 } catch (FileNotFoundException ex) {
@@ -56,17 +60,25 @@ public class HuffmanApp {
             }
             break;
 
-               case "-help": {
-                   System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta"
-                           + "Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>"
-                           + "Toiminnot: "
-                           + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä."
-                           + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä."
-                           + "-help Tulostaa nämä ohjeet");
+            case "-help": {
+                help();
             }
             // Jos ensimmäinen argumentti on jotain muuta, palautetaan virheviesti
             default:
                 throw new IllegalArgumentException("Illegal command line argument");
         }
+    }
+
+    /** Metodi tulostaa ohjeet ohjelman käyttöön.
+     * 
+     */
+    private static void help() {
+        System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta"
+                + "Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>"
+                + "esim. -compress purettava.txt purettu.txt"
+                + "Toiminnot: "
+                + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä."
+                + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä."
+                + "-help (ei lisäargumentteja) Tulostaa nämä ohjeet");
     }
 }

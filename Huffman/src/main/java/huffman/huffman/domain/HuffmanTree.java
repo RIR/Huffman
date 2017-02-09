@@ -9,8 +9,12 @@ import java.util.PriorityQueue;
 public class HuffmanTree {
 
     private int[] frequencies;
+    
+    // Jono jota käytetään puun muodostukseen
     private PriorityQueue<Node> queue;
-    private Node trie;
+         
+    // Taulukko kunkin merkin binäärimuodon tallentamiseen
+    private String [] codes;
 
     /**
      * Luokan konstruktori joka saa parametrina luettavien merkkien
@@ -19,15 +23,14 @@ public class HuffmanTree {
      * @param frequencies Parametrina annettava merkkien toistumistaulukko
      */
     public HuffmanTree(int[] frequencies) {
-        this.frequencies = frequencies;
-        
-        // Jono jota käytetään puun muodostukseen
+        this.frequencies = frequencies;             
         this.queue = new PriorityQueue();
+        this.codes = new String[frequencies.length];
         
     }
 
     /**
-     *
+     *Metodi luo Huffmanin puurakenteen.
      */
     public Node create() {
         /* Alustetaan puu yksittäisillä solmuilla (eli jonossa käytännössä nyt
@@ -52,6 +55,13 @@ public class HuffmanTree {
             queue.add(parent);
         }   
         return queue.remove();
+    }
+    
+    /**
+     * Metodi luo listan 
+     */
+    public void codes () {
+    
     }
 
 }

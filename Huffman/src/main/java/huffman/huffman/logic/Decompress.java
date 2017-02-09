@@ -12,7 +12,7 @@ import java.io.FileNotFoundException;
 public class Decompress {
 
     private Input input;
-    private Output output;
+    private Output output;  
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet purettavalle ja puretulle tiedostolle.
