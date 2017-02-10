@@ -1,4 +1,4 @@
-package huffman.huffman.logic;
+package huffman.huffman.compression;
 
 import huffman.huffman.io.Input;
 import huffman.huffman.io.Output;

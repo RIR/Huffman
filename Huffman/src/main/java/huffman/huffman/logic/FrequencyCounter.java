@@ -1,4 +1,4 @@
-package huffman.huffman.domain;
+package huffman.huffman.logic;
 
 /**
  *

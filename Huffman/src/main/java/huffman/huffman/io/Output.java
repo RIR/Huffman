@@ -1,6 +1,6 @@
 package huffman.huffman.io;
 
-import huffman.huffman.domain.Node;
+import huffman.huffman.logic.Node;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;

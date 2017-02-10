@@ -1,4 +1,4 @@
-package huffman.huffman.logic;
+package huffman.huffman.compression;
 
 import org.junit.After;
 import org.junit.AfterClass;

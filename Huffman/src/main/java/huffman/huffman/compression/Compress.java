@@ -1,8 +1,8 @@
-package huffman.huffman.logic;
+package huffman.huffman.compression;
 
-import huffman.huffman.domain.FrequencyCounter;
-import huffman.huffman.domain.HuffmanTree;
-import huffman.huffman.domain.Node;
+import huffman.huffman.logic.FrequencyCounter;
+import huffman.huffman.logic.HuffmanTree;
+import huffman.huffman.logic.Node;
 import huffman.huffman.io.Input;
 import huffman.huffman.io.Output;
 import java.io.BufferedInputStream;
@@ -72,14 +72,16 @@ public class Compress {
                         break;
                     default:
                         System.out.println("Tapahtui virhe luokassa Compress () "
-                                + "kirjoittaessa tiedostoon. Merkki oli joku muu "
+                                + "kirjoittaessa binäärejä tiedostoon. Merkki oli joku muu "
                                 + "kuin 0 tai 1."
                                 );
                         break;
                 }
             }
-
         }
+        
+        //Pakkaus on valmis, suljetaan tiedostoon kirjoitus.
+        output.close();
 
     }
 

@@ -1,5 +1,6 @@
-package huffman.huffman.domain;
+package huffman.huffman.logic;
 
+import huffman.huffman.logic.Node;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
