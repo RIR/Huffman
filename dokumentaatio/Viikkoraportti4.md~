@@ -6,7 +6,7 @@ Viime viikosta johtuen, jäi tälle viikolle todella paljon tehtävää.
 
 Tein Alkuviikosta heti koodikatselmoinnin, minkä koin taas hyödylliseksi sillä niistä oppii yleensä aina jotain. Sitten olenkin vääntänyt oman työni parissa, johon olen tehnyt paljon uusia metodeja ja niille testausta. Muokkasin myös ohjelman tulostuksia ja virheilmoituksia johdonmukaisemmiksi (kaikki suomeksi). Vähemmän yllättäen, luokkien ja metodien lisääminen on johtanut loppumattomaan refaktorointiin ja testaaminen on ollut välillä kohtalaisen hankalaa. Onneksi aiheeseen liittyen on löytynyt paljon tietoa ihan googlella jota ilman työstä ei varmaan tulisikaan mitään. 
 
-Pakkausalgoritmi toimii nyt ainakin tiettyyn tiedostonkokoon asti. Isojen tiedostojen kanssa on vielä ongelma, koska Tiedoston lukeva luokkani palauttaa isoa tiedostoa (700MB +)lukiessa java heap space errorin (liittyy luokassa käytössä olevaan StringBuilderiin, mihin luetut tavut lisätään merkkeinä.  
+Pakkausalgoritmi toimii nyt ainakin tiettyyn tiedostonkokoon asti. Isojen tiedostojen kanssa on vielä ongelma, koska Tiedoston lukeva luokkani palauttaa isoa tiedostoa (koetiedosto 700MB +)lukiessa java heap space errorin (liittyy luokassa käytössä olevaan StringBuilderiin, mihin luetut tavut lisätään merkkeinä.
 
 Muita kuin omia tietorakenteita ei ole juuri käytössä, lukuun ottamatta HuffmanTree-luokassa oleva PriorityQueue sekä tuo Input-luokassa oleva StringBuilder (Pitääkö tämä implementoida itse?). 
 

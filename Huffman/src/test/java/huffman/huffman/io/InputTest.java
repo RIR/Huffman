@@ -130,5 +130,18 @@ public class InputTest {
 
     }
     
-    // ReadLength-metodia vielä melko vaikea testata, koska tarvitaan metodi joka lukee ensin puun
+     // Testaa Huffmanin puun lukua pakatun tiedoston alusta
+    @Test
+    public void readHuffmanTreeWorks() {
+        
+
+    }
+    
+     // Testaa pakkaamattoman tiedoston koon lukemista (koko tavuina)
+    @Test
+    public void readlengthReadsCorrectLength() {
+      
+
+    }
+    
 }
