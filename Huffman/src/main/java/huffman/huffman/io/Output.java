@@ -27,7 +27,7 @@ public class Output {
     ulos.
      */
     private int bits;
-
+    
     /**
      * Luokan konstruktori
      *
@@ -110,7 +110,7 @@ public class Output {
         }
         writeBit(0);
         writeHuffmanTree(node.getLeft());
-        writeHuffmanTree(node.getLeft());
+        writeHuffmanTree(node.getRight());
     }
 
     /**

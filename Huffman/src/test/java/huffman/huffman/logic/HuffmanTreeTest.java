@@ -1,17 +1,17 @@
 package huffman.huffman.logic;
 
-import huffman.huffman.logic.HuffmanTree;
-import huffman.huffman.logic.FrequencyCounter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
+import org.junit.Test;
 
 /**
  *
  * @author Raine Rantanen
  */
 public class HuffmanTreeTest {
+
     char[] chars;
     FrequencyCounter frequencies;
     HuffmanTree huffmanTree;
@@ -31,14 +31,17 @@ public class HuffmanTreeTest {
     public void setUp() {
         chars = new char[256];
         for (int i = 0; i < chars.length; i++) {
-            chars[i]=(char)i;           
-        }        
-        frequencies= new FrequencyCounter();      
-        huffmanTree=new HuffmanTree(frequencies.getFrequencies(chars));
+            chars[i] = (char) i;
+        }
+        frequencies = new FrequencyCounter();
+        huffmanTree = new HuffmanTree(frequencies.getFrequencies(chars));
     }
 
     @After
     public void tearDown() {
     }
 
+    @Test
+    public void hello() {
+    }
 }

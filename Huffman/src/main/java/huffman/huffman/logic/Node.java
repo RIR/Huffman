@@ -6,7 +6,7 @@ package huffman.huffman.logic;
  * Luokka Huffman-koodauksen puurakennetta varten.
  * Luokka kuvaa puun solmua.
  */
-public class Node {
+public class Node implements Comparable<Node>  {
 
     private final char c;
     private final int frequency;
@@ -81,6 +81,7 @@ public class Node {
      * @return Metodin omaavan solmun merkin toistumiskerrat-verrattavan solmun
      * merkin toistumiskerrat
      */
+    @Override
     public int compareTo(Node other){
     return this.frequency-other.frequency;
     }

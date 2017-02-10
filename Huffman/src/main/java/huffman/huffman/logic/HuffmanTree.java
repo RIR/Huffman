@@ -15,7 +15,7 @@ public class HuffmanTree {
 
     // Taulukko kunkin merkin binäärimuodon tallentamiseen
     private String[] binaryCodes;
-    
+
     private Node root;
 
     /**
@@ -26,22 +26,23 @@ public class HuffmanTree {
      */
     public HuffmanTree(int[] frequencies) {
         this.frequencies = frequencies;
-        
+
         /* !HUOM Priorityqueue varmaan sellainen tietorakenne joka luotava itse, 
         Tee tämä kun ohjelma muuten toimii
-        */
+         */
         this.queue = new PriorityQueue();
         this.binaryCodes = new String[frequencies.length];
-        
+
         // Luotu Huffmanin puu
-        this.root=create();
-        
+        this.root = create();
+
         //binääriluvut merkeille
         listBinaryCodes(binaryCodes, root, "");
     }
 
     /**
      * Metodi luo Huffmanin puurakenteen.
+     *
      * @return Luodun Huffmanin puun juurisolmu
      */
     private Node create() {
@@ -72,6 +73,7 @@ public class HuffmanTree {
     /**
      * Metodi läpikäy Huffmanin puun ja kirjoittaa merkkejä vastaavat binäärit
      * talteen taulukkoon.
+     *
      * @param codes Merkkijonotaulukko binäärilukujen tallentamiseen
      * @param node Huffmanin puu joka annetaan juurisolmun muodossa parametrina
      * @param s Merkkijono josta rakennetaan tallennettava binääriluku
@@ -87,23 +89,21 @@ public class HuffmanTree {
 
     /**
      * Metodi palauttaa luodun Huffmanin puun juuren käsittelyä varten.
+     *
      * @return Huffmanin puu
      */
     public Node getRoot() {
         return root;
     }
 
-    /** Metodi palauttaa Huffmanin puusta talteen kirjoitetut merkkejä
-     * vastaavat binääriluvut merkkijonotaulukkona.
+    /**
+     * Metodi palauttaa Huffmanin puusta talteen kirjoitetut merkkejä vastaavat
+     * binääriluvut merkkijonotaulukkona.
+     *
      * @return Binääriluvut merkkijonotaulukkona
      */
     public String[] getBinaryCodes() {
         return binaryCodes;
     }
-    
-    
-    
 
-    
-    
 }
