@@ -1,11 +1,14 @@
 package huffman.huffman.io;
 
+import huffman.huffman.domain.Node;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -37,7 +40,7 @@ public class Output {
         try {
             out = new BufferedOutputStream(new FileOutputStream(outputFile));
         } catch (FileNotFoundException ex) {
-            System.out.println("File not found! Problem in Output()");
+            System.out.println("Tiedostoa ei löytynyt! Ongelma Output-luokan konstruktorissa");
         }
     }
 
@@ -50,7 +53,7 @@ public class Output {
     public void writeBit(int bit) {
 
         if (bit != 1 && bit != 0) {
-            System.out.println("Parameter has to be 1 or 0");
+            System.out.println("Bitin kirjoitus ei onnistunut. Luvun oltava 1 or 0");
         } else {
             currentByte = (currentByte << 1) | bit;
             bits++;
@@ -61,25 +64,16 @@ public class Output {
         }
     }
 
-    // Apumetodi joka kirjoittaa tavullisen (8 bittiä) kerrallaan kohteeseen
+    // Apumetodi writeBitille joka kirjoittaa tavullisen (8 bittiä) kerrallaan kohteeseen
     private void writeByte() {
 
         try {
             out.write(currentByte);
         } catch (IOException ex) {
-            System.out.println("I/O exception when writing to outputstream. Problem in writeBit()");
+            System.out.println("I/O exception kirjoittaessa OutputStreamiin. Ongelma metodissa writeByte()");
         }
         currentByte = 0;
         bits = 0;
-    }
-
-    /**
-     * Metodi kirjoittaa merkin binäärinä eli tavullisen bittejä.
-     */
-    public void writeChar(char c) {
-        for (int i = 0; i < 8; i++) {
-        
-        }
     }
 
     // Apumetodi joka täyttää tavun nollilla jos siihen ei muuten riitä bittejä
@@ -87,6 +81,36 @@ public class Output {
         while (bits > 0 && bits <= 8) {
             writeBit(0);
         }
+    }
+
+    /**
+     * Metodi kirjoittaa merkin binäärinä eli tavullisen bittejä.
+     *
+     * @param c Kirjoitettava merkki
+     */
+    public void writeChar(char c) {
+        try {
+            out.write(c);
+        } catch (IOException ex) {
+            System.out.println("I/O exception kirjoittaessa OutputStreamiin. Ongelma metodissa writeChar()");
+        }
+    }
+
+    /**
+     * Metodi Huffmanin puun tallentamiseen binäärinä, tämän avulla saadaan
+     * myöhemmin luettua pakattu tiedosto.
+     *
+     * @param node Puun solmu, Huffmanissa tämä ensin juurisolmu
+     */
+    public void writeHuffmanTree(Node node) {
+        if (node.isLeaf()) {
+            writeBit(1);
+            writeChar(node.getCharacter());
+            return;
+        }
+        writeBit(0);
+        writeHuffmanTree(node.getLeft());
+        writeHuffmanTree(node.getLeft());
     }
 
     /**
@@ -100,7 +124,7 @@ public class Output {
         try {
             out.close();
         } catch (IOException ex) {
-            System.out.println("I/O exception when closing outputstream. Problem in Output.close()");
+            System.out.println("I/O exception suljettaessa OutputStreamia. Ongelma metodissa Output.close()");
         }
     }
 }

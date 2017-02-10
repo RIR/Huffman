@@ -10,6 +10,9 @@ import org.junit.BeforeClass;
  * @author Raine Rantanen
  */
 public class HuffmanTreeTest {
+    char[] chars;
+    FrequencyCounter frequencies;
+    HuffmanTree huffmanTree;
 
     public HuffmanTreeTest() {
     }
@@ -24,6 +27,12 @@ public class HuffmanTreeTest {
 
     @Before
     public void setUp() {
+        chars = new char[256];
+        for (int i = 0; i < chars.length; i++) {
+            chars[i]=(char)i;           
+        }        
+        frequencies= new FrequencyCounter();      
+        huffmanTree=new HuffmanTree(frequencies.getFrequencies(chars));
     }
 
     @After

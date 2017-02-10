@@ -13,8 +13,8 @@ import java.io.FileNotFoundException;
 /**
  *
  * @author Raine Rantanen
- * 
- * Luokka tiedoston pakkaamiseen. 
+ *
+ * Luokka tiedoston pakkaamiseen.
  */
 public class Compress {
 
@@ -22,58 +22,83 @@ public class Compress {
     private BufferedOutputStream out;
     private Input input;
     private Output output;
-    private FrequencyCounter frequencyCounter=new FrequencyCounter();
+    private char[] chars;
+    private FrequencyCounter frequencyCounter = new FrequencyCounter();
     private int readBits;
     private int writtenBits;
     private int[] frequencies;
 
     /**
-     * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle ja pakatulle tiedostolle.
+     * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle
+     * ja pakatulle tiedostolle.
+     *
      * @param inputFile Pakattava tiedoston nimi
      * @param outputFile Pakatun tiedosto nimi
-     * @throws FileNotFoundException Palauttaa virheen jos pakattavaa tiedostoa ei löydy.
+     * @throws FileNotFoundException Palauttaa virheen jos pakattavaa tiedostoa
+     * ei löydy.
      */
-    public Compress(File inputFile, File outputFile) throws FileNotFoundException {      
-        input=new Input(inputFile);
-          
+    public Compress(File inputFile, File outputFile) throws FileNotFoundException {
+        input = new Input(inputFile);
+
         //  Luetaan merkit taulukkoon         
-        char[] chars=input.readChars();
-        
+        chars = input.readFile();
+
         // Lasketaan eri merkkien toistumiset
-        this.frequencies=frequencyCounter.getFrequencies(chars); 
-        
+        this.frequencies = frequencyCounter.getFrequencies(chars);
+
         // Merkataan luettujen bittien määrä
-        this.readBits=input.getReadBitsTotal();
-        
+        this.readBits = input.getReadBitsTotal();
+
         // Luodaan Huffmanin puu
-        HuffmanTree huffmanTree=new HuffmanTree(frequencies);
-                     
-        
-        
-        
+        HuffmanTree huffmanTree = new HuffmanTree(frequencies);
+
+        // Kirjoitetaan Huffmanin puu binäärinä myöhempää tiedoston purkua varten
+        output.writeHuffmanTree(huffmanTree.getRoot());
+
+        /* Kirjoitetaan merkit binääreinä käyttäen apuna Huffmanin puun avulla
+        luotua merkkijonotaulukkoa. Tässä kohdin tiedoston merkit käydään läpi toiseen kertaan.
+         */
+        String[] binaryCodes = huffmanTree.getBinaryCodes();
+
+        for (int i = 0; i < chars.length; i++) {
+            String binary = binaryCodes[chars[i]];
+            for (int j = 0; j < binary.length(); j++) {
+                switch (binary.charAt(i)) {
+                    case '0':
+                        output.writeBit(0);
+                        break;
+                    case '1':
+                        output.writeBit(1);
+                        break;
+                    default:
+                        System.out.println("Tapahtui virhe luokassa Compress () "
+                                + "kirjoittaessa tiedostoon. Merkki oli joku muu "
+                                + "kuin 0 tai 1."
+                                );
+                        break;
+                }
+            }
+
+        }
+
     }
 
-    
     /**
      * Metodi palauttaa luettujen bittien määrän
-     * @return Luetut bitit 
+     *
+     * @return Luetut bitit
      */
     public int getReadBits() {
         return readBits;
     }
 
-    
     /**
-     * Metodi palauttaa kirjoitettujen bittien määrän 
+     * Metodi palauttaa kirjoitettujen bittien määrän
+     *
      * @return Kirjoitetut bitit
      */
     public int getWrittenBits() {
         return writtenBits;
     }
 
-    
-    
-    
-    
-    
 }

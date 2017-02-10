@@ -4,7 +4,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import org.junit.After;
 import org.junit.AfterClass;
-import org.junit.Assert;
+import static org.junit.Assert.assertArrayEquals;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -61,13 +62,13 @@ public class OutputTest {
         /* Vertaa alkuperäisen luetun tiedoston ja kirjoitetun tiedoston sisältöä
         Ja palauttaa oikein jos ne on samat
          */
-        Assert.assertArrayEquals(input.readChars(), input2.readChars());
+        assertArrayEquals(input.readFile(), input2.readFile());
     }
 
     /* Testaa, Outputin Close-toimintoa joka kutsuu tarvittaessa
     yksityistä apumetodia fillByte ja täyttää uloskirjoitettavan tavun
     tarvittaessa nollilla
-    */
+     */
     @Test
     public void closeFillsByte() throws FileNotFoundException {
         output = new Output(new File("filledBits.txt"));
@@ -86,6 +87,20 @@ public class OutputTest {
             readBackBits.append(input.readBit());
         }
 
-        Assert.assertEquals(readBackBits.toString(), writtenBits);
+        assertEquals(readBackBits.toString(), writtenBits);
+    }
+
+    //Testaa, yksittäisen merkin kirjoitusta tavuvirtaan
+    @Test
+    public void writeCharWritesCharOut() throws FileNotFoundException {
+        char c = input.readChar();
+        assertEquals(c, 'T');
+
+        output.writeChar(c);
+        output.close();
+
+        input = new Input(new File("outputTesti.txt"));
+        c = input.readChar();
+        assertEquals(c, 'T');
     }
 }

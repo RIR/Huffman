@@ -13,8 +13,9 @@ import static org.junit.Assert.*;
  */
 public class NodeTest {
 
-    Node leafNode = new Node('c', 3, null, null);
-    Node internalNode = new Node('\0', 0, leafNode, null);
+    Node leafNode;
+    Node leafNode2;
+    Node internalNode;
 
     public NodeTest() {
     }
@@ -29,6 +30,9 @@ public class NodeTest {
 
     @Before
     public void setUp() {
+        leafNode = new Node('c', 3, null, null);
+        leafNode2 = new Node('b', 2, null, null);
+        internalNode = new Node('\0', 0, leafNode, leafNode2);
     }
 
     @After
@@ -41,6 +45,7 @@ public class NodeTest {
         assertTrue(leafNode.isLeaf());
     }
 
+    // Sama testi toisin päin
     @Test
     public void isLeafReturnsFalseIfHasChildren() {
         assertFalse(internalNode.isLeaf());
@@ -57,4 +62,31 @@ public class NodeTest {
         assertEquals(expResult, result);
     }
 
+    // Testaa että merkin toistumismäärä palautuu solmusta oikein
+    @Test
+    public void getFrequencyReturnsCorrectFrequency() {
+        assertEquals(leafNode.getFrequency(), 3);
+        assertEquals(internalNode.getFrequency(), 0);
+    }
+
+    // Testaa, että oikea merkki palautuu solmusta
+    @Test
+    public void getCHaracterReturnsCorrectCharacter() {
+        assertEquals(leafNode.getCharacter(), 'c');
+        assertEquals(internalNode.getCharacter(), '\0');
+    }
+
+    // Testaa, että vasen lapsi palautuu oikein
+    @Test
+    public void getLeftReturnsLeftChild() {
+        assertEquals(leafNode.getLeft(), null);
+        assertEquals(internalNode.getLeft(), leafNode);
+    }
+
+    // Testaa, että oikea lapsi palautuu oikein
+    @Test
+    public void getRightReturnsRightChild() {
+        assertEquals(leafNode.getRight(), null);
+        assertEquals(internalNode.getRight(), leafNode2);
+    }
 }

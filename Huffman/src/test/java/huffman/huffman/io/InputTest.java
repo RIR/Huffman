@@ -6,7 +6,6 @@ import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Assert;
-import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -53,8 +52,8 @@ public class InputTest {
 
     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test
-    public void readCharsReadsCharsAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
-        char[] inputArray = input.readChars();
+    public void readFileReadsFileAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
+        char[] inputArray = input.readFile();
         Assert.assertArrayEquals(inputArray, testArray);
     }
 
@@ -90,19 +89,29 @@ public class InputTest {
     // Testaa luettujen bittien laskuria lukemalla tavuja
     @Test
     public void getReadBitsTotalReturnsCorrectWhenReadChars() {
-        input.readChars();
-        Assert.assertEquals(56, input.getReadBitsTotal());
+        input.readFile();
+        assertEquals(56, input.getReadBitsTotal());
     }
 
     // Testaa luettujen bittien laskuria lukemalla yksittäisiä bittejä
     @Test
     public void getReadBitsTotalReturnsCorrectWhenReadBits() {
         input.readBit();
-        Assert.assertEquals(1, input.getReadBitsTotal());
+        assertEquals(1, input.getReadBitsTotal());
 
         for (int i = 1; i < 56; i++) {
             input.readBit();
-            Assert.assertEquals(1 + i, input.getReadBitsTotal());
+            assertEquals(1 + i, input.getReadBitsTotal());
         }
+    }
+    
+    // Testaa yksittäisten merkkien lukua
+    @Test
+    public void readCharReadsNextChar() {
+    char c = input.readChar();
+        assertEquals('T', c);
+        
+        c = input.readChar();
+        assertEquals('o', c);
     }
 }

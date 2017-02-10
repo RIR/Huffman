@@ -37,8 +37,7 @@ public class HuffmanApp {
                     System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä. "
                             + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä");
                 } catch (FileNotFoundException ex) {
-                    System.out.println("File not found! Please type correct file name for the file that "
-                            + "you want to compress.");
+                    System.out.println("Tiedostoa ei löytynyt! Anna oikea nimi pakattavalle tiedostolle.");
                 }
             }
             break;
@@ -54,8 +53,7 @@ public class HuffmanApp {
                      */
                     Decompress decompress = new Decompress(new File(args[1]), new File(args[2]));
                 } catch (FileNotFoundException ex) {
-                    System.out.println("File not found! Please type correct file name for the file that "
-                            + "you want to decompress.");
+                    System.out.println("Tiedostoa ei löytynyt. Anna oikea nimi purettavalle tiedostolle.");
                 }
             }
             break;
@@ -65,7 +63,7 @@ public class HuffmanApp {
             }
             // Jos ensimmäinen argumentti on jotain muuta, palautetaan virheviesti
             default:
-                throw new IllegalArgumentException("Illegal command line argument");
+                throw new IllegalArgumentException("Virheellinen komento");
         }
     }
 

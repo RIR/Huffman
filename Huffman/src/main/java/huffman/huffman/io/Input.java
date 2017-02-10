@@ -25,7 +25,7 @@ public class Input {
 
     // Muuttuja pitää lukua luetun tavun luetuista biteistä
     private int bitsRemaining;
-    
+
     // Laskurimuuttuja yhteensä luetuille biteille 
     private int readBitsTotal;
 
@@ -39,8 +39,8 @@ public class Input {
     public Input(File inputFile) throws FileNotFoundException {
         this.currentByte = 0;
         this.bitsRemaining = 0;
-        this.in = new BufferedInputStream(new FileInputStream(inputFile));   
-        this.readBitsTotal=0;
+        this.in = new BufferedInputStream(new FileInputStream(inputFile));
+        this.readBitsTotal = 0;
     }
 
     /**
@@ -49,13 +49,13 @@ public class Input {
      *
      * @return Merkkitaulukko
      */
-    public char[] readChars() {
+    public char[] readFile() {
         int read;
 
         /* Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
         Tässä voisi käyttää Stringiä, mutta käsittääkseni suorituskyky parempi kun
         konkatenoidaan loopissa.
-        */
+         */
         StringBuilder sb = new StringBuilder();
 
         try {
@@ -65,14 +65,14 @@ public class Input {
                 sb.append((char) read);
             }
         } catch (IOException ex) {
-            System.out.println("I/O exception when reading inputstream. Problem in readChars()");
+            System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readFile()");
         }
 
         close();
 
         // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
-        readBitsTotal +=sb.length()*8;
-        
+        readBitsTotal += sb.length() * 8;
+
         // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
         char[] input = sb.toString().toCharArray();
 
@@ -81,16 +81,22 @@ public class Input {
     }
 
     /**
-     * 
+     *
      * Metodi lukee yhden merkin verran bittejä (8) ja palauttaa binäärilukua
      * vastaavan merkin.
-     * VAIHEESSA!
-     * @return Merkki
+     *
+     * @return Luettu merkki
      */
     public char readChar() {
-    
+        int read = 0;
+        try {
+            read = in.read();
+        } catch (IOException ex) {
+            System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readChar()");
+        }
+        return (char) read;
     }
-    
+
     /**
      * Metodi joka lukee bitin tavuvirrasta.
      *
@@ -107,7 +113,7 @@ public class Input {
             try {
                 currentByte = in.read();
             } catch (IOException ex) {
-                System.out.println("I/O exception when reading inputstream. Problem in readBit()");
+                System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readBit()");
             }
             // Jos luettava tavu on tiedoston loppu
             if (currentByte == -1) {
@@ -119,7 +125,7 @@ public class Input {
 
         // Luettaessa bittejä laskuria vähennetään
         bitsRemaining--;
-        
+
         // Kasvatetaan yhteensä luettujen bittien määrää
         readBitsTotal++;
 
@@ -134,13 +140,12 @@ public class Input {
 
     /**
      * Metodi palauttaa yhteensä luetut bitit
+     *
      * @return Yhteensä luetut bitit
      */
     public int getReadBitsTotal() {
         return readBitsTotal;
     }
-    
-    
 
     /**
      * Metodi sulkee tavuvirran.
@@ -152,7 +157,7 @@ public class Input {
         try {
             in.close();
         } catch (IOException ex) {
-            System.out.println("I/O exception when closing inputstream. Problem in close()");
+            System.out.println("I/O exception suljettaessa InputStreamia. Ongelma metodissa close()");
         }
     }
 
