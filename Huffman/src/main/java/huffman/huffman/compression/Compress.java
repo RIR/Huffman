@@ -37,8 +37,8 @@ public class Compress {
      * ei löydy.
      */
     public Compress(File inputFile, File outputFile) throws FileNotFoundException {
-        this.input = new Input(inputFile);
-        this.output=new Output(outputFile);
+        input = new Input(inputFile);
+        output=new Output(outputFile);
 
         //  Luetaan merkit taulukkoon         
         chars = input.readFile();
@@ -81,6 +81,7 @@ public class Compress {
         }
         
         //Pakkaus on valmis, suljetaan tiedostoon kirjoitus.
+        input.close();
         output.close();
 
     }

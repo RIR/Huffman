@@ -32,10 +32,12 @@ public class HuffmanApp {
                     /* Tiedoston pakkausluokka saa parametreina pakattavan ja pakatun tiedoston
                 nimen
                      */
-                    Compress compress = new Compress(new File(args[1]), new File(args[2]));
-                    System.out.println("Antamasi tiedosto" + args[1] + " pakattu " + "Tiedosto löytyy antamallasi nimellä " + args[2]);
+                    Compress compress = new Compress(new File(args[1]), new File(args[2]+".hf"));
+                    
+                    System.out.println("Antamasi tiedosto" + args[1] + " on pakattu. " + "Tiedosto löytyy nimellä " + args[2] + ".hf");
                     System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä. "
                             + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä");
+                    
                 } catch (FileNotFoundException ex) {
                     System.out.println("Tiedostoa ei löytynyt! Anna oikea nimi pakattavalle tiedostolle.");
                 }
@@ -52,6 +54,11 @@ public class HuffmanApp {
                 nimen
                      */
                     Decompress decompress = new Decompress(new File(args[1]), new File(args[2]));
+                    
+                    System.out.println("Antamasi tiedosto" + args[1] + " on purettu. " + "Tiedosto löytyy antamallasi nimellä " + args[2]);
+                    System.out.println("Alkuperäisen tiedoston koko: " + decompress.getReadBits() + " bittiä. "
+                            + "Puretun tiedoston koko " + decompress.getWrittenBits() + " bittiä");
+                    
                 } catch (FileNotFoundException ex) {
                     System.out.println("Tiedostoa ei löytynyt. Anna oikea nimi purettavalle tiedostolle.");
                 }
@@ -73,10 +80,11 @@ public class HuffmanApp {
     private static void help() {
         System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta"
                 + "Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>"
-                + "esim. -compress purettava.txt purettu.txt"
+                + "esim. -compress pakattava.txt pakattu.txt"
                 + "Toiminnot: "
-                + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä."
+                + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä lisäten .hf tiedostopäätteen."
                 + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä."
+                + "Huom! Purkaus toimii vain .hf-päätteisille tiedostoille."
                 + "-help (ei lisäargumentteja) Tulostaa nämä ohjeet");
     }
 }
