@@ -54,11 +54,16 @@ public class Compress {
 
         // Kirjoitetaan Huffmanin puu binäärinä myöhempää tiedoston purkua varten
         output.writeHuffmanTree(huffmanTree.getRoot());
+        
+        // Kirjoitetaan luetun tiedoston koko tavuina      
+        output.writeLength(chars.length);
 
         /* Kirjoitetaan merkit binääreinä käyttäen apuna Huffmanin puun avulla
         luotua merkkijonotaulukkoa. Tässä kohdin tiedoston merkit käydään läpi toiseen kertaan.
          */
         String[] binaryCodes = huffmanTree.getBinaryCodes();
+        
+        
 
         for (int i = 0; i < chars.length; i++) {
             String binary = binaryCodes[chars[i]];
@@ -81,7 +86,6 @@ public class Compress {
         }
         
         //Pakkaus on valmis, suljetaan tiedostoon kirjoitus.
-        input.close();
         output.close();
 
     }

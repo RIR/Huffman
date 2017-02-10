@@ -2,6 +2,8 @@ package huffman.huffman.io;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertArrayEquals;
@@ -102,5 +104,30 @@ public class OutputTest {
         input = new Input(new File("outputTesti.txt"));
         c = input.readChar();
         assertEquals(c, 'T');
+    }
+
+    /*Testaa, annetun kokonaisluvun kirjoittamista binäärinä. Käytössä kun
+    tallennetaan luettujen bittien määrä. Bittejä siis int kokonaisluvun verran
+    (32)
+     */
+    @Test
+    public void writeLengthWorks() {
+        output.writeLength(100);
+        output.close();
+        try {
+            input = new Input(new File("outputTesti.txt"));
+        } catch (FileNotFoundException ex) {
+            System.out.println("Tiedostoa ei voitu lukea");
+        }
+        StringBuilder bits = new StringBuilder();
+        int i = 0;
+        int bit = input.readBit();
+
+        while (bit != -1) {
+            bits.append(bit);
+            i++;
+            bit = input.readBit();
+        }
+        assertEquals(bits.toString(), "00000000000000000000000001100100");
     }
 }

@@ -10,6 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 
 /**
  *
@@ -34,7 +35,6 @@ public class InputTest {
     @Before
     public void setUp() throws FileNotFoundException {
         input = new Input(new File("Testi.txt"));
-
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
     }
@@ -104,14 +104,31 @@ public class InputTest {
             assertEquals(1 + i, input.getReadBitsTotal());
         }
     }
-    
+
     // Testaa yksittäisten merkkien lukua
     @Test
     public void readCharReadsNextChar() {
-    char c = input.readChar();
+        char c = input.readChar();
         assertEquals('T', c);
-        
+
         c = input.readChar();
         assertEquals('o', c);
     }
+
+    // Testaa yksittäisten merkkien lukua
+    @Test
+    public void readCharReadsNextCharAfterSingleBitAlreadyRead() {
+        input.readBit();
+
+        char c = input.readChar();
+        assertNotEquals('T', c);
+
+        assertEquals(9, input.getReadBitsTotal());
+
+        input.readChar();
+        assertEquals(17, input.getReadBitsTotal());
+
+    }
+    
+    // ReadLength-metodia vielä melko vaikea testata, koska tarvitaan metodi joka lukee ensin puun
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -41,6 +42,11 @@ public class CompressTest {
     }
 
     @Test
-    public void hello() {
+    public void getReadBitsWorks() {
+        
+    }
+    
+    @Test
+    public void getWrittenBitsWorks() {
     }
 }

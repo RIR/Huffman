@@ -1,11 +1,14 @@
 package huffman.huffman.io;
 
+import huffman.huffman.logic.Node;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -52,6 +55,7 @@ public class Input {
     public char[] readFile() {
         int read;
 
+        //HUOM! Palaa tähän. Ongelma  kun luetaan isoja tiedostoja (java heap space Stringbuilderilla)
         /* Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
         Tässä voisi käyttää Stringiä, mutta käsittääkseni suorituskyky parempi kun
         konkatenoidaan loopissa.
@@ -75,7 +79,7 @@ public class Input {
 
         // Viedään Stringbuilderin merkit merkkitaulukkoon
         char[] input = new char[sb.length()];
-        sb.getChars(0, sb.length()-1, input, 0);
+        sb.getChars(0, sb.length(), input, 0);
 
         //palautetaan merkkitaulukko
         return input;
@@ -90,12 +94,44 @@ public class Input {
      */
     public char readChar() {
         int read = 0;
-        try {
-            read = in.read();
-        } catch (IOException ex) {
-            System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readChar()");
+
+        // Jos edellinen tavu luettu jo kokonaan
+        if (bitsRemaining == 0) {
+
+            //Luetaan suoraan uusi kokonainen tavu
+            try {
+                read = in.read();
+            } catch (IOException ex) {
+                System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readChar()");
+            }
+
+            bitsRemaining = 0;
+            readBitsTotal += 8;
+            return (char) read;
         }
-        return (char) read;
+
+        /* Jos sisään luetussa tavussa on vielä lukemattomia bittejä, 
+        yhdistetään nykyisen tavun lukemattomat bitit, seuraavan luettavan tavun
+            8-(nykyisen tavun lukemattomat) ensimmäisen bitin kanssa, jotta saadaan 
+        niistä palautettua tavullinen bittejä eli merkki. Nämä eivät ole lukuvaiheessakaan
+        aina tasatavullisia, sillä pakattuun tiedostoon on kirjoitettu pakkaamattoman tiedoston
+        merkkien lisäksi koodauksessa käytetty Huffmanin puu sekä pakkaamattoman tiedoston merkkien
+        lukumäärä.
+         */
+   
+        int x =currentByte;   
+        x <<= (8 - bitsRemaining);
+           
+        try {
+            currentByte=in.read();
+        } catch (IOException ex) {
+            System.out.println("I/O Exception luettaessa InputStreamia. Ongelma metodissa readChar()");
+        }
+        
+        readBitsTotal+=8;
+        
+        x |= (currentByte >>> bitsRemaining);
+        return (char) (x & 0xff);
     }
 
     /**
@@ -140,6 +176,38 @@ public class Input {
     }
 
     /**
+     * Metodi lukee pakatusta tiedostosta pakkaamattoman tiedoston pituuden
+     * tavuina.
+     *
+     * @return Pakkaamattoman tiedoston pituus tavuina. Luetaan yhteensä 4 tavua
+     * eli 32 bittiä.
+     */
+    public int readLength() {
+        int x = 0;
+        for (int i = 0; i < 4; i++) {
+            char c = readChar();
+            x <<= 8;
+            x |= c;
+        }
+        return x;
+    }
+
+    /**
+     * Metodi lukee Huffmanin puun pakatun tiedoston alusta.
+     * @return Huffmanin puu, juurisolmun muodossa
+     */
+    public Node readHuffmanTree() {
+        boolean isLeaf = readBit()==1;
+        if (isLeaf) {
+            return new Node(readChar(), -1, null, null);
+        }
+        else {
+            return new Node('\0', -1, readHuffmanTree(), readHuffmanTree());
+        }
+    }
+    
+    
+    /**
      * Metodi palauttaa yhteensä luetut bitit
      *
      * @return Yhteensä luetut bitit
@@ -147,6 +215,7 @@ public class Input {
     public int getReadBitsTotal() {
         return readBitsTotal;
     }
+    
 
     /**
      * Metodi sulkee tavuvirran.
