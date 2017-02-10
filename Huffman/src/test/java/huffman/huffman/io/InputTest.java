@@ -19,6 +19,7 @@ import static org.junit.Assert.assertNotEquals;
 public class InputTest {
 
     Input input;
+    Output output;
     char[] testArray;
 
     public InputTest() {
@@ -35,6 +36,7 @@ public class InputTest {
     @Before
     public void setUp() throws FileNotFoundException {
         input = new Input(new File("Testi.txt"));
+        output = new Output(new File("HuffmanTesti.txt"));
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
     }

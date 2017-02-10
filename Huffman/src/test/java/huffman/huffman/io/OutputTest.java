@@ -92,7 +92,9 @@ public class OutputTest {
         assertEquals(readBackBits.toString(), writtenBits);
     }
 
-    //Testaa, yksittäisen merkin kirjoitusta tavuvirtaan
+    /*Testaa, yksittäisen merkin kirjoitusta tavuvirtaan. 
+    Testataan samalla getWrittenBitsTotal()
+     */
     @Test
     public void writeCharWritesCharOut() throws FileNotFoundException {
         char c = input.readChar();
@@ -104,16 +106,21 @@ public class OutputTest {
         input = new Input(new File("outputTesti.txt"));
         c = input.readChar();
         assertEquals(c, 'T');
+
+        assertEquals(8, output.getWrittenBitsTotal());
     }
 
     /*Testaa, annetun kokonaisluvun kirjoittamista binäärinä. Käytössä kun
     tallennetaan luettujen bittien määrä. Bittejä siis int kokonaisluvun verran
-    (32)
+    (32). Testaa samalla yksityistä metodia writeLengthToBits() sekä getWrittenBitsTotal()
      */
     @Test
     public void writeLengthWorks() {
         output.writeLength(100);
         output.close();
+
+        assertEquals(32, output.getWrittenBitsTotal());
+
         try {
             input = new Input(new File("outputTesti.txt"));
         } catch (FileNotFoundException ex) {
@@ -129,5 +136,11 @@ public class OutputTest {
             bit = input.readBit();
         }
         assertEquals(bits.toString(), "00000000000000000000000001100100");
+    }
+
+    // Testaa Huffmanin puun kirjoittamista binäärimuodossa pakattavaan tiedostoon.
+    @Test
+    public void writeHuffmanTreeWorks() {
+
     }
 }

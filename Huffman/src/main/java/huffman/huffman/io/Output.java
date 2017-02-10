@@ -38,7 +38,7 @@ public class Output {
         this.currentByte = 0;
         this.bits = 0;
         this.writtenBitsTotal = 0;
-        
+
         try {
             out = new BufferedOutputStream(new FileOutputStream(outputFile));
         } catch (FileNotFoundException ex) {
@@ -58,7 +58,7 @@ public class Output {
         } else {
             currentByte = (currentByte << 1) | bit;
             bits++;
-            
+
             if (bits == 8) {
                 writeByte();
             }
@@ -137,13 +137,12 @@ public class Output {
     private void writeLengthToBits(int length) {
         for (int i = 0; i < 8; i++) {
             boolean bit = ((length >>> (8 - i - 1)) & 1) == 1;
-            
+
             if (bit) {
                 writeBit(1);
             } else {
                 writeBit(0);
             }
-            writtenBitsTotal++;
         }
     }
 
@@ -163,7 +162,7 @@ public class Output {
      */
     public void close() {
         fillByte();
-        
+
         try {
             out.close();
         } catch (IOException ex) {
