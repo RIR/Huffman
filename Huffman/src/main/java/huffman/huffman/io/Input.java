@@ -73,8 +73,9 @@ public class Input {
         // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
         readBitsTotal += sb.length() * 8;
 
-        // Muunnos Stringbuilderista Stringiksi ja merkkitaulukoksi.
-        char[] input = sb.toString().toCharArray();
+        // Viedään Stringbuilderin merkit merkkitaulukkoon
+        char[] input = new char[sb.length()];
+        sb.getChars(0, sb.length()-1, input, 0);
 
         //palautetaan merkkitaulukko
         return input;

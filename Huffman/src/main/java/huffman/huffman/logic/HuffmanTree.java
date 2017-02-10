@@ -35,7 +35,7 @@ public class HuffmanTree {
 
         // Luotu Huffmanin puu
         this.root = create();
-
+              
         //binääriluvut merkeille
         listBinaryCodes(binaryCodes, root, "");
     }
@@ -80,8 +80,8 @@ public class HuffmanTree {
      */
     private void listBinaryCodes(String[] codes, Node node, String s) {
         if (!node.isLeaf()) {
-            listBinaryCodes(codes, node.getLeft(), s + '0');
-            listBinaryCodes(codes, node.getRight(), s + '1');
+            listBinaryCodes(codes, node.getLeft(), s +'0');
+            listBinaryCodes(codes, node.getRight(), s +'1');
         } else {
             codes[node.getCharacter()] = s;
         }
