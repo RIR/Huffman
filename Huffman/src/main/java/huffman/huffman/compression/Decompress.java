@@ -22,6 +22,7 @@ public class Decompress {
      */
     public Decompress(File inputFile, File outputFile) throws FileNotFoundException {
         input=new Input(inputFile);
+        output=new Output(outputFile);
     }
 
     public String getReadBits() {

@@ -1,6 +1,5 @@
 package huffman.huffman.logic;
 
-import huffman.huffman.logic.FrequencyCounter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

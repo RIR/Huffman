@@ -32,15 +32,19 @@ public class HuffmanAppTest {
     public void tearDown() {
     }
 
+   @Test
+   public void hello() {
+       System.out.println("Terve");   
+   }
+    
     /**
      * Test of main method, of class HuffmanApp.
      */
-    @Test
-    public void testMain() {
-        System.out.println("main");
-        String[] args = null;
-        HuffmanApp.main(args);
-   
-    }
-    
+//    @Test
+//    public void testMain() {
+//      
+//     System.out.println("main");
+//        String[] args = null;
+//        HuffmanApp.main(args);
+//    }
 }

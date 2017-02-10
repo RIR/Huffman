@@ -78,13 +78,13 @@ public class HuffmanApp {
      * 
      */
     private static void help() {
-        System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta"
-                + "Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>"
-                + "esim. -compress pakattava.txt pakattu.txt"
-                + "Toiminnot: "
-                + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä lisäten .hf tiedostopäätteen."
-                + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä."
-                + "Huom! Purkaus toimii vain .hf-päätteisille tiedostoille."
+        System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta.\n"
+                + "Anna käsky muodossa <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>\n"
+                + "esim. -compress pakattava.txt pakattu.txt\n"
+                + "Toiminnot: \n"
+                + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä lisäten .hf tiedostopäätteen.\n"
+                + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä.\n"
+                + "Huom! Purkaus toimii vain .hf-päätteisille tiedostoille.\n"
                 + "-help (ei lisäargumentteja) Tulostaa nämä ohjeet");
     }
 }
