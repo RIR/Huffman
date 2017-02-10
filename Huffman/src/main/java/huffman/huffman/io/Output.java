@@ -77,7 +77,7 @@ public class Output {
         writtenBitsTotal += 8;
     }
 
-    // Apumetodi joka täyttää tavun nollilla jos siihen ei muuten riitä bittejä
+    // Apumetodi joka täyttää viimeisen kirjoitettavan tavun nollilla jos siihen ei muuten riitä bittejä
     private void fillByte() {
         while (bits > 0 && bits <= 8) {
             writeBit(0);

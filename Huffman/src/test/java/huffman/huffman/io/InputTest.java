@@ -139,7 +139,9 @@ public class InputTest {
 
     }
     
-     // Testaa pakkaamattoman tiedoston koon lukemista (koko tavuina)
+     /* Testaa pakkaamattoman tiedoston koon lukemista (koko tavuina) pakatusta
+    tiedostosta
+    */
     @Test
     public void readlengthReadsCorrectLength() {
       
