@@ -26,6 +26,7 @@ public class Compress {
     private int readBits;
     private int writtenBits;
     private int[] frequencies;
+    private int compression;
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle
@@ -38,7 +39,7 @@ public class Compress {
      */
     public Compress(File inputFile, File outputFile) throws FileNotFoundException {
         input = new Input(inputFile);
-        output=new Output(outputFile);
+        output = new Output(outputFile);
 
         //  Luetaan merkit taulukkoon         
         chars = input.readFile();
@@ -54,7 +55,7 @@ public class Compress {
 
         // Kirjoitetaan Huffmanin puu binäärinä myöhempää tiedoston purkua varten
         output.writeHuffmanTree(huffmanTree.getRoot());
-        
+
         // Kirjoitetaan luetun tiedoston koko tavuina      
         output.writeLength(chars.length);
 
@@ -62,8 +63,6 @@ public class Compress {
         luotua merkkijonotaulukkoa. Tässä kohdin tiedoston merkit käydään läpi toiseen kertaan.
          */
         String[] binaryCodes = huffmanTree.getBinaryCodes();
-        
-        
 
         for (int i = 0; i < chars.length; i++) {
             String binary = binaryCodes[chars[i]];
@@ -79,12 +78,15 @@ public class Compress {
                         System.out.println("Tapahtui virhe luokassa Compress () "
                                 + "kirjoittaessa binäärejä tiedostoon. Merkki oli joku muu "
                                 + "kuin 0 tai 1."
-                                );
+                        );
                         break;
                 }
             }
         }
-        
+
+        // Merkataan kirjoitettujen bittien määrä
+        writtenBits = output.getWrittenBitsTotal();
+
         //Pakkaus on valmis, suljetaan tiedostoon kirjoitus.
         output.close();
 
@@ -108,4 +110,8 @@ public class Compress {
         return writtenBits;
     }
 
+    // Palauttaa pakkaustehokkuuden prosentteina
+    public int getCompression() {
+        return 100 * (readBits - writtenBits) / readBits;
+    }
 }
