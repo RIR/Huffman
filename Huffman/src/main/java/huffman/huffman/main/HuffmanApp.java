@@ -43,7 +43,7 @@ public class HuffmanApp {
                          */
                         Compress compress = new Compress(new File(args[1]), new File(args[2] + ".hf"));
 
-                        System.out.println("Antamasi tiedosto" + args[1] + " on pakattu. " + "Tiedosto löytyy nimellä " + args[2] + ".hf");
+                        System.out.println("Antamasi tiedosto " + args[1] + " on pakattu. " + "Tiedosto löytyy nimellä " + args[2] + ".hf");
                         System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä. "
                                 + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä\n"
                                 + "Pakkausteho " + compress.getCompression() + " %");

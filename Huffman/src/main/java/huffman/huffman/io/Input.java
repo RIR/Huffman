@@ -45,42 +45,56 @@ public class Input {
     }
 
     /**
-     * Metodi joka lukee tiedoston tavuina (merkki kerrallaan) ja palauttaa
+     * Metodi joka lukee tiedoston tavuina ja palauttaa
      * merkkitaulukon
      *
      * @return Merkkitaulukko
      */
-    public char[] readFile() {
-        int read;
-
-        //HUOM! Palaa tähän. Ongelma  kun luetaan isoja tiedostoja (java heap space Stringbuilderilla)
-        /* Luetaan merkit ensin StringBuilderiin, koska ei tiedetä niiden määrää.
-        Tässä voisi käyttää Stringiä, mutta käsittääkseni suorituskyky parempi kun
-        konkatenoidaan loopissa.
-         */
-        StringBuilder sb = new StringBuilder();
-
+    public char[] readFile() {       
+        byte[] buffer = null;
+        char [] chars;
+        
+        //HUOM! Palaa tähän. Ongelma  kun luetaan isoja tiedostoja (java heap space)       
         try {
-            while ((read = in.read()) != -1) {
+            buffer = new byte[in.available()];
+            in.read(buffer);
 
-                // Muunnetaan luettu tavu merkiksi
-                sb.append((char) read);
-            }
         } catch (IOException ex) {
             System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readFile()");
         }
-
-        close();
-
-        // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
-        readBitsTotal += sb.length() * 8;
-
-        // Viedään Stringbuilderin merkit merkkitaulukkoon
-        char[] input = new char[sb.length()];
-        sb.getChars(0, sb.length(), input, 0);
-
+             
+        chars = new char[buffer.length];
+        
+        for (int i = 0; i < buffer.length; i++) {
+            chars[i]=(char) buffer[i];
+            
+        }
+        
+        readBitsTotal += chars.length * 8;
+        
+        return chars;
+        
+// Vaihdettu StringBuilder erilaiseen toteutukseen.       
+//        StringBuilder sb = new StringBuilder();
+//        
+//               try {
+//            while ((read = in.read()) != -1) {
+//
+//                // Muunnetaan luettu tavu merkiksi
+//                sb.append((char) read);
+//            }
+//        } catch (IOException ex) {
+//            System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readFile()");
+//        }
+//        close();
+//
+//        // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
+//        readBitsTotal += sb.length() * 8;
+//
+//        // Viedään Stringbuilderin merkit merkkitaulukkoon
+//        char[] input = new char[sb.length()];
+//        sb.getChars(0, sb.length(), input, 0);
         //palautetaan merkkitaulukko
-        return input;
     }
 
     /**
@@ -116,18 +130,17 @@ public class Input {
         merkkien lisäksi koodauksessa käytetty Huffmanin puu sekä pakkaamattoman tiedoston merkkien
         lukumäärä.
          */
-   
-        int x =currentByte;   
+        int x = currentByte;
         x <<= (8 - bitsRemaining);
-           
+
         try {
-            currentByte=in.read();
+            currentByte = in.read();
         } catch (IOException ex) {
             System.out.println("I/O Exception luettaessa InputStreamia. Ongelma metodissa readChar()");
         }
-        
-        readBitsTotal+=8;
-        
+
+        readBitsTotal += 8;
+
         x |= (currentByte >>> bitsRemaining);
         return (char) (x & 0xff);
     }
@@ -192,19 +205,18 @@ public class Input {
 
     /**
      * Metodi lukee Huffmanin puun pakatun tiedoston alusta.
+     *
      * @return Huffmanin puu, juurisolmun muodossa
      */
     public Node readHuffmanTree() {
-        boolean isLeaf = readBit()==1;
+        boolean isLeaf = readBit() == 1;
         if (isLeaf) {
             return new Node(readChar(), -1, null, null);
-        }
-        else {
+        } else {
             return new Node('\0', -1, readHuffmanTree(), readHuffmanTree());
         }
     }
-    
-    
+
     /**
      * Metodi palauttaa yhteensä luetut bitit
      *
@@ -213,7 +225,6 @@ public class Input {
     public int getReadBitsTotal() {
         return readBitsTotal;
     }
-    
 
     /**
      * Metodi sulkee tavuvirran.
