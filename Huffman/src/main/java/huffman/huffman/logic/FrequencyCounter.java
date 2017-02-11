@@ -27,6 +27,7 @@ public class FrequencyCounter {
         for (int i = 0; i < chars.length; i++) {
             frequencies[chars[i]]++;
         }
+        
         return frequencies;
     }
 

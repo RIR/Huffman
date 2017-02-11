@@ -32,7 +32,7 @@ public class CompressTest {
     @Before
     public void setUp() {
         try {
-            compress = new Compress(new File("pakkaaTesti.txt"), new File("yoga.avi.hf"));
+            compress = new Compress(new File("pakkaaTesti.txt"), new File("pakkaatesti.txt.hf"));
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei löytynyt, tarkista nimi");
         }

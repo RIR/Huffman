@@ -44,57 +44,38 @@ public class Input {
         this.readBitsTotal = 0;
     }
 
+    //HUOM! Palaa tähän. Ongelma  kun luetaan isoja tiedostoja (java heap space) 
     /**
-     * Metodi joka lukee tiedoston tavuina ja palauttaa
-     * merkkitaulukon
+     * Metodi joka lukee tiedoston tavuina ja palauttaa merkkitaulukon.
      *
      * @return Merkkitaulukko
      */
-    public char[] readFile() {       
-        byte[] buffer = null;
-        char [] chars;
-        
-        //HUOM! Palaa tähän. Ongelma  kun luetaan isoja tiedostoja (java heap space)       
-        try {
-            buffer = new byte[in.available()];
-            in.read(buffer);
+    public char[] readFile() {
+        int read;
 
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            while ((read = in.read()) != -1) {
+
+                // Muunnetaan luettu tavu merkiksi ja lisätään StrinBuilderiin
+                sb.append((char) read);
+            }
         } catch (IOException ex) {
             System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readFile()");
         }
-             
-        chars = new char[buffer.length];
-        
-        for (int i = 0; i < buffer.length; i++) {
-            chars[i]=(char) buffer[i];
-            
-        }
-        
-        readBitsTotal += chars.length * 8;
-        
-        return chars;
-        
-// Vaihdettu StringBuilder erilaiseen toteutukseen.       
-//        StringBuilder sb = new StringBuilder();
-//        
-//               try {
-//            while ((read = in.read()) != -1) {
-//
-//                // Muunnetaan luettu tavu merkiksi
-//                sb.append((char) read);
-//            }
-//        } catch (IOException ex) {
-//            System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readFile()");
-//        }
-//        close();
-//
-//        // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
-//        readBitsTotal += sb.length() * 8;
-//
-//        // Viedään Stringbuilderin merkit merkkitaulukkoon
-//        char[] input = new char[sb.length()];
-//        sb.getChars(0, sb.length(), input, 0);
+        close();
+
+        // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
+        readBitsTotal += sb.length() * 8;
+
+        // Viedään Stringbuilderin merkit merkkitaulukkoon
+        char[] chars = new char[sb.length()];
+
+        sb.getChars(0, sb.length(), chars, 0);
+
         //palautetaan merkkitaulukko
+        return chars;
     }
 
     /**
@@ -119,6 +100,7 @@ public class Input {
 
             bitsRemaining = 0;
             readBitsTotal += 8;
+
             return (char) read;
         }
 
@@ -142,6 +124,7 @@ public class Input {
         readBitsTotal += 8;
 
         x |= (currentByte >>> bitsRemaining);
+        
         return (char) (x & 0xff);
     }
 
@@ -200,6 +183,7 @@ public class Input {
             x <<= 8;
             x |= c;
         }
+        
         return x;
     }
 
