@@ -50,7 +50,7 @@ public class DecompressTest {
     // Testaa että purettu tiedosto on samankokoinen alkuperäisen pakkaamattoman kanssa
       @Test
     public void getWrittenBitsWorks() {
-        assertEquals(3082 * 8 + 8, decompress.getWrittenBits());
+        assertEquals(3166 * 8 + 12*16 + 8, decompress.getWrittenBits());
     }
 
     // Testaa että on tiedosto oli pakattu

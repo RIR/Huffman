@@ -48,7 +48,7 @@ public class CompressTest {
      */
     @Test
     public void getReadBitsWorks() {
-        assertEquals(3082 * 8 + 8, compress.getReadBits());
+        assertEquals(3166 * 8 + 12*16 + 8, compress.getReadBits());
     }
 
     // Testaa että on tapahtunut tiivistystä.

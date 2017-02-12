@@ -24,7 +24,7 @@ public class Output {
     Kun writebitia kutsuttu 8 kertaa (eli saatu 8 bittiä) kirjoitetaan tavu
     ulos.
      */
-    private int bits;
+    private int bitsWritten;
 
     //Pitää lukua yhteensä kirjoitetuista biteistä
     private int writtenBitsTotal;
@@ -36,7 +36,7 @@ public class Output {
      */
     public Output(File outputFile) {
         this.currentByte = 0;
-        this.bits = 0;
+        this.bitsWritten = 0;
         this.writtenBitsTotal = 0;
 
         try {
@@ -57,9 +57,9 @@ public class Output {
             System.out.println("Bitin kirjoitus ei onnistunut. Luvun oltava 1 or 0");
         } else {
             currentByte = (currentByte << 1) | bit;
-            bits++;
+            bitsWritten++;
 
-            if (bits == 8) {
+            if (bitsWritten == 8) {
                 writeByte();
             }
         }
@@ -73,13 +73,13 @@ public class Output {
             System.out.println("I/O exception kirjoittaessa OutputStreamiin. Ongelma metodissa writeByte()");
         }
         currentByte = 0;
-        bits = 0;
+        bitsWritten = 0;
         writtenBitsTotal += 8;
     }
 
     // Apumetodi joka täyttää viimeisen kirjoitettavan tavun nollilla jos siihen ei muuten riitä bittejä
     private void fillByte() {
-        while (bits > 0 && bits <= 8) {
+        while (bitsWritten > 0 && bitsWritten <= 8) {
             writeBit(0);
         }
     }
@@ -93,7 +93,7 @@ public class Output {
         /* Jos yksittäisiä bittejä ei vielä varattuna kirjoitettavaksi
         voidaan kirjoittaa suoraan merkki
          */
-        if (bits == 0) {
+        if (bitsWritten == 0) {
             try {
                 out.write(c);
             } catch (IOException ex) {
@@ -119,8 +119,7 @@ public class Output {
     public void writeHuffmanTree(Node node) {
         if (node.isLeaf()) {
             writeBit(1);
-            writeChar(node.getChar());
-            writtenBitsTotal += 9;
+            writeChar(node.getChar());         
             return;
         }
         writeBit(0);

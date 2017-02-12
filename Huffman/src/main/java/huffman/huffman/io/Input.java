@@ -58,16 +58,16 @@ public class Input {
         try {
             while ((read = in.read()) != -1) {
 
-                // Muunnetaan luettu tavu merkiksi ja lisätään StrinBuilderiin
+                // Muunnetaan luettu tavu merkiksi ja lisätään StrinBuilderiin             
                 sb.append((char) read);
+
+                // Kasvatetaan yhteensä luettujen bittien määrää
+                readBitsTotal += 8;
             }
         } catch (IOException ex) {
             System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readFile()");
         }
         close();
-
-        // Kasvatetaan yhteensä luettujen bittien määrää (luetut tavut *8)
-        readBitsTotal += sb.length() * 8;
 
         // Viedään Stringbuilderin merkit merkkitaulukkoon
         char[] chars = new char[sb.length()];
@@ -123,7 +123,7 @@ public class Input {
         readBitsTotal += 8;
 
         x |= (currentByte >>> bitsRemaining);
-        
+
         return (char) (x & 0xff);
     }
 
@@ -182,7 +182,7 @@ public class Input {
             x <<= 8;
             x |= c;
         }
-        
+
         return x;
     }
 

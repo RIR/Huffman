@@ -1,17 +1,19 @@
-## Viikkoraportti 3
+## Viikkoraportti 4
 
 ### 6.2-12.2.2017 ###
 
 Viime viikosta johtuen, jäi tälle viikolle todella paljon tehtävää. 
 
-Tein Alkuviikosta heti koodikatselmoinnin, minkä koin taas hyödylliseksi sillä niistä oppii yleensä aina jotain. Sitten olenkin vääntänyt oman työni parissa, johon olen tehnyt paljon uusia metodeja ja niille testausta. Muokkasin myös ohjelman tulostuksia ja virheilmoituksia johdonmukaisemmiksi (kaikki suomeksi). Vähemmän yllättäen, luokkien ja metodien lisääminen on johtanut loppumattomaan refaktorointiin ja testaaminen on ollut välillä kohtalaisen hankalaa. Onneksi aiheeseen liittyen on löytynyt paljon tietoa ihan googlella jota ilman työstä ei varmaan tulisikaan mitään. 
+Tein Alkuviikosta heti koodikatselmoinnin, minkä koin taas hyödylliseksi sillä niistä oppii yleensä aina jotain. Sitten olenkin vääntänyt oman työni parissa, joka nyt on ainakin perusosiltaan toimintakunnossa. Onneksi aiheeseen liittyen on löytynyt paljon tietoa ihan googlella jota ilman työstä ei varmaan tulisikaan mitään. Olen tutkinut paljon erilaisia versioita Huffmanin koodauksesta ja näistä on muokkautunut myös toimintamalleja omaan ohjelmaani. Aika paljon etenemistä on tapahtunut yrityksen ja erehdyksen kautta ja refaktorointi on ollut melko loputonta. Olen muokannut myös luokat ja paketit mielestäni paremmin kuvaaviksi.
 
-Pakkausalgoritmi toimii nyt ainakin tiettyyn tiedostonkokoon asti. Isojen tiedostojen kanssa on vielä ongelma, koska Tiedoston lukeva luokkani palauttaa isoa tiedostoa (koetiedosto 700MB +)lukiessa java heap space errorin (liittyy luokassa käytössä olevaan StringBuilderiin, mihin luetut tavut lisätään merkkeinä.
+Pakkaaminen ja purkaminen toimii nyt ainakin tiettyyn kokoon asti. Todella isojen tiedostojen kanssa on vielä ongelma, koska tiedoston lukeva luokkani palauttaa isoa tiedostoa (koetiedosto 700MB +)lukiessa java heap space errorin. Tämä virhe tulee lukiessa tavuja talteen StrinBuilderiin, jonka vaihdoinkin jo kertaalleen pois, niin että luin tavut suoraan taulukkoon jonka koon määritin inputStreamin read.available() metodilla, kunnes huomasin, että se ei anna tarkkaa tavumäärää ja johtaa virheelliseen suoritukseen ja joka tapauksessa taulukoilla on maksimikoko, joka ilmeisesti nyt ylittyy.
 
-Muita kuin omia tietorakenteita ei ole juuri käytössä, lukuun ottamatta HuffmanTree-luokassa oleva PriorityQueue sekä tuo Input-luokassa oleva StringBuilder (Pitääkö tämä implementoida itse?). 
+Muita kuin omia tietorakenteita ei ole juuri käytössä, lukuun ottamatta HuffmanTree-luokassa oleva PriorityQueue (jota alan tekemään ensi viikolla) sekä tuo Input-luokassa oleva StringBuilder (Pitääkö tämä implementoida itse?).
 
-Muita huomioita/epäselvyyksiä: Input/Output-luokissa käytössä laskurit yhteensä luetuille biteille, joita tarkoitus käyttää mm. tulostuksen yhteydessä havainnoimaan tiedon tiivistystä. Laskurin lisäys toistuu useassa kohdassa, eikä siis kovin siistiä koodia, mutta en tehnyt erillistä metodia, koska välillä lisäyslause aina sen verran pieni, enkä nähnyt että yksityisellä metodilla esim. addToReadBitsTotal(int bits) tulisi juurikaan sen siistimpää.
+Testikattavuus pitäisi nyt olla myös aika kohdillaan (pit-raportti löytyy myös projektista), joitain testejä aion vielä kuitenkin lisätä.
 
-Tällä viikolla tuli työtunteja > 20 h.
+Muita huomioita/epäselvyyksiä: Input/Output-luokissa käytössä laskurit yhteensä luetuille biteille, joita tarkoitus käyttää mm. tulostuksen yhteydessä havainnoimaan tiedon tiivistystä. Laskurin lisäys toistuu useassa kohdassa, eikä siis kovin siistiä koodia, mutta en tehnyt erillistä metodia, koska lisäyslause sen verran pieni, enkä nähnyt että yksityisellä metodilla esim. addToReadBitsTotal(int bits) tulisi juurikaan sen siistimpää.
 
-VAIHEESSA...
+Olen kommentoinut koodia melko paljon selkeyttääkseni asioita (myös itselleni) onko tämä ongelma ja pitääkö muu kuin Javadoc-kommentointi poistaa?
+
+Tällä viikolla tuli työtunteja > 20 h luultavasti lähemmäs 30, ajantaju katosi ajoittain ja tarkka kirjanpito jäi hunningolle.
