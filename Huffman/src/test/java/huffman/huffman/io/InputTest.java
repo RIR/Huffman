@@ -35,8 +35,8 @@ public class InputTest {
 
     @Before
     public void setUp() throws FileNotFoundException {
-        input = new Input(new File("Testi.txt"));
-        output = new Output(new File("HuffmanTesti.txt"));
+        input = new Input(new File("testfiles/inputTesti.txt"));
+        output = new Output(new File("testfiles/inputTestinOutput.txt"));
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
     }
@@ -48,7 +48,7 @@ public class InputTest {
     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test(expected = FileNotFoundException.class)
     public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException {
-        Input input2 = new Input(new File("eiOle.txt"));
+        Input input2 = new Input(new File("testfiles/eiOle.txt"));
 
     }
 

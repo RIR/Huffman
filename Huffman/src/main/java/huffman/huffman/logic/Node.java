@@ -69,10 +69,7 @@ public class Node implements Comparable<Node>  {
     public char getChar() {
         return c;
     }
-    
-    
-    
-    
+      
     /**
      * Metodi solmujen keskinäistä vertailua varten, 
      * käyttää vertailuun solmun merkin toistumislukumäärää.

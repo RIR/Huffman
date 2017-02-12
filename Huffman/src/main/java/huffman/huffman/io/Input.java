@@ -44,7 +44,7 @@ public class Input {
         this.readBitsTotal = 0;
     }
 
-    //HUOM! Palaa tähän. Ongelma  kun luetaan isoja tiedostoja (java heap space) 
+    //HUOM! Palaa tähän. Ongelma  kun luetaan todella isoja tiedostoja (java heap space) 
     /**
      * Metodi joka lukee tiedoston tavuina ja palauttaa merkkitaulukon.
      *
@@ -71,7 +71,6 @@ public class Input {
 
         // Viedään Stringbuilderin merkit merkkitaulukkoon
         char[] chars = new char[sb.length()];
-
         sb.getChars(0, sb.length(), chars, 0);
 
         //palautetaan merkkitaulukko

@@ -8,11 +8,15 @@ import java.io.FileNotFoundException;
 
 /**
  *
- * @author Raine Rantanen Luokka pakatun tiedoston purkamiseen.
+ * @author Raine Rantanen 
+ * Luokka pakatun tiedoston purkamiseen.
  */
 public class Decompress {
+
     private Input input;
     private Output output;
+    private int readBits;
+    private int writtenBits;
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet purettavalle
@@ -48,16 +52,28 @@ public class Decompress {
             }
             output.writeChar(node.getChar());
         }
+
+        readBits = input.getReadBitsTotal();
+        writtenBits = output.getWrittenBitsTotal();
+
         input.close();
         output.close();
     }
 
-    public String getReadBits() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Metodi palauttaa luettujen bittien määrän.
+     * @return Luetut bitit
+     */
+    public int getReadBits() {
+        return readBits;
     }
 
-    public String getWrittenBits() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    /**
+     * Metodi palauttaa kirjoitettujen bittien määrän.
+     * @return Kirjoitetut bitit
+     */
+    public int getWrittenBits() {
+        return writtenBits;
     }
 
 }

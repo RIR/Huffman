@@ -4,7 +4,6 @@ import huffman.huffman.compression.Compress;
 import huffman.huffman.compression.Decompress;
 import java.io.File;
 import java.io.FileNotFoundException;
-import jdk.nashorn.internal.ir.BreakNode;
 
 /* HUOM! Jos ohjelman käynnistää Netbeansissa, se ajaa tällä hetkellä ohjelman
 komentoriviargumenteilla: -compress MainTesti.txt pakattuMainTesti.txt

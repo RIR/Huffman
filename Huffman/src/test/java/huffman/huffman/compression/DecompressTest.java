@@ -9,6 +9,8 @@ import java.io.File;
 import java.io.FileNotFoundException;
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -34,7 +36,7 @@ public class DecompressTest {
     @Before
     public void setUp() {
         try {
-            decompress = new Decompress(new File("kuva.tif.pakattu"), new File("kuva.tif"));
+            decompress = new Decompress(new File("testfiles/pakkaatesti.txt.hf"), new File("testfiles/purettu.txt"));
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei löytynyt. Ongelma luokan Decompress-konstruktorissa.");
         }
@@ -44,6 +46,15 @@ public class DecompressTest {
     public void tearDown() {
     }
 
-     @Test
-     public void hello() {}
+    // Testaa että purettu tiedosto on samankokoinen alkuperäisen pakkaamattoman kanssa
+      @Test
+    public void getWrittenBitsWorks() {
+        assertEquals(3082 * 8 + 8, decompress.getWrittenBits());
+    }
+
+    // Testaa että on tiedosto oli pakattu
+    @Test
+    public void getWrittenBitsIsMoreThanReadBits() {
+        assertTrue(decompress.getWrittenBits() > decompress.getReadBits());
+    }
 }

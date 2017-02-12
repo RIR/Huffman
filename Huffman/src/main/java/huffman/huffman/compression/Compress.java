@@ -105,7 +105,10 @@ public class Compress {
         return writtenBits;
     }
 
-    // Palauttaa pakkaustehokkuuden prosentteina
+    /**
+     * Metodi palauttaa pakkaustehokkuuden prosentteina.
+     * @return Pakkausprosentti
+     */
     public int getCompression() {
         return 100 * (readBits - writtenBits) / readBits;
     }

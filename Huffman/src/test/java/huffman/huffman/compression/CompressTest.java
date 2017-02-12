@@ -32,7 +32,7 @@ public class CompressTest {
     @Before
     public void setUp() {
         try {
-            compress = new Compress(new File("pakkaaTesti.txt"), new File("pakkaatesti.txt.hf"));
+            compress = new Compress(new File("testfiles/pakkaaTesti.txt"), new File("testfiles/pakkaatesti.txt.hf"));
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei löytynyt, tarkista nimi");
         }
@@ -54,17 +54,7 @@ public class CompressTest {
     @Test
     public void getWrittenBitsIsLessThanReadBits() {
         assertTrue(compress.getWrittenBits() < compress.getReadBits());
+        assertTrue(compress.getCompression() > 0);
     }
 
-    // Testaa että on tapahtunut tiivistystä isohkolla kuvatiedostolla (TIFF 61,3 MB).
-    @Test
-    public void getWrittenBitsIsLessThanReadBitsWithBigImage() {
-        try {
-            compress = new Compress(new File("kuva.tif"), new File("kuva.tif.pakattu"));
-        } catch (FileNotFoundException ex) {
-            System.out.println("Tiedostoa ei löytynyt, tarkista nimi");
-        }
-
-        assertTrue(compress.getWrittenBits() < compress.getReadBits());
-    }
 }
