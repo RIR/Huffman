@@ -21,6 +21,7 @@ import org.junit.Test;
  */
 public class DecompressTest {
     Decompress decompress;
+    String dir = "/home/fuksi/Dev/TiraLabra/Huffman/";
     
     public DecompressTest() {
     }
@@ -36,7 +37,7 @@ public class DecompressTest {
     @Before
     public void setUp() {
         try {
-            decompress = new Decompress(new File("testfiles/pakkaatesti.txt.hf"), new File("testfiles/purettu.txt"));
+            decompress = new Decompress(new File(dir+"testitiedostot/pakkaatesti.txt.hf"), new File(dir+"testitiedostot/purettu.txt"));
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei löytynyt. Ongelma luokan Decompress-konstruktorissa.");
         }

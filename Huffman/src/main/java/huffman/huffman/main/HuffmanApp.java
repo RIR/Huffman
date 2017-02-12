@@ -53,7 +53,7 @@ public class HuffmanApp {
                 }
                 break;
 
-                /* JOs ensimmäinen argumentti on decompress, niin suoritetaan 
+                /* Jos ensimmäinen argumentti on decompress, niin suoritetaan 
                 pakatun tiedoston purku
                  */
                 case "-decompress": {

@@ -17,6 +17,7 @@ import org.junit.Test;
 public class CompressTest {
 
     Compress compress;
+    String dir = "/home/fuksi/Dev/TiraLabra/Huffman/";
 
     public CompressTest() {
     }
@@ -32,7 +33,7 @@ public class CompressTest {
     @Before
     public void setUp() {
         try {
-            compress = new Compress(new File("testfiles/pakkaaTesti.txt"), new File("testfiles/pakkaatesti.txt.hf"));
+            compress = new Compress(new File(dir + "testitiedostot/pakkaaTesti.txt"), new File(dir + "testitiedostot/pakkaatesti.txt.hf"));
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei löytynyt, tarkista nimi");
         }

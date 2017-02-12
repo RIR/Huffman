@@ -21,6 +21,7 @@ public class InputTest {
     Input input;
     Output output;
     char[] testArray;
+    String dir = "/home/fuksi/Dev/TiraLabra/Huffman/";
 
     public InputTest() {
     }
@@ -35,8 +36,8 @@ public class InputTest {
 
     @Before
     public void setUp() throws FileNotFoundException {
-        input = new Input(new File("testfiles/inputTesti.txt"));
-        output = new Output(new File("testfiles/inputTestinOutput.txt"));
+        input = new Input(new File(dir + "testitiedostot/inputTesti.txt"));
+        output = new Output(new File(dir + "testitiedostot/inputTestinOutput.txt"));
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
     }
@@ -48,7 +49,7 @@ public class InputTest {
     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test(expected = FileNotFoundException.class)
     public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException {
-        Input input2 = new Input(new File("testfiles/eiOle.txt"));
+        Input input2 = new Input(new File(dir + "testitiedostot/eiOle.txt"));
 
     }
 
@@ -131,21 +132,19 @@ public class InputTest {
         assertEquals(17, input.getReadBitsTotal());
 
     }
-    
-     // Testaa Huffmanin puun lukua pakatun tiedoston alusta
+
+    // Testaa Huffmanin puun lukua pakatun tiedoston alusta
     @Test
     public void readHuffmanTreeWorks() {
-        
 
     }
-    
-     /* Testaa pakkaamattoman tiedoston koon lukemista (koko tavuina) pakatusta
+
+    /* Testaa pakkaamattoman tiedoston koon lukemista (koko tavuina) pakatusta
     tiedostosta
-    */
+     */
     @Test
     public void readlengthReadsCorrectLength() {
-      
 
     }
-    
+
 }
