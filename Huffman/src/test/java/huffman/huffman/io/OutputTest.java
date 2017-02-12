@@ -18,7 +18,6 @@ public class OutputTest {
 
     Input input;
     Output output;
-    String dir = "/home/fuksi/Dev/TiraLabra/Huffman/";
 
     public OutputTest() {
     }
@@ -33,8 +32,8 @@ public class OutputTest {
 
     @Before
     public void setUp() throws FileNotFoundException {
-        input = new Input(new File(dir + "testitiedostot/inputTesti.txt"));
-        output = new Output(new File(dir + "testitiedostot/outputTesti.txt"));
+        input = new Input(new File("testitiedostot/inputTesti.txt"));
+        output = new Output(new File("testitiedostot/outputTesti.txt"));
 
     }
 
@@ -57,8 +56,8 @@ public class OutputTest {
         }
         output.close();
 
-        input = new Input(new File(dir + "testitiedostot/inputTesti.txt"));
-        Input input2 = new Input(new File(dir + "testitiedostot/outputTesti.txt"));
+        input = new Input(new File("testitiedostot/inputTesti.txt"));
+        Input input2 = new Input(new File("testitiedostot/outputTesti.txt"));
 
         /* Vertaa alkuperäisen luetun tiedoston ja kirjoitetun tiedoston sisältöä
         Ja palauttaa oikein jos ne on samat
@@ -72,7 +71,7 @@ public class OutputTest {
      */
     @Test
     public void closeFillsByte() throws FileNotFoundException {
-        output = new Output(new File(dir + "testitiedostot/filledBits.txt"));
+        output = new Output(new File("testitiedostot/filledBits.txt"));
         output.writeBit(0);
         for (int i = 0; i < 3; i++) {
             output.writeBit(1);
@@ -82,7 +81,7 @@ public class OutputTest {
         // kirjoitetut bitit nyt 0111 0000 (Huom! täytetyt)
         String writtenBits = "01110000";
         StringBuilder readBackBits = new StringBuilder();
-        input = new Input(new File(dir + "testitiedostot/filledBits.txt"));
+        input = new Input(new File("testitiedostot/filledBits.txt"));
 
         for (int i = 0; i < 8; i++) {
             readBackBits.append(input.readBit());
@@ -102,7 +101,7 @@ public class OutputTest {
         output.writeChar(c);
         output.close();
 
-        input = new Input(new File(dir + "testitiedostot/outputTesti.txt"));
+        input = new Input(new File("testitiedostot/outputTesti.txt"));
         c = input.readChar();
         assertEquals(c, 'T');
 
@@ -121,7 +120,7 @@ public class OutputTest {
         assertEquals(32, output.getWrittenBitsTotal());
 
         try {
-            input = new Input(new File(dir + "testitiedostot/outputTesti.txt"));
+            input = new Input(new File("testitiedostot/outputTesti.txt"));
         } catch (FileNotFoundException ex) {
             System.out.println("Tiedostoa ei voitu lukea");
         }

@@ -21,7 +21,6 @@ public class InputTest {
     Input input;
     Output output;
     char[] testArray;
-    String dir = "/home/fuksi/Dev/TiraLabra/Huffman/";
 
     public InputTest() {
     }
@@ -36,8 +35,8 @@ public class InputTest {
 
     @Before
     public void setUp() throws FileNotFoundException {
-        input = new Input(new File(dir + "testitiedostot/inputTesti.txt"));
-        output = new Output(new File(dir + "testitiedostot/inputTestinOutput.txt"));
+        input = new Input(new File("testitiedostot/inputTesti.txt"));
+        output = new Output(new File("testitiedostot/inputTestinOutput.txt"));
         testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
     }
@@ -49,7 +48,7 @@ public class InputTest {
     // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test(expected = FileNotFoundException.class)
     public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException {
-        Input input2 = new Input(new File(dir + "testitiedostot/eiOle.txt"));
+        Input input2 = new Input(new File("testitiedostot/eiOle.txt"));
 
     }
 
