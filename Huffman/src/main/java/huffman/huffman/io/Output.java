@@ -7,6 +7,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -21,7 +23,7 @@ public class Output {
     private int currentByte;
 
     /*Apumuuuttuja joka pitää lukua parametrina saatavista biteistä
-    Kun writebitiia kutsuttu 8 kertaa (eli saatu 8 bittiä) kirjoitetaan tavu
+    Kun writebitia kutsuttu 8 kertaa (eli saatu 8 bittiä) kirjoitetaan tavu
     ulos.
      */
     private int bits;
@@ -90,12 +92,24 @@ public class Output {
      * @param c Kirjoitettava merkki
      */
     public void writeChar(char c) {
-        try {
-            out.write(c);
-        } catch (IOException ex) {
-            System.out.println("I/O exception kirjoittaessa OutputStreamiin. Ongelma metodissa writeChar()");
+        /* Jos yksittäisiä bittejä ei vielä varattuna kirjoitettavaksi
+        voidaan kirjoittaa suoraan merkki
+         */
+        if (bits == 0) {
+            try {
+                out.write(c);
+            } catch (IOException ex) {
+                System.out.println("I/O exception kirjoittaessa OutputStreamiin. Ongelma metodissa writeChar()");
+            }
+            writtenBitsTotal += 8;
+            
+            // Muuten edetään bitti kerrallaan
+        } else {
+            for (int i = 0; i < 8; i++) {
+                int bit = ((c >>> (8 - i - 1)) & 1);
+                writeBit(bit);
+            }
         }
-        writtenBitsTotal += 8;
     }
 
     /**
@@ -107,7 +121,7 @@ public class Output {
     public void writeHuffmanTree(Node node) {
         if (node.isLeaf()) {
             writeBit(1);
-            writeChar(node.getCharacter());
+            writeChar(node.getChar());
             writtenBitsTotal += 9;
             return;
         }

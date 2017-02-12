@@ -193,7 +193,7 @@ public class Input {
      * @return Huffmanin puu, juurisolmun muodossa
      */
     public Node readHuffmanTree() {
-        boolean isLeaf = readBit() == 1;
+        boolean isLeaf = (readBit() == 1);
         if (isLeaf) {
             return new Node(readChar(), -1, null, null);
         } else {

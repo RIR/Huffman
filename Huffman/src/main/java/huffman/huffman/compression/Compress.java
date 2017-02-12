@@ -4,8 +4,6 @@ import huffman.huffman.logic.FrequencyCounter;
 import huffman.huffman.logic.HuffmanTree;
 import huffman.huffman.io.Input;
 import huffman.huffman.io.Output;
-import java.io.BufferedInputStream;
-import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -16,9 +14,6 @@ import java.io.FileNotFoundException;
  * Luokka tiedoston pakkaamiseen.
  */
 public class Compress {
-
-    private BufferedInputStream in;
-    private BufferedOutputStream out;
     private Input input;
     private Output output;
     private char[] chars;

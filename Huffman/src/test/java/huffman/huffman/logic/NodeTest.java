@@ -72,9 +72,9 @@ public class NodeTest {
 
     // Testaa, että oikea merkki palautuu solmusta
     @Test
-    public void getCHaracterReturnsCorrectCharacter() {
-        assertEquals(leafNode.getCharacter(), 'c');
-        assertEquals(internalNode.getCharacter(), '\0');
+    public void getCharReturnsCorrectCharacter() {
+        assertEquals(leafNode.getChar(), 'c');
+        assertEquals(internalNode.getChar(), '\0');
     }
 
     // Testaa, että vasen lapsi palautuu oikein

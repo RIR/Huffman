@@ -66,7 +66,7 @@ public class Node implements Comparable<Node>  {
      * Metodi palauttaa solmun sisältämän merkin
      * @return Solmun sisältämä merkki 
      */
-    public char getCharacter() {
+    public char getChar() {
         return c;
     }
     

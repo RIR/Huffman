@@ -83,7 +83,7 @@ public class HuffmanTree {
             listBinaryCodes(codes, node.getLeft(), s +'0');
             listBinaryCodes(codes, node.getRight(), s +'1');
         } else {
-            codes[node.getCharacter()] = s;
+            codes[node.getChar()] = s;
         }
     }
 

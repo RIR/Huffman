@@ -5,18 +5,20 @@
  */
 package huffman.huffman.compression;
 
+import java.io.File;
+import java.io.FileNotFoundException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 /**
  *
  * @author Raine Rantanen
  */
 public class DecompressTest {
+    Decompress decompress;
     
     public DecompressTest() {
     }
@@ -31,15 +33,17 @@ public class DecompressTest {
     
     @Before
     public void setUp() {
+        try {
+            decompress = new Decompress(new File("kuva.tif.pakattu"), new File("kuva.tif"));
+        } catch (FileNotFoundException ex) {
+            System.out.println("Tiedostoa ei löytynyt. Ongelma luokan Decompress-konstruktorissa.");
+        }
     }
     
     @After
     public void tearDown() {
     }
 
-    // TODO add test methods here.
-    // The methods must be annotated with annotation @Test. For example:
-    //
-    // @Test
-    // public void hello() {}
+     @Test
+     public void hello() {}
 }
