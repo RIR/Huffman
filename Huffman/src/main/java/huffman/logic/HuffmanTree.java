@@ -1,6 +1,4 @@
-package huffman.huffman.logic;
-
-import java.util.PriorityQueue;
+package huffman.logic;
 
 /**
  *
@@ -10,9 +8,9 @@ public class HuffmanTree {
 
     private int[] frequencies;
 
-    // Jono jota käytetään puun muodostukseen
-    private PriorityQueue<Node> queue;
-
+    // Minimikeko jota käytetään puun muodostukseen
+    private MinHeap heap;
+    
     // Taulukko kunkin merkin binäärimuodon tallentamiseen
     private String[] binaryCodes;
 
@@ -27,10 +25,8 @@ public class HuffmanTree {
     public HuffmanTree(int[] frequencies) {
         this.frequencies = frequencies;
 
-        /* !HUOM Priorityqueue varmaan sellainen tietorakenne joka luotava itse, 
-        Tee tämä kun ohjelma muuten toimii
-         */
-        this.queue = new PriorityQueue();
+        this.heap = new MinHeap();
+        
         this.binaryCodes = new String[frequencies.length];
 
         // Luotu Huffmanin puu
@@ -46,12 +42,12 @@ public class HuffmanTree {
      * @return Luodun Huffmanin puun juurisolmu
      */
     private Node create() {
-        /* Alustetaan puu yksittäisillä solmuilla (eli jonossa käytännössä nyt
+        /* Alustetaan puu yksittäisillä solmuilla (eli keossa käytännössä nyt
         nyt yhden solmun kokoinen puu jokaiselle erilaiselle merkille
          */
         for (char i = 0; i < frequencies.length; i++) {
             if (frequencies[i] > 0) {
-                queue.add(new Node(i, frequencies[i], null, null));
+                heap.insert(new Node(i, frequencies[i], null, null));
             }
         }
 
@@ -60,14 +56,14 @@ public class HuffmanTree {
         arvoksi tulee näiden solmujen yhteistulos. Uusi solmu lisätään puuhun ja
         ynnätyt solmut lisätään tälle solmulle lapsisolmuiksi
          */
-        while (queue.size() > 1) {
-            Node left = queue.remove();
-            Node right = queue.remove();
+        while (heap.size() > 1) {
+            Node left = heap.remove();
+            Node right = heap.remove();
             Node parent = new Node('\0', left.getFrequency() + right.getFrequency(), left, right);
 
-            queue.add(parent);
+            heap.insert(parent);
         }
-        return queue.remove();
+        return heap.remove();
     }
 
     /**

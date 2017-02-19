@@ -3,8 +3,9 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package huffman.huffman.compression;
+package huffman.compression;
 
+import huffman.compression.Decompress;
 import java.io.File;
 import java.io.FileNotFoundException;
 import org.junit.After;

@@ -1,4 +1,4 @@
-package huffman.huffman.main;
+package huffman.main;
 
 import org.junit.After;
 import org.junit.AfterClass;

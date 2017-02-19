@@ -1,6 +1,6 @@
-package huffman.huffman.io;
+package huffman.io;
 
-import huffman.huffman.logic.Node;
+import huffman.logic.Node;
 import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;

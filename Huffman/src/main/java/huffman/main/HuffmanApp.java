@@ -1,7 +1,7 @@
-package huffman.huffman.main;
+package huffman.main;
 
-import huffman.huffman.compression.Compress;
-import huffman.huffman.compression.Decompress;
+import huffman.compression.Compress;
+import huffman.compression.Decompress;
 import java.io.File;
 import java.io.FileNotFoundException;
 

@@ -1,5 +1,7 @@
-package huffman.huffman.io;
+package huffman.io;
 
+import huffman.io.Input;
+import huffman.io.Output;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;

@@ -1,6 +1,6 @@
-package huffman.huffman.logic;
+package huffman.logic;
 
-import huffman.huffman.logic.Node;
+import huffman.logic.Node;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;

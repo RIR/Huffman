@@ -1,9 +1,9 @@
-package huffman.huffman.compression;
+package huffman.compression;
 
-import huffman.huffman.logic.FrequencyCounter;
-import huffman.huffman.logic.HuffmanTree;
-import huffman.huffman.io.Input;
-import huffman.huffman.io.Output;
+import huffman.logic.FrequencyCounter;
+import huffman.logic.HuffmanTree;
+import huffman.io.Input;
+import huffman.io.Output;
 import java.io.File;
 import java.io.FileNotFoundException;
 
@@ -14,6 +14,7 @@ import java.io.FileNotFoundException;
  * Luokka tiedoston pakkaamiseen.
  */
 public class Compress {
+
     private Input input;
     private Output output;
     private char[] chars;
@@ -21,7 +22,6 @@ public class Compress {
     private int readBits;
     private int writtenBits;
     private int[] frequencies;
-    private int compression;
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle
@@ -107,6 +107,7 @@ public class Compress {
 
     /**
      * Metodi palauttaa pakkaustehokkuuden prosentteina.
+     *
      * @return Pakkausprosentti
      */
     public int getCompression() {

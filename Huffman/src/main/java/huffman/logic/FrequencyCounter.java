@@ -1,4 +1,4 @@
-package huffman.huffman.logic;
+package huffman.logic;
 
 /**
  *

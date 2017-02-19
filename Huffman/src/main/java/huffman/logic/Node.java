@@ -1,4 +1,4 @@
-package huffman.huffman.logic;
+package huffman.logic;
 
 /**
  *
@@ -9,7 +9,7 @@ package huffman.huffman.logic;
 public class Node implements Comparable<Node>  {
 
     private final char c;
-    private final int frequency;
+    private int frequency;
     private final Node left, right;
 
     /**
@@ -34,6 +34,15 @@ public class Node implements Comparable<Node>  {
     public int getFrequency() {
         return frequency;
     }
+
+    /**
+     * Metodi asettaa solmun merkin toistumisen.
+     * @param frequency Solmun merkin toistuminen
+     */
+    public void setFrequency(int frequency) {
+        this.frequency = frequency;
+    }
+    
     
     
 
@@ -82,5 +91,4 @@ public class Node implements Comparable<Node>  {
     public int compareTo(Node other){
     return this.frequency-other.frequency;
     }
-
 }
