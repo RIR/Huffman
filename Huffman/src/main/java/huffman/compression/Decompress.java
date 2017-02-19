@@ -7,9 +7,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
- *
- * @author Raine Rantanen 
  * Luokka pakatun tiedoston purkamiseen.
+ * @author Raine Rantanen 
+ * 
  */
 public class Decompress {
 

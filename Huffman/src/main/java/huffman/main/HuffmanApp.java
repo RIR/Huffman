@@ -7,15 +7,12 @@ import java.io.FileNotFoundException;
 
 /* HUOM! Jos ohjelman käynnistää Netbeansissa, se ajaa tällä hetkellä ohjelman
 komentoriviargumenteilla: -compress MainTesti.txt pakattuMainTesti.txt
-*/
-
+ */
 /**
- *
- * @author Raine Rantanen
- *
- * Luokka josta ohjelma ajetaan. Ohjelma suorittaa syötteen perusteella ohjelman
- * toiminnot tai palauttaa virheviestin jos käyttäjän syöte ei ohjelman
+ * * Luokka josta ohjelma ajetaan, ohjelma suorittaa syötteen perusteella
+ * ohjelman toiminnot tai palauttaa virheviestin jos käyttäjän syöte ei ohjelman
  * vaatimusten mukainen.
+ * @author Raine Rantanen
  */
 public class HuffmanApp {
 

@@ -8,10 +8,9 @@ import java.io.File;
 import java.io.FileNotFoundException;
 
 /**
- *
+ * Luokka tiedoston pakkaamiseen.
  * @author Raine Rantanen
  *
- * Luokka tiedoston pakkaamiseen.
  */
 public class Compress {
 

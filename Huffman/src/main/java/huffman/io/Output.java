@@ -9,8 +9,8 @@ import java.io.IOException;
 import java.io.OutputStream;
 
 /**
- *
- * @author Raine Rantanen Luokka tiedostoon kirjoittamiseen
+ * Luokka tiedostoon kirjoittamiseen.
+ * @author Raine Rantanen 
  */
 public class Output {
 

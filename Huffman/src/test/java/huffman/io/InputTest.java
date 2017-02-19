@@ -39,7 +39,7 @@ public class InputTest {
     public void setUp() throws FileNotFoundException {
         input = new Input(new File("testitiedostot/inputTesti.txt"));
         output = new Output(new File("testitiedostot/inputTestinOutput.txt"));
-        testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
+        testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i','\n'};
 
     }
 
@@ -58,6 +58,10 @@ public class InputTest {
     @Test
     public void readFileReadsFileAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
         char[] inputArray = input.readFile();
+        for (int i = 0; i < inputArray.length; i++) {
+            System.out.print(inputArray[i]);
+            
+        }
         Assert.assertArrayEquals(inputArray, testArray);
     }
 

@@ -1,5 +1,6 @@
 package huffman.io;
 
+import huffman.logic.CharArrayBuilder;
 import huffman.logic.Node;
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -7,14 +8,12 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 
 /**
+ * Luokka tiedostojen lukemiseen.
  *
  * @author Raine Rantanen
- */
-/**
- * Luokka tiedostojen lukemiseen
- *
  */
 public class Input {
 
@@ -44,7 +43,6 @@ public class Input {
         this.readBitsTotal = 0;
     }
 
-    //HUOM! Palaa tähän. Ongelma  kun luetaan todella isoja tiedostoja (java heap space) 
     /**
      * Metodi joka lukee tiedoston tavuina ja palauttaa merkkitaulukon.
      *
@@ -53,13 +51,12 @@ public class Input {
     public char[] readFile() {
         int read;
 
-        StringBuilder sb = new StringBuilder();
+        CharArrayBuilder chars = new CharArrayBuilder();
 
         try {
             while ((read = in.read()) != -1) {
 
-                // Muunnetaan luettu tavu merkiksi ja lisätään StrinBuilderiin             
-                sb.append((char) read);
+                chars.add((char) read);
 
                 // Kasvatetaan yhteensä luettujen bittien määrää
                 readBitsTotal += 8;
@@ -69,12 +66,7 @@ public class Input {
         }
         close();
 
-        // Viedään Stringbuilderin merkit merkkitaulukkoon
-        char[] chars = new char[sb.length()];
-        sb.getChars(0, sb.length(), chars, 0);
-
-        //palautetaan merkkitaulukko
-        return chars;
+        return chars.getChars();
     }
 
     /**

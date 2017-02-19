@@ -1,10 +1,9 @@
 package huffman.logic;
 
 /**
- *
- * @author Raine Rantanen
  * Luokka Huffman-koodauksen puurakennetta varten.
  * Luokka kuvaa puun solmua.
+ * @author Raine Rantanen
  */
 public class Node implements Comparable<Node>  {
 

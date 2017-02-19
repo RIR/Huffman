@@ -1,8 +1,9 @@
 package huffman.logic;
 
 /**
- *
- * @author Raine Rantanen Luokka Huffman-koodauksen puuta varten.
+ * Luokka Huffman-koodauksen puuta varten.
+ * @author Raine Rantanen 
+ * 
  */
 public class HuffmanTree {
 
