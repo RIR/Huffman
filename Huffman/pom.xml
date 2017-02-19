@@ -38,14 +38,14 @@
                 <version>1.1.8</version>
                 <configuration>
                     <targetClasses>
-                        <param>huffman.huffman.compression.*</param>
-                        <param>huffman.huffman.io.*</param>
-                        <param>huffman.huffman.logic.*</param>
+                        <param>huffman.compression.*</param>
+                        <param>huffman.io.*</param>
+                        <param>huffman.logic.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>huffman.huffman.compression.*</param>
-                        <param>huffman.huffman.io.*</param>
-                        <param>huffman.huffman.logic.*</param>
+                        <param>huffman.compression.*</param>
+                        <param>huffman.io.*</param>
+                        <param>huffman.logic.*</param>
                     </targetTests>
                 </configuration>
             </plugin>
@@ -71,6 +71,12 @@
                     </execution>
                 </executions>
             </plugin>
+            
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <version>2.10.3</version>
+            </plugin> 
             
         </plugins>
     </build>

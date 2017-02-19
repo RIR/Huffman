@@ -12,6 +12,7 @@ komentoriviargumenteilla: -compress MainTesti.txt pakattuMainTesti.txt
  * * Luokka josta ohjelma ajetaan, ohjelma suorittaa syötteen perusteella
  * ohjelman toiminnot tai palauttaa virheviestin jos käyttäjän syöte ei ohjelman
  * vaatimusten mukainen.
+ *
  * @author Raine Rantanen
  */
 public class HuffmanApp {
@@ -74,6 +75,7 @@ public class HuffmanApp {
                 case "-help": {
                     help();
                 }
+                break;
                 // Jos ensimmäinen argumentti on jotain muuta, palautetaan virheviesti
                 default:
                     throw new IllegalArgumentException("Virheellinen komento");

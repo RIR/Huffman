@@ -1,6 +1,5 @@
 package huffman.compression;
 
-import huffman.compression.Compress;
 import java.io.File;
 import java.io.FileNotFoundException;
 import org.junit.After;
@@ -11,10 +10,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author Raine Rantanen
- */
 public class CompressTest {
 
     Compress compress;
@@ -47,11 +42,10 @@ public class CompressTest {
     Kaava = Luetut merkit * bittejä merkissä (8) + 8 bittiä tiedoston lopussa olevalle \n merkille
      */
     @Test
-    public void getReadBitsWorks() {
+    public void getReadBitsReturnsTotalReadBits() {
         assertEquals(3166 * 8 + 12 * 16 + 8, compress.getReadBits());
     }
 
-    // Testaa että on tapahtunut tiivistystä.
     @Test
     public void getWrittenBitsIsLessThanReadBits() {
         assertTrue(compress.getWrittenBits() < compress.getReadBits());

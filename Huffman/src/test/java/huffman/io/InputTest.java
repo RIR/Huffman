@@ -14,10 +14,6 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotEquals;
 
-/**
- *
- * @author Raine Rantanen
- */
 public class InputTest {
 
     Input input;
@@ -49,14 +45,12 @@ public class InputTest {
     public void tearDown() {
     }
 
-    // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
     @Test(expected = FileNotFoundException.class)
     public void constructorGivesExceptionWhenFileNotFOund() throws FileNotFoundException {
         Input input2 = new Input(new File("testitiedostot/eiOle.txt"));
 
     }
-
-    // Testaa tavujen (merkkien) lukua ja merkkijonon muodostusta
+  
     @Test
     public void readFileReadsFileAndReturnsCharArrayCorrectly() throws FileNotFoundException, IOException {
         char[] inputArray = input.readFile();
@@ -67,7 +61,6 @@ public class InputTest {
         Assert.assertArrayEquals(inputArray, testArray);
     }
 
-    // Testaa bittien lukua
     @Test
     public void readBitReadsBitsCorrectly() {
         StringBuilder bits1 = new StringBuilder();
@@ -125,7 +118,6 @@ public class InputTest {
         assertEquals('o', c);
     }
 
-    // Testaa yksittäisten merkkien lukua
     @Test
     public void readCharReadsNextCharAfterSingleBitAlreadyRead() {
         input.readBit();

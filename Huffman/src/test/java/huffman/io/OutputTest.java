@@ -1,7 +1,5 @@
 package huffman.io;
 
-import huffman.io.Input;
-import huffman.io.Output;
 import java.io.File;
 import java.io.FileNotFoundException;
 import org.junit.After;
@@ -115,7 +113,7 @@ public class OutputTest {
     (32). Testaa samalla yksityistä metodia writeLengthToBits() sekä getWrittenBitsTotal()
      */
     @Test
-    public void writeLengthWorks() {
+    public void writeLengthWritesLengthCorrectlyInBits() {
         output.writeLength(100);
         output.close();
 
@@ -136,11 +134,5 @@ public class OutputTest {
             bit = input.readBit();
         }
         assertEquals(bits.toString(), "00000000000000000000000001100100");
-    }
-
-    // Testaa Huffmanin puun kirjoittamista binäärimuodossa pakattavaan tiedostoon.
-    @Test
-    public void writeHuffmanTreeWorks() {
-
     }
 }

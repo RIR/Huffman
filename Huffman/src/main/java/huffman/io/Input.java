@@ -34,7 +34,7 @@ public class Input {
      * tarvittavat tavu- ja bittiseuraajan.
      *
      * @param inputFile Luettava tiedosto
-     * @throws java.io.FileNotFoundException
+     * @throws java.io.FileNotFoundException Virhe jos luettavaa tiedostoa ei löydy
      */
     public Input(File inputFile) throws FileNotFoundException {
         this.currentByte = 0;

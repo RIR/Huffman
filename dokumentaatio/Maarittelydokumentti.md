@@ -10,7 +10,7 @@ Ohjelman toteutus tapahtuu Javalla.
 
 ### Työssä käsiteltävä ongelma sekä sitä varten käytettävät algoritmit ja tietorakenteet
 
-Työn aiheena on tiedon tiivistäminen. Käytettävä algoritmi on Huffmanin koodaus. Ainakin alustavasti ohjelma on tarkoitus toteuttaa komentorivipohjaisena, optiona myös jonkinlainen graafinen käyttöliittymä. 
+Työn aiheena on tiedon tiivistäminen. Käytettävä algoritmi on Huffmanin koodaus. Ainakin alustavasti ohjelma on tarkoitus toteuttaa komentorivipohjaisena.
 
 Algoritmien ja ohjelmoinnin näkökulmasta aihe on itselleni ennestään täysin tuntematon, mutta vaikutti kiinnostavalta joten päädyin siihen. Tietojenkäsittelyn alueella aihe on luonnollisesti hyvin keskeinen, datan määrän kasvaessa jatkuvasti.
 

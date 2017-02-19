@@ -2,6 +2,8 @@ package huffman.logic;
 
 import org.junit.After;
 import org.junit.AfterClass;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -29,10 +31,7 @@ public class HuffmanTreeTest {
 
     @Before
     public void setUp() {
-        chars = new char[256];
-        for (int i = 0; i < chars.length; i++) {
-            chars[i] = (char) i;
-        }
+        chars = new char[]{'a', 'b', 'c', 'd', 'e'};
         frequencies = new FrequencyCounter();
         huffmanTree = new HuffmanTree(frequencies.getFrequencies(chars));
     }
@@ -42,6 +41,28 @@ public class HuffmanTreeTest {
     }
 
     @Test
-    public void hello() {
+    public void getRootGetsNodeWithCorrectFrequency() {
+        Node root = huffmanTree.getRoot();
+        assertEquals(root.getFrequency(), 5);
+        assertEquals(root.getChar(), '\0');
+    }
+
+    @Test
+    public void getRootGetsRootWithCorrectChildren() {
+        char[] chars2 = {'a', 'b', 'c', 'c', 'd'};
+
+        FrequencyCounter frequencies2 = new FrequencyCounter();
+        HuffmanTree huffmanTree2 = new HuffmanTree(frequencies2.getFrequencies(chars2));
+
+        Node root = huffmanTree2.getRoot();
+
+        assertEquals(root.getFrequency(), 5);
+        assertEquals(root.getChar(), '\0');
+
+        assertEquals(root.getLeft().getChar(), 'c');
+        assertEquals(root.getLeft().getFrequency(), 2);
+
+        assertEquals(root.getRight().getChar(), '\0');
+        assertEquals(root.getRight().getFrequency(), 3);
     }
 }

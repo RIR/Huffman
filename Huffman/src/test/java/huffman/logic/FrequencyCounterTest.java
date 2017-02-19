@@ -1,6 +1,5 @@
 package huffman.logic;
 
-import huffman.logic.FrequencyCounter;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -8,10 +7,6 @@ import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
-/**
- *
- * @author Raine Rantanen
- */
 public class FrequencyCounterTest {
     FrequencyCounter frequencyCounter;
     
@@ -35,11 +30,8 @@ public class FrequencyCounterTest {
     public void tearDown() {
     }
 
-    /**
-     * Testaa merkkien toistumistaulukkoa.
-     */
     @Test
-    public void testGetFrequencies() {
+    public void testGetFrequenciesReturnsCorrectFrequencies() {
        char[] array= {'s','a','t','a','a','1','1','!'};
        int[] freqs=frequencyCounter.getFrequencies(array);
        
