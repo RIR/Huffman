@@ -174,7 +174,6 @@ public class Input {
             x <<= 8;
             x |= c;
         }
-
         return x;
     }
 

@@ -1,7 +1,7 @@
 package huffman.io;
 
-import huffman.io.Input;
-import huffman.io.Output;
+import huffman.compression.Compress;
+import huffman.logic.Node;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -21,7 +21,8 @@ import static org.junit.Assert.assertNotEquals;
 public class InputTest {
 
     Input input;
-    Output output;
+    File inputFile;
+    File outputFile;
     char[] testArray;
 
     public InputTest() {
@@ -38,9 +39,10 @@ public class InputTest {
     @Before
     public void setUp() throws FileNotFoundException {
         input = new Input(new File("testitiedostot/inputTesti.txt"));
-        output = new Output(new File("testitiedostot/inputTestinOutput.txt"));
-        testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i','\n'};
+        testArray = new char[]{'T', 'o', 'i', 'm', 'i', 'i', '\n'};
 
+        inputFile = new File("testitiedostot/length.txt");
+        outputFile = new File("testitiedostot/lengthPakattu.hf");
     }
 
     @After
@@ -60,7 +62,7 @@ public class InputTest {
         char[] inputArray = input.readFile();
         for (int i = 0; i < inputArray.length; i++) {
             System.out.print(inputArray[i]);
-            
+
         }
         Assert.assertArrayEquals(inputArray, testArray);
     }
@@ -135,21 +137,15 @@ public class InputTest {
 
         input.readChar();
         assertEquals(17, input.getReadBitsTotal());
-
     }
 
-    // Testaa Huffmanin puun lukua pakatun tiedoston alusta
     @Test
-    public void readHuffmanTreeWorks() {
+    public void readLengthReadsCorrectLength() throws FileNotFoundException {
+        Compress compress = new Compress(inputFile, outputFile);
+        Input outIn = new Input(new File("testitiedostot/lengthPakattu.hf"));
+        Node Root = outIn.readHuffmanTree();
 
+        assertEquals(inputFile.length(), outIn.readLength());
+        outIn.close();
     }
-
-    /* Testaa pakkaamattoman tiedoston koon lukemista (koko tavuina) pakatusta
-    tiedostosta
-     */
-    @Test
-    public void readlengthReadsCorrectLength() {
-
-    }
-
 }
