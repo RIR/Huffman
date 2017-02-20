@@ -23,6 +23,9 @@ public class HuffmanApp {
      * @param args Käyttäjän komennot.
      */
     public static void main(String[] args) {
+        long timeAtStart = System.currentTimeMillis();
+        long timeAtEnd;
+       
 
         // Jos käyttäjä ei anna syötettä
         if (args.length == 0) {
@@ -41,9 +44,12 @@ public class HuffmanApp {
                         Compress compress = new Compress(new File(args[1]), new File(args[2] + ".hf"));
 
                         System.out.println("Antamasi tiedosto " + args[1] + " on pakattu. " + "Tiedosto löytyy nimellä " + args[2] + ".hf");
-                        System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä. "
-                                + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä\n"
-                                + "Pakkausteho " + compress.getCompression() + " %");
+                        System.out.println("Alkuperäisen tiedoston koko: " + compress.getReadBits() + " bittiä (" + compress.getReadKiloBytes() + " KB).\n"
+                                + "Pakatun tiedoston koko " + compress.getWrittenBits() + " bittiä (" + compress.getWrittenKiloBytes() + " KB).\n"
+                                + "Pakkausteho " + compress.getCompression() + " % ");
+                        
+                        timeAtEnd = System.currentTimeMillis();
+                        System.out.println("Aikaa tiedoston pakkaamiseen kului " + (timeAtEnd - timeAtStart) + "ms");
 
                     } catch (FileNotFoundException ex) {
                         System.out.println("Tiedostoa ei löytynyt! Anna oikea nimi pakattavalle tiedostolle.");
@@ -63,8 +69,11 @@ public class HuffmanApp {
                         Decompress decompress = new Decompress(new File(args[1]), new File(args[2]));
 
                         System.out.println("Antamasi tiedosto" + args[1] + " on purettu. " + "Tiedosto löytyy antamallasi nimellä " + args[2]);
-                        System.out.println("Alkuperäisen tiedoston koko: " + decompress.getReadBits() + " bittiä. "
-                                + "Puretun tiedoston koko " + decompress.getWrittenBits() + " bittiä");
+                        System.out.println("Alkuperäisen tiedoston koko: " + decompress.getReadBits() + " bittiä. (" + decompress.getReadKiloBytes()  + " KB).\n"
+                                + "Puretun tiedoston koko " + decompress.getWrittenBits() + " bittiä (" + decompress.getWrittenKiloBytes()  + " KB).");
+                        
+                        timeAtEnd = System.currentTimeMillis();
+                        System.out.println("Aikaa tiedoston purkamiseen kului " + (timeAtEnd - timeAtStart) + "ms");
 
                     } catch (FileNotFoundException ex) {
                         System.out.println("Tiedostoa ei löytynyt. Anna oikea nimi purettavalle tiedostolle.");

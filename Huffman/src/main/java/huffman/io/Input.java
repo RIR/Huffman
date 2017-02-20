@@ -8,7 +8,6 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
-import java.nio.charset.StandardCharsets;
 
 /**
  * Luokka tiedostojen lukemiseen.
@@ -27,7 +26,7 @@ public class Input {
     private int bitsRemaining;
 
     // Laskurimuuttuja yhteensä luetuille biteille 
-    private int readBitsTotal;
+    private long readBitsTotal;
 
     /**
      * Luokan konstruktori, joka alustaa bittivirran lukemista varten
@@ -58,7 +57,6 @@ public class Input {
 
                 chars.add((char) read);
 
-                // Kasvatetaan yhteensä luettujen bittien määrää
                 readBitsTotal += 8;
             }
         } catch (IOException ex) {
@@ -196,7 +194,7 @@ public class Input {
      *
      * @return Yhteensä luetut bitit
      */
-    public int getReadBitsTotal() {
+    public long getReadBitsTotal() {
         return readBitsTotal;
     }
 

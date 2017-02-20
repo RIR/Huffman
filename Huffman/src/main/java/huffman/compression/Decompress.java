@@ -5,18 +5,21 @@ import huffman.io.Output;
 import huffman.logic.Node;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 
 /**
  * Luokka pakatun tiedoston purkamiseen.
- * @author Raine Rantanen 
- * 
+ *
+ * @author Raine Rantanen
+ *
  */
 public class Decompress {
 
     private Input input;
     private Output output;
-    private int readBits;
-    private int writtenBits;
+    private long readBits;
+    private long writtenBits;
+    private DecimalFormat df = new DecimalFormat("#.##");
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet purettavalle
@@ -62,18 +65,38 @@ public class Decompress {
 
     /**
      * Metodi palauttaa luettujen bittien määrän.
+     *
      * @return Luetut bitit
      */
-    public int getReadBits() {
+    public long getReadBits() {
         return readBits;
     }
 
     /**
      * Metodi palauttaa kirjoitettujen bittien määrän.
+     *
      * @return Kirjoitetut bitit
      */
-    public int getWrittenBits() {
+    public long getWrittenBits() {
         return writtenBits;
+    }
+
+     /**
+     * Metodi palauttaa luettujen bittien määrän kilotavuina
+     *
+     * @return Luetut kilotavut
+     */
+    public String getReadKiloBytes() {
+        return df.format((double) readBits / 8192);
+    }
+
+    /**
+     * Metodi palauttaa kirjoitettujen bittien määrän kilotavuina
+     *
+     * @return Kirjoitetut kilotavut
+     */
+    public String getWrittenKiloBytes() {
+        return df.format((double) writtenBits / 8192);
     }
 
 }

@@ -6,9 +6,11 @@ import huffman.io.Input;
 import huffman.io.Output;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 
 /**
  * Luokka tiedoston pakkaamiseen.
+ *
  * @author Raine Rantanen
  *
  */
@@ -18,9 +20,10 @@ public class Compress {
     private Output output;
     private char[] chars;
     private FrequencyCounter frequencyCounter = new FrequencyCounter();
-    private int readBits;
-    private int writtenBits;
+    private long readBits;
+    private long writtenBits;
     private int[] frequencies;
+    private DecimalFormat df = new DecimalFormat("#.##");
 
     /**
      * Luokan konstruktori joka saa parametreina tiedostojen nimet pakattavalle
@@ -91,7 +94,7 @@ public class Compress {
      *
      * @return Luetut bitit
      */
-    public int getReadBits() {
+    public long getReadBits() {
         return readBits;
     }
 
@@ -100,7 +103,7 @@ public class Compress {
      *
      * @return Kirjoitetut bitit
      */
-    public int getWrittenBits() {
+    public long getWrittenBits() {
         return writtenBits;
     }
 
@@ -110,6 +113,24 @@ public class Compress {
      * @return Pakkausprosentti
      */
     public int getCompression() {
-        return 100 * (readBits - writtenBits) / readBits;
+        return (int) (100 * (readBits - writtenBits) / readBits);
+    }
+
+    /**
+     * Metodi palauttaa luettujen bittien määrän kilotavuina
+     *
+     * @return Luetut kilotavut
+     */
+    public String getReadKiloBytes() {
+        return df.format((double) readBits / 8192);
+    }
+
+    /**
+     * Metodi palauttaa kirjoitettujen bittien määrän kilotavuina
+     *
+     * @return Kirjoitetut kilotavut
+     */
+    public String getWrittenKiloBytes() {
+        return df.format((double) writtenBits / 8192);
     }
 }

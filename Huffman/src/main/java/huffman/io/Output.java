@@ -27,7 +27,7 @@ public class Output {
     private int bitsWritten;
 
     //Pitää lukua yhteensä kirjoitetuista biteistä
-    private int writtenBitsTotal;
+    private long writtenBitsTotal;
 
     /**
      * Luokan konstruktori
@@ -162,7 +162,7 @@ public class Output {
      *
      * @return Yhteensä kirjoitetut bitit
      */
-    public int getWrittenBitsTotal() {
+    public long getWrittenBitsTotal() {
         return writtenBitsTotal;
     }
 
