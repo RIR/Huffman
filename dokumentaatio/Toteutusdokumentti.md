@@ -22,6 +22,9 @@ Ohjelma saa syötteenä polut pakattavaan ja purettavaan tiedostoon. Ohjelma luk
 
 ### Aika- ja tilavaativuudet
 
+### Puutteet ja parannusehdotukset
+
+
 
 
 Ohjelman lähdekoodin [API-kuvaus] (https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)

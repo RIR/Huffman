@@ -6,6 +6,10 @@ Ohjelman yksikkötestaus on toteutettu Junit:lla. Testejä on kattavasti kaikill
 
 ### Nopeuden testaus
 
+Pakkaaminen vs purkaminen
+Erilaiset tiedostomuodot
+Keskimääräinen pakkausteho
+
 
 Testauskattavuutta kuvaava [pit-raportti] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/pit-raportti/index.html)
 
