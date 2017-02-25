@@ -12,7 +12,7 @@ Ohjelman toiminta perustuu Huffmanin koodaukseen, jossa pakattavasta tiedostosta
 Itse Huffmanin puu, luettujen tavujen määrä sekä luettuja tavuja vastaavat binäärikoodit kirjoitetaan pakattuna uuteen tiedostoon. Ohjelma osaa sitten myöhemmin purkaa tämän pakatun tiedoston niin, että siitä luetaan ensin binäärinä kirjoitettu puu, pakkaamattoman tiedoston pituus ja näitä apuna käyttäen muunnetaan binäärit takaisin pakkaamattomaan muotoon. 
 
 
-### Huffmanin koodaus
+### Ohjelman käyttämät algoritmit ja tietorakenteet
 
 
 
@@ -26,7 +26,7 @@ Ohjelma saa syötteenä polut pakattavaan ja purettavaan tiedostoon. Ohjelma luk
 Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon aiheuttaa OutOfMemoryError-virhetilanteen. Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja itse ohjelman toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
 
 
-Ohjelman lähdekoodin [API-kuvaus] (https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)
+Ohjelman lähdekoodin [API-kuvaus] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)
 
 ### Lähteet
 

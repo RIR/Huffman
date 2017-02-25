@@ -26,7 +26,7 @@ Ohjelma saa syötteenä polut pakattavaan ja purettavaan tiedostoon. Ohjelma luk
 Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon aiheuttaa OutOfMemoryError-virhetilanteen. Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja itse ohjelman toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
 
 
-Ohjelman lähdekoodin [API-kuvaus] (https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)
+Ohjelman lähdekoodin [API-kuvaus] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)
 
 ### Lähteet
 
