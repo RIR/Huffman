@@ -19,19 +19,19 @@ Ohjelman toiminnan voi jakaa selkeästi kahteen eri kokonaisuuteen: Tiedon pakka
 
 ***Tiedoston pakkaaminen***
 
-Pakattaessa tiedostoa luetaan sen data käyttäen Javan BufferedInputStreamia joka käsittelee tietoa tavu kerrallaan. Tiedoston lukutoiminnot sijaitsevat Input-luokassa. Luettu tavu välitetään CharArrayBuilder-luokalle joka tallentaa sen merkkitaulukkoon. Näin tehdään kunnes kaikki tavut on luettu ja tallennettu. CharArrayBuilder palauttaa merkkitaulukon Inputille, joka taasen välittää sen Compress-luokalle.
+Pakattaessa tiedostoa luetaan sen data käyttäen Javan ```BufferedInputStream```ia joka käsittelee tietoa tavu kerrallaan. Tiedoston lukutoiminnot sijaitsevat ```Input```-luokassa. Luettu tavu välitetään ```CharArrayBuilder```-luokalle joka tallentaa sen merkkitaulukkoon. Näin tehdään kunnes kaikki tavut on luettu ja tallennettu. ```CharArrayBuilder``` palauttaa merkkitaulukon ```Input```ille, joka taasen välittää sen ```Compress```-luokalle.
 
-Seuraavaksi Compress-luokka kutsuu FrequencyCounter-luokkaa laskemaan yksittäisten merkkien toistumiskerrat välittämällä sille parametrina aiemmin luodun merkkitaulukon. 
+Seuraavaksi ```Compress```-luokka kutsuu ```FrequencyCounter```-luokkaa laskemaan yksittäisten merkkien toistumiskerrat välittämällä sille parametrina aiemmin luodun merkkitaulukon. 
 
-Kun Merkit ja niiden toistumiset ovat tallessa, luodaan Huffmanin puu. Compress-luokka välittää parametrina toistumistaulukon HuffmanTree-luokalle joka käyttäen apuna MinHeap-luokkaa (minimikeko) järjestää puulle solmut niin, että ne sijoittuvat toistumisen mukaan oikein. Lisäksi luokka rakentaa merkkijonotaulukon, jonka avulla merkkiä vastaavat bitit myöhemmin kirjoitetaan pakattuun tiedostoon. 
+Kun Merkit ja niiden toistumiset ovat tallessa, luodaan Huffmanin puu. ```Compress```-luokka välittää parametrina toistumistaulukon ```HuffmanTree```-luokalle joka käyttäen apuna ```MinHeap```-luokkaa (minimikeko) järjestää puulle solmut niin, että ne sijoittuvat toistumisen mukaan oikein. Lisäksi luokka rakentaa merkkijonotaulukon, jonka avulla merkkiä vastaavat bitit myöhemmin kirjoitetaan pakattuun tiedostoon. 
 
-Puun solmujen järjestyslogiikka toimii niin, että aluksi minimikeko alustetaan yksittäisillä solmuilla, joille annetaan merkki, sen toistumisluku ja lapsiksi annetaan null-arvot. Solmuja yhdistellään niin kauan kunnes keon koko on yksi (1) seuraavalla tavalla: puusta poistetaan ensin kaksi (2) solmua toistumisarvon mukaisessa pienuusjärjestyksessä, luodaan uusi solmu jolle annetaan merkkiarvoksi null-arvo, toistumisarvoksi kahden poistetun solmun toistumisarvojen yhteenlaskettu arvo ja lapsisolmuiksi poistetut solmut. Solmu lisätään takaisin kekoon. Lopuksi palautetaan tämä puu Node-oliona eli viittaus puun juurisolmuun.
+Puun solmujen järjestyslogiikka toimii niin, että aluksi minimikeko alustetaan yksittäisillä solmuilla, joille annetaan merkki, sen toistumisluku ja lapsiksi annetaan null-arvot. Solmuja yhdistellään niin kauan kunnes keon koko on yksi (1) seuraavalla tavalla: puusta poistetaan ensin kaksi (2) solmua toistumisarvon mukaisessa pienuusjärjestyksessä, luodaan uusi solmu jolle annetaan merkkiarvoksi ```null```-arvo, toistumisarvoksi kahden poistetun solmun toistumisarvojen yhteenlaskettu arvo ja lapsisolmuiksi poistetut solmut. Solmu lisätään takaisin kekoon. Lopuksi palautetaan tämä puu ```Node```-oliona eli viittaus puun juurisolmuun.
 
-Luettuja merkkejä vastaavat binäärikoodit sisältävä merkkijonotaulukko luodaan niin, että luotua Huffmanin puuta käydään läpi rekursion avulla juuresta alkaen ja tyhjään merkkijonoon lisätään aina merkki 0 jos liikutaan vasempaan lapseen ja 1 jos liikutaan oikeaan lapseen. Kun sitteh kohdalle osuu lehtisolmu, eli sellainen solmu johon on tallennettu merkki, merkataan binäärikooditaulukkoon tämän merkin kohdalle liikutut askeleet eli esim. ```codes[k]= "001"``` .
+Luettuja merkkejä vastaavat binäärikoodit sisältävä merkkijonotaulukko ```String[] binaryCodes``` luodaan niin, että luotua Huffmanin puuta käydään läpi rekursion avulla juuresta alkaen ja tyhjään merkkijonoon lisätään aina merkki ```0``` jos liikutaan vasempaan lapseen ja ```1``` jos liikutaan oikeaan lapseen. Kun sitten kohdalle osuu lehtisolmu, eli sellainen solmu johon on tallennettu merkki, merkataan binäärikooditaulukkoon tämän merkin kohdalle liikutut askeleet eli esim. ```codes[k]= "001"``` .
 
-Huffmanin puun ja binäärikooditaulukon rakentamisen jälkeen Compress-luokka kutsuu Output-luokan WriteHuffmanTree-metodia joka kirjoittaa Huffmanin puun binäärinä tiedostoon, jotta pakattu tiedosto saadaan myöhemmin purettua. Puun kirjoitus binäärinä onnistuu kulkemalla puuta rekursiolla juurisolmusta lapsisolmuihin ja aina edetessä seuraavaan solmuun kirjoitetaan merkki 0, kunnes tullaan lehtisolmun kohdalle, jolloin kirjoitetaan merkki 1 ja solmussa oleva merkki.
+Huffmanin puun ja binäärikooditaulukon rakentamisen jälkeen ```Compress```-luokka kutsuu ```Output```-luokan ```writeHuffmanTree```-metodia joka kirjoittaa Huffmanin puun binäärinä tiedostoon, jotta pakattu tiedosto saadaan myöhemmin purettua. Puun kirjoitus binäärinä onnistuu kulkemalla puuta rekursiolla juurisolmusta lapsisolmuihin ja aina edetessä seuraavaan solmuun kirjoitetaan merkki ```0```, kunnes tullaan lehtisolmun kohdalle, jolloin kirjoitetaan merkki ```1``` ja solmussa oleva merkki ```Node.getChar()```.
 
-Seuraavaksi kirjoitetaan muistiin luetun tiedoston pituus tavuina. Tämä on tarpeellista, koska muuten voi syntyä virhetilanteita kun pakattua tiedostoa luetaan ja kirjoitettujen bittien määrä ei olekaan kahdeksalla jaollinen eli osu tasatavuihin. Pituus kirjoitetaan int-muuttujatyyppinä joka on 32-bittinen.
+Seuraavaksi kirjoitetaan muistiin luetun tiedoston pituus tavuina. Tämä on tarpeellista, koska muuten voi syntyä virhetilanteita kun pakattua tiedostoa luetaan ja kirjoitettujen bittien määrä ei olekaan kahdeksalla jaollinen eli osu tasatavuihin. Pituus kirjoitetaan ```int```-muuttujatyyppinä joka on 32-bittinen.
 
 Lopuksi, käyttäen apuna aiemmin luotua merkkitaulukkoa ja binäärikooditaulukkoa kirjoitetaan pakattavan tiedoston merkit pakattuun tiedostoon niin, että luettava merkki jota normaalisti esittää yksi tavu eli 8 bittiä, esitetään binäärikooditaulukossa olevalla merkkiä vastaavalla bittijonolla, joka siis on yleensä lyhyempi kuin kahdeksan bittiä (varsinkin usein esiintyvillä merkeillä). Tässä vaiheessa tiedoston merkit luetaan siis toiseen kertaan, tosin merkkitaulukosta eikä uudestaan tiedostosta. 
 
@@ -41,11 +41,12 @@ Huffmanin puu = (Puun solmut-juurisolmu-lehtisolmut(erilaiset merkit) * 0-bitti)
 
 Luettujen merkkien määrä int-muuttujana = 32 bittiä
 
-Luetut merkit * jokaista merkkiä vastaava uusi Huffmanin koodauksen mukainen binääriesitys
-
-
+Luetut merkit * kutakin merkkiä vastaava Huffmanin koodauksen mukainen binääriesitys
 
 ***Pakatun tiedoston purkaminen***
+
+Purettaessa pakattua tiedostoa Decompress-luokka kutsuu ensin Input-luokan metodia readHuffmanTree
+
 
 ### Ohjelman käsittelemä syöte
 Ohjelma saa syötteenä polut pakattavaan ja purettavaan tiedostoon. Ohjelma lukee pakattavan tiedoston tavuvirran (BufferedInputStream) kautta tavu kerrallaan. Kirjoitus pakattavaan tiedostoon tapahtuu samoin tavuvirran kautta tavu kerrallaan. Näin, koska Javan tiedostoihin luku/kirjoittaminen tapahtuu tavuvirtojen kautta ja yksittäisiä bittejä ei voi suoraan siirtää. Tiedoston lukemisen ja kirjoittamisen välillä ohjelma käsittelee luettua tietoa kuitenkin myös bitti kerrallaan, jotta pakkaaminen on mahdollista. 
@@ -54,7 +55,7 @@ Ohjelma saa syötteenä polut pakattavaan ja purettavaan tiedostoon. Ohjelma luk
 ### Aika- ja tilavaativuudet
 
 ### Puutteet ja parannusehdotukset
-Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon aiheuttaa OutOfMemoryError-virhetilanteen. Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja itse ohjelman toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
+Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon saattaa aiheuttaa OutOfMemoryError-virhetilanteen (Ainakin omassa käytössäni olevalla koneella). Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja ohjelman varsinaiseen toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
 
 
 Ohjelman lähdekoodin [API-kuvaus] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)
