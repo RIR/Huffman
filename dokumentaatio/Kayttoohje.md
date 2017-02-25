@@ -2,7 +2,7 @@
 
 Ohjelman jar-tiedosto sijaitsee projektin juurikansiossa ja ohjelmaa voi käyttää sieltä käsin. Ohjelman käyttö toimii seuraavasti:
 
-Anna juurikansiossa komento muodossa java -jar Huffman-1.0-SNAPSHOT.jar <-toiminto> <lähdetiedoston nimi> <kohdetiedoston nimi>
+Anna juurikansiossa komento muodossa ```java -jar Huffman-1.0-SNAPSHOT.jar <-toiminto> <lähdetiedoston nimi> <kohdetiedoston nimi>```
 
 Esimerkkikomento: 
 
