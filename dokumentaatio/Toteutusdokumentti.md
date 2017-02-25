@@ -1,7 +1,6 @@
 # Toteutusdokumentti
-## Tiedon tiivistys käyttäen Huffmanin koodausta
+## Tiedon tiivistäminen käyttäen Huffmanin koodausta
  
-
 ### Ohjelman toiminta ja rakenne yleisesti
 
 Ohjelma pakkaa ja purkaa tiedostoja käyttäen Huffmanin koodausta. Ohjelma toimii komentoriviltä.
@@ -33,7 +32,7 @@ Seuraavaksi kirjoitetaan muistiin luetun tiedoston pituus tavuina. Tämä on tar
 
 Lopuksi, käyttäen apuna aiemmin luotua merkkitaulukkoa ja binäärikooditaulukkoa kirjoitetaan pakattavan tiedoston merkit pakattuun tiedostoon niin, että luettava merkki jota normaalisti esittää yksi tavu eli 8 bittiä, esitetään binäärikooditaulukossa olevalla merkkiä vastaavalla bittijonolla, joka siis on yleensä lyhyempi kuin kahdeksan bittiä (varsinkin usein esiintyvillä merkeillä). Tässä vaiheessa tiedoston merkit luetaan siis toiseen kertaan, tosin merkkitaulukosta eikä uudestaan tiedostosta. 
 
-Luettujen merkkien sijaan pakattuun tiedostoon kirjoitettiin siis:
+Pakattuun tiedostoon kirjoitettiin siis:
 
 n=puun solmut, r=juurisolmu, l=lehtisolmut, eli kaikki erilaiset merkit
 
@@ -61,22 +60,32 @@ Ohjelma saa syötteenä polut pakattavaan ja purettavaan tiedostoon. Ohjelma luk
 
 ### Aika- ja tilavaativuudet
 
-Tavoiteaikavaativuus algoritmille oli *O(n log n)*, jossa n on erilaisten merkkien määrä. Tilavaativuus tulisi olla lineaarinen eli *O(n)* sillä algoritmin muodostamassa puussa voi olla korkeintaan 2n-1 solmua.
+Tavoiteaikavaativuus algoritmille oli *O(n log n)*, jossa n on erilaisten merkkien määrä. Tilavaativuus tulisi olla lineaarinen eli *O(n)* sillä algoritmin muodostamassa puussa voi olla korkeintaan *2n-1* solmua.
 
 #### Tiedoston pakkaamisen aika- ja tilavaativuus
 
-Pakkaamisen aikavaativuus on merkkien luku *O(n)* + toistumisten merkkaaminen *O(n)* + Huffmanin puun luominen *O(n log n)* (tähän sisältyy minimikekotoiminnot) + kooditaulukon luominen *O(n)* + tietojen kirjoitus *O(n)* = *O(n log n)*
+Pakkaamisen aikavaativuus on merkkien luku *O(n)* + toistumisten merkkaaminen *O(n)* + Huffmanin puun luominen *O(k log k)* (tähän sisältyy minimikekotoiminnot) + kooditaulukon luominen *O(k)* + tietojen kirjoitus *O(n)* = *O(k log k)* itse Huffmanin koodaukselle ja joko *O(n)* tai *O(k log k)* koko pakkausoperaatiolle riippuen luettavien merkkien määrästä.
 
-Tilavaativuus algoritmille on luokkaa *O(n)* kuten määrittelyssä todettu (tilaa tarvitaan lineaarisesti merkkitaulukkoon, toistumistaulukkoon jonka koko aina sama eli *O(1)* ja puuhun jonka koko korkeintaan *2n-1* solmua) ja pakattuun tiedostoon kirjoitetaan korkeintaan *((2n-1)-1-n + n * 9) + 32 + (n * keskimääräinen koodin pituus)* bittiä.
+Tilavaativuus algoritmille on luokkaa *O(n)* kuten määrittelyssä todettu (tilaa tarvitaan merkkitaulukkoon *O(n)*, toistumistaulukkoon jonka koko aina sama eli *O(1)* ja puuhun jonka koko korkeintaan *2k-1* solmua ja pakattuun tiedostoon kirjoitetaan korkeintaan *((2k-1)-1-k + k * 9) + 32 + (n * keskimääräinen koodin pituus)* bittiä.
+
+n = yhteensä luettujen merkkien määrä
+k = erilaisten merkkien määrä
 
 #### Pakatun tiedoston purkamisen aika- ja tilavaativuus
 
+Purkamisen aikavaativuus on puun luku *O(k)* + kirjoitettavien merkkien määrän luku *O(1)* + merkkien kirjoittaminen *O(n)* = *O(n)*
 
+Purkamisen tilavaativuus on *O(k)* + *O(1)* (tilaa tarvitaan luetulle puulle ja kirjoitettavien merkkien määrälle) = *O(k)*.
+Purettuun tiedostoon kirjoitetaan luonnollisesti alkuperäiset n merkkiä.
 
+n = Pakkamisen yhteydessä luettujen merkkien määrä yhteensä 
+k = erilaisten merkkien määrä
 
 ### Puutteet ja parannusehdotukset
-Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon saattaa aiheuttaa OutOfMemoryError-virhetilanteen (Ainakin omassa käytössäni olevalla koneella). Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja ohjelman varsinaiseen toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
 
+Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon saattaa aiheuttaa ```OutOfMemoryError```-virhetilanteen (Ainakin omassa käytössäni olevalla koneella). Yli 70MB kokoinen kuva pakkaantui ja purkaantui vielä hyvin. Yli 700MB kokoinen video aiheutti virheen. Ohjelmaa kehittäessä ajattelin tämän johtuvan merkkitaulukkoon tallentamisesta ja muokkasin ohjelmaa niin, että tiedot luettiin kahteen kertaan suoraan tiedostosta tallentamatta merkkitaulukkoon mutta tämä ei auttanut ja hidasti ohjelman suoritusta ja palautin ohjelman vanhaan muotoonsa.
+
+Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja ohjelman varsinaiseen toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
 
 Ohjelman lähdekoodin [API-kuvaus] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/JavaDoc/apidocs/overview-summary.html)
 
@@ -91,8 +100,3 @@ Ohjelman lähdekoodin [API-kuvaus] (https://htmlpreview.github.io/?https://githu
 *http://planetmath.org/huffmansalgorithm*
 
 *https://www.youtube.com/watch?v=dM6us854Jk0*
-
-
-
-
-... Vaiheessa ...
