@@ -89,14 +89,13 @@ public class InputTest {
         assertEquals(bits1.toString(), bits2);
     }
 
-    // Testaa luettujen bittien laskuria lukemalla tavuja
+    
     @Test
     public void getReadBitsTotalReturnsCorrectWhenReadChars() {
         input.readFile();
         assertEquals(56, input.getReadBitsTotal());
     }
 
-    // Testaa luettujen bittien laskuria lukemalla yksittäisiä bittejä
     @Test
     public void getReadBitsTotalReturnsCorrectWhenReadBits() {
         input.readBit();
@@ -108,7 +107,6 @@ public class InputTest {
         }
     }
 
-    // Testaa yksittäisten merkkien lukua
     @Test
     public void readCharReadsNextChar() {
         char c = input.readChar();

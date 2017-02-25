@@ -14,7 +14,6 @@ import java.io.OutputStream;
  */
 public class Output {
 
-    // tavuvirta johon kirjoitetaan
     private OutputStream out;
 
     // Apumuuttuja bittien kirjoitusta varten. Kuvaa käsittelyssä olevaa tavua.
@@ -26,7 +25,6 @@ public class Output {
      */
     private int bitsWritten;
 
-    //Pitää lukua yhteensä kirjoitetuista biteistä
     private long writtenBitsTotal;
 
     /**
@@ -77,7 +75,7 @@ public class Output {
         writtenBitsTotal += 8;
     }
 
-    // Apumetodi joka täyttää viimeisen kirjoitettavan tavun nollilla jos siihen ei muuten riitä bittejä
+    // Apumetodi joka täyttää viimeisen kirjoitettavan tavun nollilla jos se jää muuten vajaaksi
     private void fillByte() {
         while (bitsWritten > 0 && bitsWritten <= 8) {
             writeBit(0);

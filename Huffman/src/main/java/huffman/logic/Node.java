@@ -1,7 +1,7 @@
 package huffman.logic;
 
 /**
- * Luokka Huffman-koodauksen puurakennetta varten.
+ * Luokka Huffman-koodauksen puurakennetta varten,
  * Luokka kuvaa puun solmua.
  * @author Raine Rantanen
  */

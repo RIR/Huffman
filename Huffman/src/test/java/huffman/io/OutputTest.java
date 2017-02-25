@@ -10,10 +10,6 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-/**
- *
- * @author Raine Rantanen
- */
 public class OutputTest {
 
     Input input;
@@ -41,9 +37,6 @@ public class OutputTest {
     public void tearDown() {
     }
 
-    /* Testaa että bitit kirjoitetaan tiedostoon Tässä samalla testaantuu
-    writeByte-metodi joka on yksityinen apumetodi
-     */
     @Test
     public void writeBitWritesBitsCorrectly() throws FileNotFoundException {
         int i = 0;
@@ -58,10 +51,7 @@ public class OutputTest {
 
         input = new Input(new File("testitiedostot/inputTesti.txt"));
         Input input2 = new Input(new File("testitiedostot/outputTesti.txt"));
-
-        /* Vertaa alkuperäisen luetun tiedoston ja kirjoitetun tiedoston sisältöä
-        Ja palauttaa oikein jos ne on samat
-         */
+      
         assertArrayEquals(input.readFile(), input2.readFile());
     }
 
@@ -90,9 +80,6 @@ public class OutputTest {
         assertEquals(readBackBits.toString(), writtenBits);
     }
 
-    /*Testaa, yksittäisen merkin kirjoitusta tavuvirtaan. 
-    Testataan samalla getWrittenBitsTotal()
-     */
     @Test
     public void writeCharWritesCharOut() throws FileNotFoundException {
         char c = input.readChar();

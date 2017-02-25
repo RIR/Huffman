@@ -1,10 +1,8 @@
 package huffman.logic;
 
 /**
- * Luokka joka tarjoaa Stringbuilderista tarvittavia toimintoja vastaava
- * toiminnot, luokan ainoa tehtävä on kerätä Input-luokassa luettavasta
+ * Luokka jonka tehtävä on kerätä Input-luokassa luettavasta
  * tiedostosta tavut talteen ja muodostaa näistä merkkijono palautettavaksi.
- *
  * @author Raine Rantanen
  */
 public class CharArrayBuilder {

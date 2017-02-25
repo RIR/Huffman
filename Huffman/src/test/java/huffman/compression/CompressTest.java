@@ -49,6 +49,11 @@ public class CompressTest {
     @Test
     public void getWrittenBitsIsLessThanReadBits() {
         assertTrue(compress.getWrittenBits() < compress.getReadBits());
+    }
+
+    @Test
+    public void getCompressionShowsCompression() {
         assertTrue(compress.getCompression() > 0);
     }
+
 }

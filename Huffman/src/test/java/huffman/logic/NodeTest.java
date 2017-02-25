@@ -45,10 +45,6 @@ public class NodeTest {
         assertFalse(internalNode.isLeaf());
     }
 
-    /**
-     * Testaa solmujen keskinäistä vertailua joka perustuu merkkien
-     * esiintymiskertoihin
-     */
     @Test
     public void compareToReturnsCorrectly() {
         int expResult = 3;

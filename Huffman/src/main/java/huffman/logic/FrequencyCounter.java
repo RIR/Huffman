@@ -4,7 +4,6 @@ package huffman.logic;
  * Luokka Luettavan tiedoston merkkien lukumäärien tallentamista varten.
  *
  * @author Raine Rantanen
- *
  */
 public class FrequencyCounter {
 

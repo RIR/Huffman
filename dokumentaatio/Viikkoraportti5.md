@@ -10,4 +10,4 @@ JavaDoc on nyt myös generoitu.
 
 Eli seuraavaksi: Toteutus- ja testausdokumentti valmiiksi ja ohjelman toiminnan tarkistelu vielä yleisesti. Jos nämä eivät ole maanantaiaamulla klo 10 vielä valmiina niin ainakin hyvin pian sen jälkeen. 
 
-Tällä viikolla työtunteja tuli n. 12
+Tällä viikolla työtunteja tuli n. 12-14

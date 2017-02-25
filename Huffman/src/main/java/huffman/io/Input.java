@@ -33,7 +33,8 @@ public class Input {
      * tarvittavat tavu- ja bittiseuraajan.
      *
      * @param inputFile Luettava tiedosto
-     * @throws java.io.FileNotFoundException Virhe jos luettavaa tiedostoa ei löydy
+     * @throws java.io.FileNotFoundException Virhe jos luettavaa tiedostoa ei
+     * löydy
      */
     public Input(File inputFile) throws FileNotFoundException {
         this.currentByte = 0;
@@ -95,7 +96,7 @@ public class Input {
 
         /* Jos sisään luetussa tavussa on vielä lukemattomia bittejä, 
         yhdistetään nykyisen tavun lukemattomat bitit, seuraavan luettavan tavun
-            8-(nykyisen tavun lukemattomat) ensimmäisen bitin kanssa, jotta saadaan 
+            (8-nykyisen tavun lukemattomat) alun bitin kanssa, jotta saadaan 
         niistä palautettua tavullinen bittejä eli merkki. Nämä eivät ole lukuvaiheessakaan
         aina tasatavullisia, sillä pakattuun tiedostoon on kirjoitettu pakkaamattoman tiedoston
         merkkien lisäksi koodauksessa käytetty Huffmanin puu sekä pakkaamattoman tiedoston merkkien
@@ -135,18 +136,16 @@ public class Input {
             } catch (IOException ex) {
                 System.out.println("I/O exception luettaessa InputStreamia. Ongelma metodissa readBit()");
             }
-            // Jos luettava tavu on tiedoston loppu
+
             if (currentByte == -1) {
                 return -1;
             }
-            // Bittien määrä tavussa
+
             bitsRemaining = 8;
         }
 
-        // Luettaessa bittejä laskuria vähennetään
         bitsRemaining--;
 
-        // Kasvatetaan yhteensä luettujen bittien määrää
         readBitsTotal++;
 
         int result = (currentByte >>> bitsRemaining) & 1;
@@ -211,5 +210,4 @@ public class Input {
             System.out.println("I/O exception suljettaessa InputStreamia. Ongelma metodissa close()");
         }
     }
-
 }

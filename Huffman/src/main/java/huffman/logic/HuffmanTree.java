@@ -9,10 +9,8 @@ public class HuffmanTree {
 
     private int[] frequencies;
 
-    // Minimikeko jota käytetään puun muodostukseen
     private MinHeap heap;
     
-    // Taulukko kunkin merkin binäärimuodon tallentamiseen
     private String[] binaryCodes;
 
     private Node root;
@@ -33,7 +31,7 @@ public class HuffmanTree {
         // Luotu Huffmanin puu
         this.root = create();
               
-        //binääriluvut merkeille
+        // luodaan binääriluvut merkeille
         listBinaryCodes(binaryCodes, root, "");
     }
 
