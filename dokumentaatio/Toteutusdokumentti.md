@@ -69,6 +69,7 @@ Pakkaamisen aikavaativuus on merkkien luku *O(n)* + toistumisten merkkaaminen *O
 Tilavaativuus algoritmille on luokkaa *O(n)* kuten määrittelyssä todettu (tilaa tarvitaan merkkitaulukkoon *O(n)*, toistumistaulukkoon jonka koko aina sama eli *O(1)* ja puuhun jonka koko korkeintaan *2k-1* solmua ja pakattuun tiedostoon kirjoitetaan korkeintaan *((2k-1)-1-k + k * 9) + 32 + (n * keskimääräinen koodin pituus)* bittiä.
 
 n = yhteensä luettujen merkkien määrä
+
 k = erilaisten merkkien määrä
 
 #### Pakatun tiedoston purkamisen aika- ja tilavaativuus
@@ -79,6 +80,7 @@ Purkamisen tilavaativuus on *O(k)* + *O(1)* (tilaa tarvitaan luetulle puulle ja 
 Purettuun tiedostoon kirjoitetaan luonnollisesti alkuperäiset n merkkiä.
 
 n = Pakkamisen yhteydessä luettujen merkkien määrä yhteensä 
+
 k = erilaisten merkkien määrä
 
 ### Puutteet ja parannusehdotukset
