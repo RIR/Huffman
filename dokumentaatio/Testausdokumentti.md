@@ -207,3 +207,9 @@ Testejä on suoritettu edellä näkyvillä syötteillä ja vastaavia testejä vo
 ### Lähteet
 
 *https://fi.wikipedia.org/wiki/Huffmanin_koodaus*
+
+*https://fi.wikipedia.org/wiki/Lempel-Ziv*
+
+*https://fi.wikipedia.org/wiki/Deflate*
+
+*https://fi.wikipedia.org/wiki/Gzip*
