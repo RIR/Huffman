@@ -112,8 +112,8 @@ public class Compress {
      *
      * @return Pakkausprosentti
      */
-    public int getCompression() {
-        return (int) (100 * (readBits - writtenBits) / readBits);
+    public String getCompression() {
+        return df.format((double) (100.00 * (readBits - writtenBits) / readBits));
     }
 
     /**

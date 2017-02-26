@@ -7,7 +7,7 @@ Ohjelman yksikkötestaus on toteutettu Junit:lla. Testejä on kattavasti kaikill
 
 ### Pakkaamisen ja purkamisen testaus erilaisilla tiedostomuodoilla
 
-*TIFF-muotoinen kuva*
+*TIF-muotoinen kuva*
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress kuva.tif kuva
 Antamasi tiedosto kuva.tif on pakattu. Tiedosto löytyy nimellä kuva.hf

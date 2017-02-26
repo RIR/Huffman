@@ -2,6 +2,7 @@ package huffman.compression;
 
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.text.DecimalFormat;
 import org.junit.After;
 import org.junit.AfterClass;
 import static org.junit.Assert.assertEquals;
@@ -53,7 +54,10 @@ public class CompressTest {
 
     @Test
     public void getCompressionShowsCompression() {
-        assertTrue(compress.getCompression() > 0);
+        
+        String oCompression=compress.getCompression();
+        String nCompression=oCompression.replace(',', '.');
+        assertTrue(Double.parseDouble(nCompression) > 0);
     }
 
 }
