@@ -85,7 +85,7 @@ k = erilaisten merkkien määrä
 
 ### Puutteet ja parannusehdotukset
 
-Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon saattaa aiheuttaa ```OutOfMemoryError```-virhetilanteen (Ainakin omassa käytössäni olevalla koneella). Yli 70MB kokoinen kuva pakkaantui ja purkaantui vielä hyvin. Yli 700MB kokoinen video aiheutti virheen. Ohjelmaa kehittäessä ajattelin tämän johtuvan merkkitaulukkoon tallentamisesta ja muokkasin ohjelmaa niin, että tiedot luettiin kahteen kertaan suoraan tiedostosta tallentamatta merkkitaulukkoon mutta tämä ei auttanut ja hidasti ohjelman suoritusta ja palautin ohjelman vanhaan muotoonsa.
+Ohjelma ei pysty käsittelemään todella suuria tiedostoja, koska merkkien luku taulukkoon saattaa aiheuttaa ```OutOfMemoryError```-virhetilanteen (Ainakin omassa käytössäni olevalla koneella). Yli 60MB kokoinen kuva ja yli 80MB tekstitiedosto pakkaantuivat ja purkaantuivat vielä hyvin. Yli 700MB kokoinen video aiheutti virheen. Ohjelmaa kehittäessä ajattelin tämän johtuvan merkkitaulukkoon tallentamisesta ja muokkasin ohjelmaa niin, että tiedot luettiin kahteen kertaan suoraan tiedostosta tallentamatta merkkitaulukkoon mutta tämä ei auttanut ja hidasti ohjelman suoritusta ja palautin ohjelman vanhaan muotoonsa.
 
 Ohjaaja myös huomioi, että ohjelman kaikki testit eivät menneet läpi Windows-käyttöjärjestelmässä. Itselläni käytössä Linux Ubuntu ja kaikki testit toimivat.  Testit joissa tuli virheitä testasivat merkkilaskureita jne. ja ohjelman varsinaiseen toimintaan eli pakkaamiseen ja purkamiseen tällä ei pitäisi olla vaikutusta.
 
