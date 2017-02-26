@@ -197,6 +197,6 @@ Ohjelman ajallinen ja pakkaustehollinen suoriutuminen näkyy testitapauksista. K
 
 Kokeilin paljon erilaisia tiedostomuotoja vaikka kävikin ilmi, että suurin osa näistä on jo jollain tavalla tiivistetyssä muodossa. Muita kun muotoilemattomia tekstitiedostoja (.txt) oli jopa vaikeaa löytää. Kuten edellä näkee, ohjelma suorittaa pakkaamis- ja purkaamisoperaatiot vaikka tietoa ei saataisikaan pakattua. Puretut tiedostot myös aina toimivat eli purkautuvat oikein.
 
-Testejä on suoritettu edellä näkyvillä syötteillä ja näitä voi luonnollisesti kukin toistaa kokeilemalla itse ohjelmaa.
+Testejä on suoritettu edellä näkyvillä syötteillä ja vastaavia testejä voi kukin tehdä kokeilemalla itse ohjelmaa.
 
 Testauskattavuutta kuvaava [pit-raportti] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/pit-raportti/index.html)
