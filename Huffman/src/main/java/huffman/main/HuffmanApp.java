@@ -97,13 +97,16 @@ public class HuffmanApp {
      *
      */
     private static void help() {
-        System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta.\n"
+        System.out.println("");
+        System.out.println("### Huffman ###");
+        System.out.println("");
+        System.out.println("Ohjelma pakkaa ja purkaa pakattuja tiedostoja käyttäen Huffmanin koodausta.\n\n"
                 + "Anna käsky muodossa java -jar Huffman-1.0-SNAPSHOT.jar <-toiminto> <lähdetiedoston nimi> <kohdetiedosto nimi>\n"
-                + "esim. java -jar Huffman-1.0-SNAPSHOT.jar -compress pakattava.txt pakattu.txt\n"
-                + "Toiminnot: \n"
-                + "-compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä lisäten .hf tiedostopäätteen.\n"
-                + "-decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä.\n"
-                + "Huom! Purkaus toimii vain .hf-päätteisille tiedostoille.\n"
-                + "-help (ei lisäargumentteja) Tulostaa nämä ohjeet");
+                + "esim. java -jar Huffman-1.0-SNAPSHOT.jar -compress pakattava.txt pakattu.txt\n\n"
+                + "Toiminnot: \n\n"
+                + " -compress Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston nimellä lisäten .hf tiedostopäätteen.\n\n"
+                + " -decompress Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä."
+                + "Huom! Purkaus toimii vain .hf-päätteisille tiedostoille.\n\n"
+                + " -help (ei lisäargumentteja) Tulostaa nämä ohjeet");
     }
 }

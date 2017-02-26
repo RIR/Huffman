@@ -22,6 +22,10 @@ Pakkaa lähdetiedoston ja nimeää pakatun tiedoston antamallasi kohdetiedoston 
 Purkaa antamasi lähdetiedoston pakkauksen ja nimeää puretun tiedoston antamallasi kohdetiedoston nimellä.
                
 
+**-help (ei muita argumentteja)**
+
+Tulostaa käyttöohjeen.
+
 ###*Huom!*
 
 Ohjelma nimeää pakatun tiedoston lisäämällä antamasi tiedostonimen loppuun .hf-tiedostopäätteen.
