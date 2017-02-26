@@ -56,7 +56,8 @@ public class Output {
         } else {
             currentByte = (currentByte << 1) | bit;
             bitsWritten++;
-
+            writtenBitsTotal++;
+            
             if (bitsWritten == 8) {
                 writeByte();
             }
@@ -72,7 +73,7 @@ public class Output {
         }
         currentByte = 0;
         bitsWritten = 0;
-        writtenBitsTotal += 8;
+        
     }
 
     // Apumetodi joka täyttää viimeisen kirjoitettavan tavun nollilla jos se jää muuten vajaaksi
@@ -121,7 +122,6 @@ public class Output {
             return;
         }
         writeBit(0);
-        writtenBitsTotal++;
         writeHuffmanTree(node.getLeft());
         writeHuffmanTree(node.getRight());
     }
