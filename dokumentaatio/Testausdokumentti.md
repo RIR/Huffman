@@ -5,7 +5,6 @@
 
 Ohjelman yksikkötestaus on toteutettu Junit:lla. Testejä on kattavasti kaikille ohjelman toiminnoille. Jonkun verran yksittäisiä metodeja tulee testatuksi epäsuoraan, koska ne on määritelty luokkien sisäisiksi yksityisiksi metodeiksi. Lisäksi tiedostojenkäsittelyyn sisältyy paljon poikkeusten hallintaa, jotka vaikuttavat hieman testikattavuuteen, mutta joita en koe tarpeelliseksi testata erikseen. 
 
-
 ### Pakkaamisen ja purkamisen testaus erilaisilla tiedostomuodoilla
 
 #### Tapaukset joissa pakkauksesta oli hyötyä
@@ -195,8 +194,16 @@ Aikaa tiedoston purkamiseen kului 1277ms
 
 Ohjelman ajallinen ja pakkaustehollinen suoriutuminen näkyy testitapauksista. Kuten näistä käy ilmi, on pakatun tiedoston purkaminen käytännössä aina nopeampaa kuin tiedoston pakkaaminen. Pakkaamattomissa tiedostomuodoissa päästään jo lähelle  50 %:n pakkaustehoa (TIFF-kuva 48,37 %), tosin WAV-muotoinen äänitiedosto ei pakkautunut, minkä syy jäi itselleni epäselväksi. 
 
+Verrattaessa nykyisin yleisesti käytössä oleviin tiedonpakkausmenetelmiin, ei ohjelma ole pakkaustehokkuudeltaan vertailukelpoinen. Mm. ZIP-pakkausmenetelmä, gzip-pakkausohjelma ja PNG-muotoiset kuvat käyttävät pakkaukseen Deflate-algoritmia joka yhdistelee Lempel–Zivin (LZ77) ja Huffmanin algoritmeja ja on pelkkää Huffmania paljon tehokkaampi. Huffmanin koodauksella on kuitenkin siis paikkansa nykymuotoisessa tiedon tiivistyksessä. Se ei vaan itsessään ole optimaalisin metodi ja sitä käytetään usein "loppukoodauksena" muiden pakkausmetodien jälkeen. 
+
+Vertailukohdiksi tehokkuuserosta sopii aiemmin edellä tiivistetyt TIFF-muotoinen kuva jolle tällä ohjelmalla saatiin 48,37 % pakkausteho ja jonka gzip pakkaa 67.94 %:n tehokkuudella sekä suomenkielinen kirja .txt-muodossa joka saatiin pakattua tällä ohjelmalla 44,52 %:n tehokkuudella ja jonka gzip pakkaa 62,32 %:n tehokkuudella.
+
 Kokeilin paljon erilaisia tiedostomuotoja vaikka kävikin ilmi, että suurin osa näistä on jo jollain tavalla tiivistetyssä muodossa. Muita kun muotoilemattomia tekstitiedostoja (.txt) oli jopa vaikeaa löytää. Kuten edellä näkee, ohjelma suorittaa pakkaamis- ja purkaamisoperaatiot vaikka tietoa ei saataisikaan pakattua. Puretut tiedostot myös aina toimivat eli purkautuvat oikein.
 
 Testejä on suoritettu edellä näkyvillä syötteillä ja vastaavia testejä voi kukin tehdä kokeilemalla itse ohjelmaa.
 
-Testauskattavuutta kuvaava [pit-raportti] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/pit-raportti/index.html)
+*Testauskattavuutta kuvaava [pit-raportti] (https://htmlpreview.github.io/?https://github.com/RIR/Huffman/blob/master/dokumentaatio/pit-raportti/index.html)*
+
+### Lähteet
+
+*https://fi.wikipedia.org/wiki/Huffmanin_koodaus*
