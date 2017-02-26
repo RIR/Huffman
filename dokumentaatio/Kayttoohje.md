@@ -10,6 +10,7 @@ Esimerkkikomento:
 
 ```java -jar Huffman-1.0-SNAPSHOT.jar -compress pakattava.txt pakattu.txt```
 
+
 ## Ohjelman toiminnot:
 
 **-compress** 
