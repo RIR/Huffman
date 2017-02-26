@@ -104,7 +104,7 @@ Alkuperäisen tiedoston koko: 41336080 bittiä. (5045,91 KB).
 Puretun tiedoston koko 49766832 bittiä (6075,05 KB).
 Aikaa tiedoston purkamiseen kului 734ms
 ```
-Tässä pakkausteho melko onneton ja odotin parempaa. Uskoisin tehon paranevan tälläkin tiedostomuodolla kun käsitellään isompaa tiedostoa.
+Tässä pakkausteho melko onneton ja odotin parempaa. Pakkausteho saattaisi olla parempi isommalla tiedostolla.
 
 *EPS-muotoinen tiedosto (vektorigrafiikkaa)*
 ```
@@ -121,7 +121,7 @@ Alkuperäisen tiedoston koko: 10202296 bittiä. (1245,4 KB).
 Puretun tiedoston koko 14323280 bittiä (1748,45 KB).
 Aikaa tiedoston purkamiseen kului 221ms
 ```
-Samoin tässä, uskon pakkaustehon paranevan jos käsitellään isompaa tiedostoa.
+Samoin tässä, pakkausteho voisi olla ehkä parempi isommilla tiedostoilla.
 
 #### Tapaukset joissa pakkauksesta ei ollut hyötyä
 
@@ -175,7 +175,7 @@ Alkuperäisen tiedoston koko: 59985405 bittiä. (7322,44 KB).
 Puretun tiedoston koko 59983192 bittiä (7322,17 KB).
 Aikaa tiedoston purkamiseen kului 1574ms
 ```
-*JPEG-muotoinen kuva (jo pakattu tiedostomuoto)*
+*JPEG-muotoinen kuva (pakattu tiedostomuoto)*
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress maisemakuva.jpg maisemakuva.jpg 
 Antamasi tiedosto maisemakuva.jpg on pakattu. Tiedosto löytyy nimellä maisemakuva.jpg.hf
@@ -193,7 +193,7 @@ Aikaa tiedoston purkamiseen kului 1277ms
 
 ### Huomioitavaa
 
-Kuten edellisissä testitapauksissakin käy ilmi, on pakatun tiedoston purkaminen käytännössä aina nopeampaa kuin tiedoston pakkaaminen. Pakkaamattomissa tiedostomuodoissa päästään jo lähelle  50 %:n pakkaustehoa (TIFF-kuva 48,37 %), tosin WAV-muotoinen äänitiedosto ei pakkautunut, minkä syy jäi itselleni epäselväksi. 
+Ohjelman ajallinen ja pakkaustehollinen suoriutuminen näkyy testitapauksista. Kuten näistä käy ilmi, on pakatun tiedoston purkaminen käytännössä aina nopeampaa kuin tiedoston pakkaaminen. Pakkaamattomissa tiedostomuodoissa päästään jo lähelle  50 %:n pakkaustehoa (TIFF-kuva 48,37 %), tosin WAV-muotoinen äänitiedosto ei pakkautunut, minkä syy jäi itselleni epäselväksi. 
 
 Kokeilin paljon erilaisia tiedostomuotoja vaikka kävikin ilmi, että suurin osa näistä on jo jollain tavalla tiivistetyssä muodossa. Muita kun muotoilemattomia tekstitiedostoja (.txt) oli jopa vaikeaa löytää. Kuten edellä näkee, ohjelma suorittaa pakkaamis- ja purkaamisoperaatiot vaikka tietoa ei saataisikaan pakattua. Puretut tiedostot myös aina toimivat eli purkautuvat oikein.
 
