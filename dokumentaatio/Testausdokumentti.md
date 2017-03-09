@@ -88,7 +88,7 @@ Puretun tiedoston koko 665832040 bittiä (81278,33 KB).
 Aikaa tiedoston purkamiseen kului 7582ms
 ```
 
-*BMP-muotoinen kuvatiedosto
+*BMP-muotoinen kuvatiedosto*
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress talo.BMP talo.BMP 
 Antamasi tiedosto talo.BMP on pakattu. Tiedosto löytyy nimellä talo.BMP.hf
@@ -141,7 +141,7 @@ Aikaa tiedoston purkamiseen kului 99ms
 ```
 Tämä hieman hämmentää sillä pakkausta ei käytännössä tapahtunut ja WAV:n pitäisi normaalisti olla käsittääkseni pakkamaton tiedostomuoto.
 
-* PNG-muotoinen kuva, joka pakattu käyttäen Deflate-pakkausmenetelmää, johon sisältyy osana myös Huffmanin koodausta* 
+*PNG-muotoinen kuva, joka pakattu käyttäen Deflate-pakkausmenetelmää, johon sisältyy osana myös Huffmanin koodausta* 
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress LinuxKuva.png LinuxKuva.png 
 Antamasi tiedosto LinuxKuva.png on pakattu. Tiedosto löytyy nimellä LinuxKuva.png.hf
@@ -175,9 +175,16 @@ Puretun tiedoston koko 76070768 bittiä (9285,98 KB).
 Aikaa tiedoston purkamiseen kului 1277ms
 ```
 
+<<<<<<< HEAD
 #### Suorituskykyvertailu Huffman vs gzip
 
 *TIFF-kuva (61,3 MB)*
+=======
+#### Suorituskykyvertailua Huffman vs gzip
+
+*TIFF-kuva (61,3 MB)*
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 48,37 %  |   67,9 %    |
@@ -185,6 +192,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 4896 ms |   1567 ms    |
 
 *MPEG-video (27,9 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 34,78 %  |   47.4 %    |
@@ -192,6 +203,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 2769ms |    641 ms   |
 
 *Kirja txt-muodossa (1,4 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 41,04 %  |    64,3 %   |
@@ -199,6 +214,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 212 ms |    29 ms   |
 
 *Kirja txt.muodossa suomenkielisenä eli ääkkösillä (1,1 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 44,52 %  |   62,3 %    |
@@ -206,6 +225,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 147 ms |   21 ms    |
 
 *Iso txt-tiedosto ääkkösillä (83,2 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 41,27 %  |    63,1 %   |
@@ -213,6 +236,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 7582 ms |   1096 ms    |
 
 *BMP-kuva (6,2 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 16,94 %  |   57,1 %    |
@@ -220,6 +247,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 734 ms |    92 ms   |
 
 *EPS-tiedosto (1,8 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 28,77 % |   56,2 %    |
@@ -227,6 +258,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 221 ms |    31 ms   |
 
 *WAV-äänitiedosto (290.8 KB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 0,55 %  |   3,1 %    |
@@ -234,6 +269,10 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 99 ms |    11 ms   |
 
 *PNG-kuva (796.5 KB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| -0,02 %  |  5,8 %     |
@@ -241,11 +280,19 @@ Aikaa tiedoston purkamiseen kului 1277ms
 |Purkausnopeus| 161 ms |   25 ms    |
 
 *JPEG-kuva (9,5 MB)*
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 |   |  Huffman   | gzip    
 :---: | :---: | :---:
 |Pakkausteho| 0,05 %  |   0,9 %    |
 |Pakkausnopeus| 1690 ms |  621 ms    |
 |Purkausnopeus| 1277 ms |    150 ms   |
+<<<<<<< HEAD
+=======
+
+>>>>>>> ab0eede9aee3a80206ee31e9bd70bc7f264ac500
 ### Huomioitavaa
 
 Ohjelman ajallinen ja pakkaustehollinen suoriutuminen näkyy testitapauksista. Kuten näistä käy ilmi, on pakatun tiedoston purkaminen käytännössä aina nopeampaa kuin tiedoston pakkaaminen. Pakkaamattomissa tiedostomuodoissa päästään jo lähelle  50 %:n pakkaustehoa (TIFF-kuva 48,37 %), tosin WAV-muotoinen äänitiedosto ei pakkautunut, minkä syy jäi itselleni epäselväksi. 
