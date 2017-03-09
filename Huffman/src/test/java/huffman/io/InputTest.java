@@ -129,13 +129,13 @@ public class InputTest {
         assertEquals(17, input.getReadBitsTotal());
     }
 
-    @Test
-    public void readLengthReadsCorrectLength() throws FileNotFoundException {
-        Compress compress = new Compress(inputFile, outputFile);
-        Input outIn = new Input(new File("testitiedostot/lengthPakattu.hf"));
-        Node Root = outIn.readHuffmanTree();
-
-        assertEquals(inputFile.length(), outIn.readLength());
-        outIn.close();
-    }
+//    @Test
+//    public void readLengthReadsCorrectLength() throws FileNotFoundException {
+//        Compress compress = new Compress(inputFile, outputFile);
+//        Input outIn = new Input(new File("testitiedostot/lengthPakattu.hf"));
+//        Node Root = outIn.readHuffmanTree();
+//
+//        assertEquals(inputFile.length(), outIn.readLength());
+//        outIn.close();
+//    }
 }

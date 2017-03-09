@@ -159,21 +159,6 @@ fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$
 ```
 Tässä oli odotettavissakin, että pakkausta ei tapahdu.
 
-*PDF-muotoinen tiedosto*
-```
-fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress testi.pdf testi.pdf 
-Antamasi tiedosto testi.pdf on pakattu. Tiedosto löytyy nimellä testi.pdf.hf
-Alkuperäisen tiedoston koko: 59983192 bittiä (7322,17 KB).
-Pakatun tiedoston koko 59985405 bittiä (7322,44 KB).
-Pakkausteho -0 % 
-Aikaa tiedoston pakkaamiseen kului 1572ms
-
-fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -decompress testi.pdf.hf testi.pdf 
-Antamasi tiedostotesti.pdf.hf on purettu. Tiedosto löytyy antamallasi nimellä testi.pdf
-Alkuperäisen tiedoston koko: 59985405 bittiä. (7322,44 KB).
-Puretun tiedoston koko 59983192 bittiä (7322,17 KB).
-Aikaa tiedoston purkamiseen kului 1574ms
-```
 *JPEG-muotoinen kuva (pakattu tiedostomuoto)*
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress maisemakuva.jpg maisemakuva.jpg 
@@ -190,13 +175,84 @@ Puretun tiedoston koko 76070768 bittiä (9285,98 KB).
 Aikaa tiedoston purkamiseen kului 1277ms
 ```
 
+#### Suorituskykyvertailu Huffman vs gzip
+
+*TIFF-kuva (61,3 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 48,37 %  |   67,9 %    |
+|Pakkausnopeus| 6385 ms |   2086 ms   |
+|Purkausnopeus| 4896 ms |   1567 ms    |
+
+*MPEG-video (27,9 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 34,78 %  |   47.4 %    |
+|Pakkausnopeus| 3276 ms |  1198 ms    |
+|Purkausnopeus| 2769ms |    641 ms   |
+
+*Kirja txt-muodossa (1,4 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 41,04 %  |    64,3 %   |
+|Pakkausnopeus| 478 ms |   160 ms   |
+|Purkausnopeus| 212 ms |    29 ms   |
+
+*Kirja txt.muodossa suomenkielisenä eli ääkkösillä (1,1 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 44,52 %  |   62,3 %    |
+|Pakkausnopeus| 195 ms |  147 ms    |
+|Purkausnopeus| 147 ms |   21 ms    |
+
+*Iso txt-tiedosto ääkkösillä (83,2 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 41,27 %  |    63,1 %   |
+|Pakkausnopeus| 9190 ms |  9720 ms    |
+|Purkausnopeus| 7582 ms |   1096 ms    |
+
+*BMP-kuva (6,2 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 16,94 %  |   57,1 %    |
+|Pakkausnopeus| 1382 ms |  386 ms    |
+|Purkausnopeus| 734 ms |    92 ms   |
+
+*EPS-tiedosto (1,8 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 28,77 % |   56,2 %    |
+|Pakkausnopeus| 292 ms |   166 ms   |
+|Purkausnopeus| 221 ms |    31 ms   |
+
+*WAV-äänitiedosto (290.8 KB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 0,55 %  |   3,1 %    |
+|Pakkausnopeus| 123 ms |  34 ms    |
+|Purkausnopeus| 99 ms |    11 ms   |
+
+*PNG-kuva (796.5 KB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| -0,02 %  |  5,8 %     |
+|Pakkausnopeus| 277 ms |   75 ms   |
+|Purkausnopeus| 161 ms |   25 ms    |
+
+*JPEG-kuva (9,5 MB)*
+|   |  Huffman   | gzip    
+:---: | :---: | :---:
+|Pakkausteho| 0,05 %  |   0,9 %    |
+|Pakkausnopeus| 1690 ms |  621 ms    |
+|Purkausnopeus| 1277 ms |    150 ms   |
 ### Huomioitavaa
 
 Ohjelman ajallinen ja pakkaustehollinen suoriutuminen näkyy testitapauksista. Kuten näistä käy ilmi, on pakatun tiedoston purkaminen käytännössä aina nopeampaa kuin tiedoston pakkaaminen. Pakkaamattomissa tiedostomuodoissa päästään jo lähelle  50 %:n pakkaustehoa (TIFF-kuva 48,37 %), tosin WAV-muotoinen äänitiedosto ei pakkautunut, minkä syy jäi itselleni epäselväksi. 
 
 Verrattaessa nykyisin yleisesti käytössä oleviin tiedonpakkausmenetelmiin, ei ohjelma ole pakkaustehokkuudeltaan vertailukelpoinen. Mm. ZIP-pakkausmenetelmä, gzip-pakkausohjelma ja PNG-muotoiset kuvat käyttävät pakkaukseen Deflate-algoritmia joka yhdistelee Lempel–Zivin (LZ77) ja Huffmanin algoritmeja ja on pelkkää Huffmania paljon tehokkaampi. Huffmanin koodauksella on kuitenkin siis paikkansa nykymuotoisessa tiedon tiivistyksessä. Se ei vaan itsessään ole optimaalisin metodi ja sitä käytetään usein "loppukoodauksena" muiden pakkausmetodien jälkeen. 
 
-Vertailukohdiksi tehokkuuserosta sopii aiemmin edellä tiivistetyt TIFF-muotoinen kuva jolle tällä ohjelmalla saatiin 48,37 % pakkausteho ja jonka gzip pakkaa 67.94 %:n tehokkuudella sekä suomenkielinen kirja .txt-muodossa joka saatiin pakattua tällä ohjelmalla 44,52 %:n tehokkuudella ja jonka gzip pakkaa 62,32 %:n tehokkuudella.
+Vertailukohdiksi tehokkuuserosta sopii aiemmin edellä tiivistetyt TIFF-muotoinen kuva jolle tällä ohjelmalla saatiin 48,37 % pakkausteho ja jonka gzip pakkaa 67,9 %:n tehokkuudella sekä suomenkielinen kirja .txt-muodossa joka saatiin pakattua tällä ohjelmalla 44,5 %:n tehokkuudella ja jonka gzip pakkaa 62,3 %:n tehokkuudella.
 
 Kokeilin paljon erilaisia tiedostomuotoja vaikka kävikin ilmi, että suurin osa näistä on jo jollain tavalla tiivistetyssä muodossa. Muita kun muotoilemattomia tekstitiedostoja (.txt) oli jopa vaikeaa löytää. Kuten edellä näkee, ohjelma suorittaa pakkaamis- ja purkaamisoperaatiot vaikka tietoa ei saataisikaan pakattua. Puretut tiedostot myös aina toimivat eli purkautuvat oikein.
 
