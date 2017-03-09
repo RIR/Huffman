@@ -88,7 +88,7 @@ Puretun tiedoston koko 665832040 bittiä (81278,33 KB).
 Aikaa tiedoston purkamiseen kului 7582ms
 ```
 
-*BMP-muotoinen kuvatiedosto
+*BMP-muotoinen kuvatiedosto*
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress talo.BMP talo.BMP 
 Antamasi tiedosto talo.BMP on pakattu. Tiedosto löytyy nimellä talo.BMP.hf
@@ -141,7 +141,7 @@ Aikaa tiedoston purkamiseen kului 99ms
 ```
 Tämä hieman hämmentää sillä pakkausta ei käytännössä tapahtunut ja WAV:n pitäisi normaalisti olla käsittääkseni pakkamaton tiedostomuoto.
 
-* PNG-muotoinen kuva, joka pakattu käyttäen Deflate-pakkausmenetelmää, johon sisältyy osana myös Huffmanin koodausta* 
+*PNG-muotoinen kuva, joka pakattu käyttäen Deflate-pakkausmenetelmää, johon sisältyy osana myös Huffmanin koodausta* 
 ```
 fuksi@dhcp-asv-103:~/Lataukset/TiraLabTestailua$ java -Xmx1024M -jar Huffman-1.0-SNAPSHOT.jar -compress LinuxKuva.png LinuxKuva.png 
 Antamasi tiedosto LinuxKuva.png on pakattu. Tiedosto löytyy nimellä LinuxKuva.png.hf
