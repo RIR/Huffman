@@ -175,7 +175,7 @@ Puretun tiedoston koko 76070768 bittiä (9285,98 KB).
 Aikaa tiedoston purkamiseen kului 1277ms
 ```
 
-#### Suorituskykyvertailu Huffman vs gzip
+#### Suorituskykyvertailua Huffman vs gzip
 
 *TIFF-kuva (61,3 MB)*
 
